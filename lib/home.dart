@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'colors.dart';
+import 'signUp.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key, String? title}) : super(key: key);
@@ -13,7 +14,12 @@ class HomePage extends StatelessWidget {
         title: const Text("KOBBLE"),
         actions: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SignUp()),
+              );
+            },
             child: Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
