@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kobble_dev/styles.dart';
 
 import 'colors.dart';
-import 'signUp.dart';
+import 'signup.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key, String? title}) : super(key: key);
@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: constraints.maxWidth / 3.1,
                         child: ListTile(
                           horizontalTitleGap: 50,
@@ -87,7 +87,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: constraints.maxWidth / 3.1,
                         child: ListTile(
                           horizontalTitleGap: 50,
@@ -185,7 +185,12 @@ class HomePage extends StatelessWidget {
                                 gradient: const LinearGradient(
                                     colors: [Colors1.hgrad1, Colors1.hgrad2])),
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const SignUp()));
+                              },
                               child: const Text("Get Card"),
                               style: ElevatedButton.styleFrom(
                                   primary: Colors.transparent,
