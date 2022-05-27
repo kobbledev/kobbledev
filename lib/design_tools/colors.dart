@@ -26,5 +26,8 @@ class Colors1 {
   //
   static const boxbg = Color(0XffF6F6F6);
 
+  static const lightgreen = Color(0Xff7EFFD0);
+
+  static const borderGrey = Color(0XffF0F0F0);
   
 }

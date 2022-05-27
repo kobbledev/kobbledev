@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:kobble_dev/select_card_flow/address.dart';
 
-import 'design_tools/colors.dart';
-import 'design_tools/styles.dart';
-import 'models/stepclass.dart';
+import '../design_tools/colors.dart';
+import '../design_tools/styles.dart';
+import '../models/stepclass.dart';
 
-class Demo extends StatelessWidget {
-  const Demo({Key? key}) : super(key: key);
+class ShoppingCart extends StatelessWidget {
+  const ShoppingCart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -403,11 +402,10 @@ class Demo extends StatelessWidget {
                                           ),
                                         ),
                                         const Positioned(
-                                          child: TextField(
-                                              decoration: InputDecoration(
-
-                                                border: OutlineInputBorder(),
-                                                )))
+                                            child: TextField(
+                                                decoration: InputDecoration(
+                                          border: OutlineInputBorder(),
+                                        )))
 
                                         // SizedBox(
                                         //     height: 81,
@@ -439,10 +437,10 @@ class Demo extends StatelessWidget {
                               height: 81,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  // Navigator.push(context,
-                                  //     MaterialPageRoute(builder: ((context) {
-                                  //   return const TypeOfCard();
-                                  // })));
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: ((context) {
+                                    return const Address();
+                                  })));
                                 },
                                 child: const Center(
                                   child: Text(

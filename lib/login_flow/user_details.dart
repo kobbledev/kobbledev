@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kobble_dev/select_card_flow/edit_card.dart';
 
 import '../design_tools/colors.dart';
 import '../design_tools/styles.dart';
+import '../global_widgets/header1.dart';
 
 class UserForm extends StatefulWidget {
   const UserForm({Key? key}) : super(key: key);
@@ -275,7 +277,7 @@ class _UserFormState extends State<UserForm> {
                                   onPressed: () {
                                     Navigator.push(context,
                                         MaterialPageRoute(builder: ((context) {
-                                      return const UserForm();
+                                      return const EditCard();
                                     })));
                                   },
                                   child: Image.asset(
@@ -302,75 +304,6 @@ class _UserFormState extends State<UserForm> {
           )
         ],
       ),
-    );
-  }
-}
-
-class Header extends StatelessWidget {
-  const Header({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          alignment: Alignment.center,
-          height: 70,
-          child: RichText(
-              text: TextSpan(
-                  style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  children: [
-                const TextSpan(
-                  text: 'K',
-                  style: TextStyle(
-                      fontFamily: Fonts.nunito,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 38,
-                      color: Colors.white),
-                ),
-                WidgetSpan(
-                    child: SizedBox(
-                  width: 50,
-                  height: 62,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(''),
-                          Image.asset(
-                            "assets/icons/global_icons/op.png",
-                            width: 10,
-                            height: 10,
-                          ),
-                        ],
-                      ),
-                      Image.asset(
-                        "assets/icons/global_icons/o.png",
-                        width: 40,
-                        height: 46,
-                      ),
-                    ],
-                  ),
-                )),
-                const TextSpan(
-                  text: 'BBLE',
-                  style: TextStyle(
-                      fontFamily: Fonts.nunito,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 38,
-                      color: Colors.white),
-                ),
-              ])),
-        ),
-      ],
     );
   }
 }

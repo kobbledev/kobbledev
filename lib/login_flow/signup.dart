@@ -5,6 +5,7 @@ import 'package:kobble_dev/design_tools/colors.dart';
 import 'package:kobble_dev/login_flow/user_details.dart';
 
 import '../design_tools/styles.dart';
+import 'flow_info.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -14,14 +15,24 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  //MobileControllers
+  //Mobile Controllers
   final _m_mobileController = TextEditingController();
 
-//key
-  final GlobalKey<FormState> _m_signupkey = GlobalKey<FormState>();
+  //Web Controllers
+  final _w_mobileController = TextEditingController();
 
-//FocusNodes
+  //Mobile Formkey
+  final GlobalKey<FormState> _m_signupkey = GlobalKey<FormState>();
+  //Web Formkey
+  final GlobalKey<FormState> _w_signupkey = GlobalKey<FormState>();
+//
+//Mobile FocusNodes
   final _m_mobileFocusNode = FocusNode();
+
+  //Web FocusNodes
+  final _w_mobileFocusNode = FocusNode();
+  final _w_submitFocusNode = FocusNode();
+
   bool _oncheck = true;
 
   @override
@@ -83,7 +94,7 @@ class _SignUpState extends State<SignUp> {
                             height: 47,
                           ),
                           Form(
-                            key: _m_signupkey,
+                            key: _w_signupkey,
                             child: Container(
                               alignment: Alignment.centerLeft,
                               child: Column(
@@ -123,7 +134,7 @@ class _SignUpState extends State<SignUp> {
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 24,
                                                 color: Colors1.formgrey),
-                                            controller: _m_mobileController,
+                                            controller: _w_mobileController,
                                             decoration: const InputDecoration(
                                               border: OutlineInputBorder(),
                                               focusedBorder: OutlineInputBorder(
@@ -149,65 +160,17 @@ class _SignUpState extends State<SignUp> {
                                                 return null;
                                               }
                                             },
-                                            focusNode: _m_mobileFocusNode,
+                                            focusNode: _w_mobileFocusNode,
                                             keyboardType: TextInputType.phone,
                                             textInputAction:
                                                 TextInputAction.next,
                                             onFieldSubmitted: (_) {
-                                              _m_mobileFocusNode.unfocus();
-                                              // FocusScope.of(context)
-                                              //     .requestFocus(_emailFocusNode);
+                                              _w_mobileFocusNode.unfocus();
+                                              FocusScope.of(context)
+                                                  .requestFocus(
+                                                      _w_submitFocusNode);
                                             },
                                           ))),
-                                  // Container(
-                                  //   // height: 100,
-                                  //   // color: Colors1.formBg,
-                                  //   child: Card(
-                                  //       color: Colors1.formBg,
-                                  //       child: SizedBox(
-                                  //           child: TextFormField(
-                                  //         cursorColor: Colors1.hgrey,
-                                  //         style: const TextStyle(
-                                  //             fontFamily: Fonts.nunito,
-                                  //             fontWeight: FontWeight.w600,
-                                  //             fontSize: 24,
-                                  //             color: Colors.white),
-                                  //         controller: _m_mobileController,
-                                  //         decoration: const InputDecoration(
-                                  //           border: OutlineInputBorder(),
-                                  //           focusedBorder: OutlineInputBorder(
-                                  //             borderSide: BorderSide(
-                                  //                 color: Colors1.formBrd,
-                                  //                 width: 2),
-                                  //           ),
-                                  //           contentPadding: EdgeInsets.symmetric(
-                                  //               vertical: 30, horizontal: 43),
-                                  //           hintText: 'Mobile Number',
-                                  //           hintStyle: TextStyle(
-                                  //               fontFamily: Fonts.nunito,
-                                  //               fontWeight: FontWeight.w600,
-                                  //               fontSize: 24,
-                                  //               color: Colors1.formgrey),
-                                  //         ),
-                                  //         maxLength: 10,
-                                  //         validator: (value) {
-                                  //           if (value!.isEmpty) {
-                                  //             return 'Mobile is Required';
-                                  //           } else {
-                                  //             return null;
-                                  //           }
-                                  //         },
-                                  //         focusNode: _m_mobileFocusNode,
-                                  //         keyboardType: TextInputType.phone,
-                                  //         textInputAction: TextInputAction.next,
-                                  //         onFieldSubmitted: (_) {
-                                  //           _m_mobileFocusNode.unfocus();
-                                  //           // FocusScope.of(context)
-                                  //           //     .requestFocus(_emailFocusNode);
-                                  //         },
-                                  //       ))),
-                                  // ),
-
                                   const SizedBox(
                                     height: 33,
                                   ),
@@ -219,11 +182,12 @@ class _SignUpState extends State<SignUp> {
                                           width: 91,
                                           height: 79,
                                           child: ElevatedButton(
+                                            focusNode: _w_submitFocusNode,
                                             onPressed: () {
                                               Navigator.push(context,
                                                   MaterialPageRoute(
                                                       builder: ((context) {
-                                                return const UserForm();
+                                                return const FlowInfo();
                                               })));
                                             },
                                             child: Image.asset(
@@ -289,163 +253,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                 )
               ],
-            )
-
-            // Padding(
-            //     padding:
-            //         const EdgeInsets.symmetric(horizontal: 133, vertical: 73),
-            //     child: Container(
-            //       width: double.infinity,
-            //       height: double.infinity,
-            //       //color: Colors.pinkAccent,
-            //       child: Column(children: [
-            //         const Header(),
-            //         Row(
-            //           //crossAxisAlignment: CrossAxisAlignment.stretch,
-            //           children: [
-            //             Container(
-            //               alignment: Alignment.center,
-            //               width: MediaQuery.of(context).size.width * 0.57,
-            //               child: Image.asset(
-            //                 "assets/icons/login_assets/pic.png",
-            //                 width: 601,
-            //                 height: 653,
-            //               ),
-            //             ),
-            //             Expanded(
-            //                 child: Container(
-            //               child: Row(
-            //                 mainAxisAlignment: MainAxisAlignment.center,
-            //                 children: [
-            //                   Column(
-            //                     children: [
-            //                       const SizedBox(height: 33),
-            //                       const Text(
-            //                         'Enter your mobile\nnumber.',
-            //                         style: TextStyle(
-            //                             fontFamily: Fonts.nunito,
-            //                             fontSize: 40,
-            //                             fontWeight: FontWeight.bold,
-            //                             color: Colors.white),
-            //                       ),
-            //                       const SizedBox(
-            //                         height: 25,
-            //                       ),
-            //                       const Text(
-            //                         'You will receive a 4 digit code for mobile\nnumber verification.',
-            //                         style: TextStyle(
-            //                             fontFamily: Fonts.nunito,
-            //                             fontWeight: FontWeight.normal,
-            //                             fontSize: 21,
-            //                             color: Colors1.hgrey),
-            //                       ),
-            //                       const SizedBox(
-            //                         height: 47,
-            //                       ),
-            //                       Form(
-            //                         key: _m_signupkey,
-            //                         child: Container(
-            //                           alignment: Alignment.centerLeft,
-            //                           child: Column(
-            //                             mainAxisAlignment:
-            //                                 MainAxisAlignment.start,
-            //                             children: [
-            //                               Container(
-            //                                 height: 100,
-            //                                 color: Colors1.formBg,
-            //                                 child: Card(
-            //                                     color: Colors1.formBg,
-            //                                     child: SizedBox(
-            //                                         child: TextFormField(
-            //                                       cursorColor: Colors1.hgrey,
-            //                                       style: const TextStyle(
-            //                                           fontFamily: Fonts.nunito,
-            //                                           fontWeight:
-            //                                               FontWeight.w600,
-            //                                           fontSize: 24,
-            //                                           color: Colors.white),
-            //                                       controller:
-            //                                           _m_mobileController,
-            //                                       decoration:
-            //                                           const InputDecoration(
-            //                                         border:
-            //                                             OutlineInputBorder(),
-            //                                         focusedBorder:
-            //                                             OutlineInputBorder(
-            //                                           borderSide: BorderSide(
-            //                                               color:
-            //                                                   Colors1.formBrd,
-            //                                               width: 2),
-            //                                         ),
-            //                                         contentPadding:
-            //                                             EdgeInsets.symmetric(
-            //                                                 vertical: 30,
-            //                                                 horizontal: 43),
-            //                                         hintText: 'Mobile Number',
-            //                                         hintStyle: TextStyle(
-            //                                             fontFamily:
-            //                                                 Fonts.nunito,
-            //                                             fontWeight:
-            //                                                 FontWeight.w600,
-            //                                             fontSize: 24,
-            //                                             color:
-            //                                                 Colors1.formgrey),
-            //                                       ),
-            //                                       maxLength: 10,
-            //                                       validator: (value) {
-            //                                         if (value!.isEmpty) {
-            //                                           return 'Mobile is Required';
-            //                                         } else {
-            //                                           return null;
-            //                                         }
-            //                                       },
-            //                                       focusNode: _m_mobileFocusNode,
-            //                                       keyboardType:
-            //                                           TextInputType.phone,
-            //                                       textInputAction:
-            //                                           TextInputAction.next,
-            //                                       onFieldSubmitted: (_) {
-            //                                         _m_mobileFocusNode
-            //                                             .unfocus();
-            //                                         // FocusScope.of(context)
-            //                                         //     .requestFocus(_emailFocusNode);
-            //                                       },
-            //                                     ))),
-            //                               ),
-            //                               const SizedBox(
-            //                                 height: 33,
-            //                               ),
-            //                               Container(
-            //                                 width: 91,
-            //                                 height: 79,
-            //                                 child: ElevatedButton(
-            //                                   onPressed: () {},
-            //                                   child: Image.asset(
-            //                                     "assets/icons/global_icons/arrow-right.png",
-            //                                   ),
-            //                                   style: ElevatedButton.styleFrom(
-            //                                       primary: Colors1.green,
-            //                                       shape: RoundedRectangleBorder(
-            //                                           borderRadius:
-            //                                               BorderRadius.circular(
-            //                                                   40))),
-            //                                 ),
-            //                               ),
-            //                             ],
-            //                           ),
-            //                         ),
-            //                       ),
-            //                     ],
-            //                   ),
-            //                 ],
-            //               ),
-            //             ))
-            //           ],
-            //         )
-            //       ]),
-            //     )),
-
-            )
+            ))
         : Scaffold(
             appBar: PreferredSize(
               preferredSize: const Size.fromHeight(67.0),

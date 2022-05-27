@@ -1,9 +1,11 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:kobble_dev/colors.dart';
 
-import '../styles.dart';
+import 'design_tools/colors.dart';
+import 'design_tools/styles.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -84,9 +86,6 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
-import 'package:flutter/material.dart';
-import 'package:kobble_dev/design_tools/colors.dart';
-import 'package:kobble_dev/design_tools/styles.dart';
 
 class Demo extends StatefulWidget {
   const Demo({Key? key}) : super(key: key);

@@ -17,3 +17,17 @@ class StepCardModel {
     required this.title,
   });
 }
+
+class CartTextModel {
+  final String title;
+  final String rate;
+
+  CartTextModel(this.title, this.rate);
+}
+
+class CustomSelectModel {
+  final String title;
+  final double price;
+  bool isSelected = false;
+  CustomSelectModel(this.title, this.price);
+}

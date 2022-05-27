@@ -1,13 +1,10 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:kobble_dev/models/stepclass.dart';
 import 'package:kobble_dev/design_tools/styles.dart';
+import 'package:kobble_dev/select_card_flow/kobblebox.dart';
 
 import '../design_tools/colors.dart';
-import '../widgets/header_text.dart';
-import '../widgets/profile_icon.dart';
-import 'widgets/select_item.dart';
+import 'skip_customize.dart';
 
 class EditCard extends StatefulWidget {
   const EditCard({Key? key}) : super(key: key);
@@ -145,10 +142,73 @@ class _EditCardState extends State<EditCard> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(150.0),
-        child: AppBar(
-          backgroundColor: Colors1.bg,
-          title: const KobbleHeader(),
-          actions: const [ProfileIcon()],
+        child: Center(
+          child: AppBar(
+            toolbarHeight: 145,
+            elevation: 7,
+            backgroundColor: Colors.white,
+            leading: const Text(''),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                RichText(
+                    text: const TextSpan(
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        children: [
+                      TextSpan(
+                        text: 'K',
+                        style: TextStyle(
+                            fontFamily: Fonts.nunito,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 38,
+                            color: Color(0Xff0F1010)),
+                      ),
+                      TextSpan(
+                          text: 'O',
+                          style: TextStyle(
+                            fontFamily: Fonts.nunito,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 45,
+                            color: Colors1.green,
+                          )),
+                      TextSpan(
+                        text: 'BBLE',
+                        style: TextStyle(
+                            fontFamily: Fonts.nunito,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 38,
+                            color: Color(0Xff0F1010)),
+                      ),
+                    ])),
+                Padding(
+                  padding: const EdgeInsets.only(right: 103.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                          color: Colors1.hgrad2,
+                          style: BorderStyle.solid,
+                          width: 2.3),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: IconButton(
+                          onPressed: () {},
+                          icon: Image.asset(
+                            'assets/icons/global_icons/profile.png',
+                            width: 23,
+                            height: 25,
+                          )),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
       body: Row(
@@ -188,17 +248,6 @@ class _EditCardState extends State<EditCard> {
                                 if (i >= 0 && i < 5) {
                                   _selectedIndex = i;
                                 }
-                                // i == 0
-                                //     ? _selectedIndex = 0
-                                //     : i == 1
-                                //         ? _selectedIndex = 1
-                                //         : i == 2
-                                //             ? _selectedIndex = 2
-                                //             : i == 3
-                                //                 ? _selectedIndex = 3
-                                //                 : i == 4
-                                //                     ? _selectedIndex = 4
-                                //                     : null;
                               });
                             },
                             child: Padding(
@@ -263,29 +312,33 @@ class _EditCardState extends State<EditCard> {
                 Container(
                     alignment: Alignment.center,
                     width: constraints.maxWidth * 0.25,
-                    child: InkWell(
-                      onTap: (() {
-                        if (_selectedIndex > 0) {
-                          setState(() {
-                            _selectedIndex--;
-                          });
-                        }
-                      }),
-                      child: Container(
-                        alignment: Alignment.center,
-                        width: 74,
-                        height: 74,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: const Color(0Xff707070),
-                            width: 2,
-                          ),
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(Icons.arrow_back_ios,
-                            size: 30, color: Colors.black),
-                      ),
-                    )),
+                    child: _selectedIndex == 0
+                        ? const Text("")
+                        : InkWell(
+                            onTap: (() {
+                              if (_selectedIndex > 0) {
+                                setState(() {
+                                  _selectedIndex--;
+                                });
+                              }
+                            }),
+                            child: Container(
+                              alignment: Alignment.center,
+                              width: 74,
+                              height: 74,
+                              decoration: BoxDecoration(
+                                color: Colors1.green,
+                                border: Border.all(
+                                  color:
+                                      Colors1.green, //const Color(0Xff707070),
+                                  width: 2,
+                                ),
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(Icons.arrow_back_ios,
+                                  size: 30, color: Colors.black),
+                            ),
+                          )),
                 Expanded(
                   child: IndexedStack(
                     index: _selectedIndex,
@@ -312,454 +365,89 @@ class _EditCardState extends State<EditCard> {
                       ),
                     ],
                   ),
-                  //  _selectedIndex == 0
-                  //     ? SelectCard(selectedIndex: _selectedIndex)
-                  //     : _selectedIndex == 1
-                  //         ? SelectCard(selectedIndex: _selectedIndex)
-                  //         : _selectedIndex == 2
-                  //             ? SelectCard(selectedIndex: _selectedIndex)
-                  //             : _selectedIndex == 3
-                  //                 ? SelectCard(selectedIndex: _selectedIndex)
-                  //                 : _selectedIndex == 4
-                  //                     ? SelectCard(
-                  //                         selectedIndex: _selectedIndex)
-                  //                     : Container(),
-                  //selectedIndex: _selectedIndex,
                 ),
                 Container(
                     alignment: Alignment.center,
                     width: constraints.maxWidth * 0.25,
-                    child: InkWell(
-                      onTap: (() {
-                        setState(() {
-                          print("Edit card selected index: $_selectedIndex");
-                          _steps[_selectedIndex].isSelected = true;
-                          if (_selectedIndex < upperBound) {
-                            _selectedIndex++;
-                          }
-                        });
-                      }),
-                      child: Container(
-                        alignment: Alignment.center,
-                        width: 74,
-                        height: 74,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: const Color(0Xff707070),
-                            width: 2,
-                          ),
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(Icons.arrow_forward_ios,
-                            size: 30, color: Colors.black),
-                      ),
-                    )),
+                    child: _selectedIndex == 4
+                        ? SizedBox(
+                            width: 200,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: ((context) {
+                                  return const KobbleBox();
+                                })));
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 31, vertical: 18),
+                                child: Row(
+                                  children: const [
+                                    Text(
+                                      "Next",
+                                      style: TextStyle(
+                                          fontFamily: Fonts.nunito,
+                                          fontWeight: FontWeight.w800,
+                                          fontSize: 25,
+                                          color: Color(0Xff0F1010)),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 21),
+                                      child: Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: Color(0Xff0F1010),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  primary: Colors1.green,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50))),
+                            ),
+                          )
+                        : InkWell(
+                            onTap: (() {
+                              setState(() {
+                                if (_selectedIndex == 3) {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: ((context) {
+                                    return const SkipCustomLogo();
+                                  })));
+                                }
+                                _steps[_selectedIndex].isSelected = true;
+                                if (_selectedIndex < upperBound) {
+                                  _selectedIndex++;
+                                }
+                              });
+                            }),
+                            child: Container(
+                              alignment: Alignment.center,
+                              width: 74,
+                              height: 74,
+                              decoration: BoxDecoration(
+                                color: Colors1.green,
+                                border: Border.all(
+                                  color:
+                                      Colors1.green, //const Color(0Xff707070),
+                                  width: 2,
+                                ),
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(Icons.arrow_forward_ios,
+                                  size: 30, color: Colors.black),
+                            ),
+                          )),
               ],
             );
-
-            // IndexedStack(index: _selectedIndex, children: [
-            //   Row(
-            //     children: [
-            //       Container(
-            //           alignment: Alignment.center,
-            //           width: constraints.maxWidth * 0.25,
-            //           child: InkWell(
-            //             onTap: (() {
-            //               if (_selectedIndex > 0) {
-            //                 setState(() {
-            //                   _selectedIndex--;
-            //                 });
-            //               }
-            //             }),
-            //             child: Container(
-            //               alignment: Alignment.center,
-            //               width: 74,
-            //               height: 74,
-            //               decoration: BoxDecoration(
-            //                 border: Border.all(
-            //                   color: const Color(0Xff707070),
-            //                   width: 2,
-            //                 ),
-            //                 shape: BoxShape.circle,
-            //               ),
-            //               child: const Icon(Icons.arrow_back_ios,
-            //                   size: 30, color: Colors.black),
-            //             ),
-            //           )),
-            //       Expanded(
-            //           child: SelectCard(
-            //               selectedIndex:
-            //                   _selectedIndex) //selectedIndex: _selectedIndex,
-            //           ),
-            //       Container(
-            //           alignment: Alignment.center,
-            //           width: constraints.maxWidth * 0.25,
-            //           child: InkWell(
-            //             onTap: (() {
-            //               setState(() {
-            //                 print("Edit card selected index: $_selectedIndex");
-            //                 _steps[_selectedIndex].isSelected = true;
-            //                 if (_selectedIndex < upperBound) {
-            //                   _selectedIndex++;
-            //                 }
-            //               });
-            //             }),
-            //             child: Container(
-            //               alignment: Alignment.center,
-            //               width: 74,
-            //               height: 74,
-            //               decoration: BoxDecoration(
-            //                 border: Border.all(
-            //                   color: const Color(0Xff707070),
-            //                   width: 2,
-            //                 ),
-            //                 shape: BoxShape.circle,
-            //               ),
-            //               child: const Icon(Icons.arrow_forward_ios,
-            //                   size: 30, color: Colors.black),
-            //             ),
-            //           )),
-            //     ],
-            //   ),
-            //   Row(
-            //     children: [
-            //       Container(
-            //           alignment: Alignment.center,
-            //           width: constraints.maxWidth * 0.25,
-            //           child: InkWell(
-            //             onTap: (() {
-            //               if (_selectedIndex > 0) {
-            //                 setState(() {
-            //                   _selectedIndex--;
-            //                 });
-            //               }
-            //             }),
-            //             child: Container(
-            //               alignment: Alignment.center,
-            //               width: 74,
-            //               height: 74,
-            //               decoration: BoxDecoration(
-            //                 border: Border.all(
-            //                   color: Colors.amber, //const Color(0Xff707070),
-            //                   width: 2,
-            //                 ),
-            //                 shape: BoxShape.circle,
-            //               ),
-            //               child: const Icon(Icons.arrow_back_ios,
-            //                   size: 30, color: Colors.black),
-            //             ),
-            //           )),
-            //       Expanded(
-            //         child: SelectCard(selectedIndex: _selectedIndex),
-            //       ),
-            //       Container(
-            //           alignment: Alignment.center,
-            //           width: constraints.maxWidth * 0.25,
-            //           child: InkWell(
-            //             onTap: (() {
-            //               setState(() {
-            //                 print("Edit card selected index: $_selectedIndex");
-            //                 _steps[_selectedIndex].isSelected = true;
-            //                 if (_selectedIndex < upperBound) {
-            //                   _selectedIndex++;
-            //                 }
-            //               });
-            //             }),
-            //             child: Container(
-            //               alignment: Alignment.center,
-            //               width: 74,
-            //               height: 74,
-            //               decoration: BoxDecoration(
-            //                 border: Border.all(
-            //                   color: const Color(0Xff707070),
-            //                   width: 2,
-            //                 ),
-            //                 shape: BoxShape.circle,
-            //               ),
-            //               child: const Icon(Icons.arrow_forward_ios,
-            //                   size: 30, color: Colors.black),
-            //             ),
-            //           )),
-            //     ],
-            //   ),
-            //   Row(
-            //     children: [
-            //       Container(
-            //           alignment: Alignment.center,
-            //           width: constraints.maxWidth * 0.25,
-            //           child: InkWell(
-            //             onTap: (() {
-            //               if (_selectedIndex > 0) {
-            //                 setState(() {
-            //                   _selectedIndex--;
-            //                 });
-            //               }
-            //             }),
-            //             child: Container(
-            //               alignment: Alignment.center,
-            //               width: 74,
-            //               height: 74,
-            //               decoration: BoxDecoration(
-            //                 border: Border.all(
-            //                   color: const Color(0Xff707070),
-            //                   width: 2,
-            //                 ),
-            //                 shape: BoxShape.circle,
-            //               ),
-            //               child: const Icon(Icons.arrow_back_ios,
-            //                   size: 30, color: Colors.black),
-            //             ),
-            //           )),
-            //       Expanded(
-            //         child: SelectCard(selectedIndex: _selectedIndex),
-            //       ),
-            //       Container(
-            //           alignment: Alignment.center,
-            //           width: constraints.maxWidth * 0.25,
-            //           child: InkWell(
-            //             onTap: (() {
-            //               setState(() {
-            //                 print("Edit card selected index: $_selectedIndex");
-            //                 _steps[_selectedIndex].isSelected = true;
-            //                 if (_selectedIndex < upperBound) {
-            //                   _selectedIndex++;
-            //                 }
-            //               });
-            //             }),
-            //             child: Container(
-            //               alignment: Alignment.center,
-            //               width: 74,
-            //               height: 74,
-            //               decoration: BoxDecoration(
-            //                 border: Border.all(
-            //                   color: const Color(0Xff707070),
-            //                   width: 2,
-            //                 ),
-            //                 shape: BoxShape.circle,
-            //               ),
-            //               child: const Icon(Icons.arrow_forward_ios,
-            //                   size: 30, color: Colors.black),
-            //             ),
-            //           )),
-            //     ],
-            //   ),
-            //   Row(
-            //     children: [
-            //       Container(
-            //           alignment: Alignment.center,
-            //           width: constraints.maxWidth * 0.25,
-            //           child: InkWell(
-            //             onTap: (() {
-            //               if (_selectedIndex > 0) {
-            //                 setState(() {
-            //                   _selectedIndex--;
-            //                 });
-            //               }
-            //             }),
-            //             child: Container(
-            //               alignment: Alignment.center,
-            //               width: 74,
-            //               height: 74,
-            //               decoration: BoxDecoration(
-            //                 border: Border.all(
-            //                   color: const Color(0Xff707070),
-            //                   width: 2,
-            //                 ),
-            //                 shape: BoxShape.circle,
-            //               ),
-            //               child: const Icon(Icons.arrow_back_ios,
-            //                   size: 30, color: Colors.black),
-            //             ),
-            //           )),
-            //       Expanded(
-            //         child: SelectCard(selectedIndex: _selectedIndex),
-            //       ),
-            //       Container(
-            //           alignment: Alignment.center,
-            //           width: constraints.maxWidth * 0.25,
-            //           child: InkWell(
-            //             onTap: (() {
-            //               setState(() {
-            //                 print("Edit card selected index: $_selectedIndex");
-            //                 _steps[_selectedIndex].isSelected = true;
-            //                 if (_selectedIndex < upperBound) {
-            //                   _selectedIndex++;
-            //                 }
-            //               });
-            //             }),
-            //             child: Container(
-            //               alignment: Alignment.center,
-            //               width: 74,
-            //               height: 74,
-            //               decoration: BoxDecoration(
-            //                 border: Border.all(
-            //                   color: const Color(0Xff707070),
-            //                   width: 2,
-            //                 ),
-            //                 shape: BoxShape.circle,
-            //               ),
-            //               child: const Icon(Icons.arrow_forward_ios,
-            //                   size: 30, color: Colors.black),
-            //             ),
-            //           )),
-            //     ],
-            //   ),
-            //   Row(
-            //     children: [
-            //       Container(
-            //           alignment: Alignment.center,
-            //           width: constraints.maxWidth * 0.25,
-            //           child: InkWell(
-            //             onTap: (() {
-            //               if (_selectedIndex > 0) {
-            //                 setState(() {
-            //                   _selectedIndex--;
-            //                 });
-            //               }
-            //             }),
-            //             child: Container(
-            //               alignment: Alignment.center,
-            //               width: 74,
-            //               height: 74,
-            //               decoration: BoxDecoration(
-            //                 border: Border.all(
-            //                   color: const Color(0Xff707070),
-            //                   width: 2,
-            //                 ),
-            //                 shape: BoxShape.circle,
-            //               ),
-            //               child: const Icon(Icons.arrow_back_ios,
-            //                   size: 30, color: Colors.black),
-            //             ),
-            //           )),
-            //       Expanded(
-            //         child: SelectCard(selectedIndex: _selectedIndex),
-            //       ),
-            //       Container(
-            //           alignment: Alignment.center,
-            //           width: constraints.maxWidth * 0.25,
-            //           child: InkWell(
-            //             onTap: (() {
-            //               setState(() {
-            //                 print("Edit card selected index: $_selectedIndex");
-            //                 _steps[_selectedIndex].isSelected = true;
-            //                 if (_selectedIndex < upperBound) {
-            //                   _selectedIndex++;
-            //                 }
-            //               });
-            //             }),
-            //             child: Container(
-            //               alignment: Alignment.center,
-            //               width: 74,
-            //               height: 74,
-            //               decoration: BoxDecoration(
-            //                 border: Border.all(
-            //                   color: const Color(0Xff707070),
-            //                   width: 2,
-            //                 ),
-            //                 shape: BoxShape.circle,
-            //               ),
-            //               child: const Icon(Icons.arrow_forward_ios,
-            //                   size: 30, color: Colors.black),
-            //             ),
-            //           )),
-            //     ],
-            //   ),
-            // ]);
           })))
         ],
       ),
     );
   }
 
-  // Row stackChildren(BoxConstraints constraints) {
-  //   return Row(
-  //     children: [
-  //       Container(
-  //           alignment: Alignment.center,
-  //           width: constraints.maxWidth * 0.25,
-  //           child: InkWell(
-  //             onTap: (() {
-  //               if (_selectedIndex > 0) {
-  //                 setState(() {
-  //                   _selectedIndex--;
-  //                 });
-  //               }
-  //             }),
-  //             child: Container(
-  //               alignment: Alignment.center,
-  //               width: 74,
-  //               height: 74,
-  //               decoration: BoxDecoration(
-  //                 border: Border.all(
-  //                   color: const Color(0Xff707070),
-  //                   width: 2,
-  //                 ),
-  //                 shape: BoxShape.circle,
-  //               ),
-  //               child: const Icon(Icons.arrow_back_ios,
-  //                   size: 30, color: Colors.black),
-  //             ),
-  //           )),
-  //       Expanded(
-  //           child: SelectCard(
-  //               selectedIndex: _selectedIndex) //selectedIndex: _selectedIndex,
-  //           ),
-  //       Container(
-  //           alignment: Alignment.center,
-  //           width: constraints.maxWidth * 0.25,
-  //           child: InkWell(
-  //             onTap: (() {
-  //               setState(() {
-  //                 print("Edit card selected index: $_selectedIndex");
-  //                 _steps[_selectedIndex].isSelected = true;
-  //                 if (_selectedIndex < upperBound) {
-  //                   _selectedIndex++;
-  //                 }
-  //               });
-  //             }),
-  //             child: Container(
-  //               alignment: Alignment.center,
-  //               width: 74,
-  //               height: 74,
-  //               decoration: BoxDecoration(
-  //                 border: Border.all(
-  //                   color: const Color(0Xff707070),
-  //                   width: 2,
-  //                 ),
-  //                 shape: BoxShape.circle,
-  //               ),
-  //               child: const Icon(Icons.arrow_forward_ios,
-  //                   size: 30, color: Colors.black),
-  //             ),
-  //           )),
-  //     ],
-  //   );
-  // }
-
-  // Widget displayCard(int isActive){
-  //  return isActive == 0
-  //                                   ? SelectCard(
-  //                       selectedIndex:isActive
-  //                           )
-  //                                   : isActive == 1
-  //                                       ? SelectCard(
-  //                       selectedIndex:isActive
-  //                           )
-  //                                       : isActive == 2
-  //                                           ? SelectCard(
-  //                       selectedIndex:isActive
-  //                           )
-  //                                           : isActive == 3
-  //                                               ? SelectCard(
-  //                       selectedIndex:isActive
-  //                           )
-  //                                               : isActive == 4
-  //                                                   ? SelectCard(
-  //                       selectedIndex:isActive
-  //                           )
-  //                                                   : null;
-  // }
   Widget selectCard(int index, List<StepCardModel> scard) {
     return Padding(
       padding: const EdgeInsets.only(top: 53.0),
