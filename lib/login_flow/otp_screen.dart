@@ -5,14 +5,9 @@ import 'package:kobble_dev/design_tools/colors.dart';
 
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-// ignore: use_key_in_widget_constructors
-class OtpScreen extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return const PinCodeVerificationScreen(phoneNumber: "0123456789");
-  }
-}
+import '../design_tools/styles.dart';
+import '../global_widgets/header1.dart';
+import 'flow_info.dart';
 
 class PinCodeVerificationScreen extends StatefulWidget {
   final String? phoneNumber;
@@ -28,7 +23,6 @@ class PinCodeVerificationScreen extends StatefulWidget {
 }
 
 class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
-
   TextEditingController textEditingController = TextEditingController();
   // ..text = "123456";
 
@@ -65,74 +59,69 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors1.bg,
-      body: 
-      
-      
-      GestureDetector(
-        onTap: () {},
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: ListView(
-            children: <Widget>[
-              const SizedBox(height: 30),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 3,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(30),
-                  child: Image.asset("Constants.otpGifImage"),
+        backgroundColor: Colors1.bg,
+        body: Row(children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.57,
+            height: MediaQuery.of(context).size.height,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: 137.0, bottom: 81, top: 81),
+                  child: Header(),
                 ),
-              ),
-              const SizedBox(height: 8),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  'Phone Number Verification',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-                  textAlign: TextAlign.center,
+                Image.asset(
+                  "assets/icons/login_assets/pic3.png",
+                  width: 601,
+                  height: 653,
                 ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30.0, vertical: 8),
-                child: RichText(
-                  text: TextSpan(
-                      text: "Enter the code sent to ",
-                      children: [
-                        TextSpan(
-                            text: "${widget.phoneNumber}",
-                            style: const TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15)),
-                      ],
-                      style:
-                          const TextStyle(color: Colors.black54, fontSize: 15)),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Form(
-                key: formKey,
-                child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 30),
-                    child: PinCodeTextField(
-                      appContext: context,
-                      pastedTextStyle: TextStyle(
-                        color: Colors.green.shade600,
+              ],
+            ),
+          ),
+          Expanded(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'OTP\nVerification.',
+                    style: TextStyle(
+                        fontFamily: Fonts.nunito,
+                        fontSize: 41,
                         fontWeight: FontWeight.bold,
-                      ),
-                      length: 6,
-                      obscureText: true,
-                      obscuringCharacter: '*',
-                      obscuringWidget: const FlutterLogo(
-                        size: 24,
-                      ),
-                      blinkWhenObscuring: true,
+                        color: Colors.white),
+                  ),
+                  const SizedBox(
+                    height: 17,
+                  ),
+                  Text(
+                    'Enter the OTP sent to +91 ${widget.phoneNumber}',
+                    style: const TextStyle(
+                        fontFamily: Fonts.nunito,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 21,
+                        color: Color(0Xff9D9F9E)),
+                  ),
+                  const SizedBox(
+                    height: 87,
+                  ),
+                  SizedBox(
+                    width: 500,
+                    child: PinCodeTextField(
+                      autoFocus: true,
+                      textStyle: const TextStyle(
+                          fontFamily: Fonts.nunito,
+                          color: Colors.white,
+                          fontSize: 40,
+                          fontWeight: FontWeight.w300),
+                      appContext: context,
+                      pastedTextStyle: const TextStyle(
+                          fontFamily: Fonts.nunito,
+                          color: Colors.white,
+                          fontSize: 40,
+                          fontWeight: FontWeight.w300),
+                      length: 4,
                       animationType: AnimationType.fade,
                       validator: (v) {
                         if (v!.length < 3) {
@@ -142,15 +131,21 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                         }
                       },
                       pinTheme: PinTheme(
+                        activeColor: Colors1.green,
+                        selectedColor: Colors1.green,
+                        borderWidth: 2,
                         shape: PinCodeFieldShape.box,
-                        borderRadius: BorderRadius.circular(5),
-                        fieldHeight: 50,
-                        fieldWidth: 40,
-                        activeFillColor: Colors.white,
+                        borderRadius: BorderRadius.circular(13),
+                        fieldHeight: 95,
+                        fieldWidth: 95,
+                        inactiveColor: Colors.grey,
+                        //activeFillColor: Colors.white,
                       ),
-                      cursorColor: Colors.black,
+                      showCursor: true,
+                      cursorHeight: 40,
+                      cursorColor: Colors1.hgrey,
                       animationDuration: const Duration(milliseconds: 300),
-                      enableActiveFill: true,
+
                       errorAnimationController: errorController,
                       controller: textEditingController,
                       keyboardType: TextInputType.number,
@@ -179,118 +174,84 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                         //but you can show anything you want here, like your pop up saying wrong paste format or etc
                         return true;
                       },
-                    )),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                child: Text(
-                  hasError ? "*Please fill up all the cells properly" : "",
-                  style: const TextStyle(
-                      color: Colors.red,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Didn't receive the code? ",
-                    style: TextStyle(color: Colors.black54, fontSize: 15),
-                  ),
-                  TextButton(
-                    onPressed: () => snackBar("OTP resend!!"),
-                    child: const Text(
-                      "RESEND",
-                      style: TextStyle(
-                          color: Color(0xFF91D3B3),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
                     ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 14,
-              ),
-              Container(
-                margin:
-                    const EdgeInsets.symmetric(vertical: 16.0, horizontal: 30),
-                child: ButtonTheme(
-                  height: 50,
-                  child: TextButton(
-                    onPressed: () {
-                      formKey.currentState!.validate();
-                      // conditions for validating
-                      if (currentText.length != 6 || currentText != "123456") {
-                        errorController!.add(ErrorAnimationType
-                            .shake); // Triggering error shake animation
-                        setState(() => hasError = true);
-                      } else {
-                        setState(
-                          () {
-                            hasError = false;
-                            snackBar("OTP Verified!!");
-                          },
-                        );
-                      }
-                    },
-                    child: Center(
-                        child: Text(
-                      "VERIFY".toUpperCase(),
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                    )),
                   ),
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.green.shade300,
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.green.shade200,
-                          offset: const Offset(1, -2),
-                          blurRadius: 5),
-                      BoxShadow(
-                          color: Colors.green.shade200,
-                          offset: const Offset(-1, 2),
-                          blurRadius: 5)
-                    ]),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Flexible(
-                      child: TextButton(
-                    child: const Text("Clear"),
-                    onPressed: () {
-                      textEditingController.clear();
-                    },
-                  )),
-                  Flexible(
-                      child: TextButton(
-                    child: const Text("Set Text"),
-                    onPressed: () {
-                      setState(() {
-                        textEditingController.text = "123456";
-                      });
-                    },
-                  )),
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
-    
-    );
+                  const SizedBox(
+                    height: 91,
+                  ),
+                  SizedBox(
+                    width: 500,
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: const [
+                              Text(
+                                "Didn't receive the OTP ?",
+                                style: TextStyle(
+                                    fontFamily: Fonts.nunito,
+                                    color: Colors1.borderGrey,
+                                    fontSize: 23,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                              Text("Resend",
+                                  style: TextStyle(
+                                    fontFamily: Fonts.nunito,
+                                    color: Colors.green,
+                                    fontSize: 23,
+                                    fontWeight: FontWeight.w600,
+                                  ))
+                            ],
+                          ),
+                          // RichText(
+                          //     textAlign: TextAlign.center,
+                          //     text: TextSpan(children: [
+                          //       const TextSpan(
+                          //         text: "Didn't receive the OTP ?",
+                          //         style: TextStyle(
+                          //             fontFamily: Fonts.nunito,
+                          //             color: Colors1.borderGrey,
+                          //             fontSize: 23,
+                          //             fontWeight: FontWeight.w600),
+                          //       ),
+                          //       WidgetSpan(
+                          //           child: InkWell(
+                          //               onTap: () {},
+                          //               child: const Text("Resend",
+                          //                   style: TextStyle(
+                          //                     fontFamily: Fonts.nunito,
+                          //                     color: Colors.green,
+                          //                     fontSize: 23,
+                          //                     fontWeight: FontWeight.w600,
+                          //                   ))))
+                          //     ])),
+
+                          SizedBox(
+                            width: 91,
+                            height: 79,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: ((context) {
+                                  return const FlowInfo();
+                                })));
+                              },
+                              child: Image.asset(
+                                "assets/icons/global_icons/arrow-right.png",
+                                width: 23,
+                                height: 21,
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  primary: Colors1.green,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(40))),
+                            ),
+                          ),
+                        ]),
+                  )
+                ]),
+          )
+        ]));
   }
 }

@@ -1,11 +1,11 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:kobble_dev/design_tools/colors.dart';
-import 'package:kobble_dev/login_flow/user_details.dart';
 
 import '../design_tools/styles.dart';
 import 'flow_info.dart';
+import 'otp_screen.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -15,28 +15,39 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  //Mobile Controllers
-  final _m_mobileController = TextEditingController();
-
-  //Web Controllers
-  final _w_mobileController = TextEditingController();
-
-  //Mobile Formkey
-  final GlobalKey<FormState> _m_signupkey = GlobalKey<FormState>();
-  //Web Formkey
-  final GlobalKey<FormState> _w_signupkey = GlobalKey<FormState>();
-//
-//Mobile FocusNodes
-  final _m_mobileFocusNode = FocusNode();
-
-  //Web FocusNodes
-  final _w_mobileFocusNode = FocusNode();
-  final _w_submitFocusNode = FocusNode();
-
-  bool _oncheck = true;
-
   @override
   Widget build(BuildContext context) {
+    //Mobile Controllers
+    final _m_mobileController = TextEditingController();
+
+    //Web Controllers
+    final _wmobileController = TextEditingController();
+
+    String enteredMobileNo = (_wmobileController.text).trim();
+
+    //Mobile Formkey
+    final GlobalKey<FormState> _m_signupkey = GlobalKey<FormState>();
+    //Web Formkey
+    final GlobalKey<FormState> _w_signupkey = GlobalKey<FormState>();
+//
+//Mobile FocusNodes
+    final _m_mobileFocusNode = FocusNode();
+
+    //Web FocusNodes
+    final _w_mobileFocusNode = FocusNode();
+    final _w_submitFocusNode = FocusNode();
+
+    bool _oncheck = true;
+    void onSubmit(GlobalKey<FormState> signUpkey) {
+      if (signUpkey.currentState!.validate()) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    PinCodeVerificationScreen(phoneNumber: enteredMobileNo)));
+      }
+    }
+
     double screenwidth = MediaQuery.of(context).size.width;
     return screenwidth >= PageBreaks.Desktop
         ? Scaffold(
@@ -134,7 +145,7 @@ class _SignUpState extends State<SignUp> {
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 24,
                                                 color: Colors1.formgrey),
-                                            controller: _w_mobileController,
+                                            controller: _wmobileController,
                                             decoration: const InputDecoration(
                                               border: OutlineInputBorder(),
                                               focusedBorder: OutlineInputBorder(
@@ -184,11 +195,7 @@ class _SignUpState extends State<SignUp> {
                                           child: ElevatedButton(
                                             focusNode: _w_submitFocusNode,
                                             onPressed: () {
-                                              Navigator.push(context,
-                                                  MaterialPageRoute(
-                                                      builder: ((context) {
-                                                return const FlowInfo();
-                                              })));
+                                              return onSubmit(_w_signupkey);
                                             },
                                             child: Image.asset(
                                               "assets/icons/global_icons/arrow-right.png",

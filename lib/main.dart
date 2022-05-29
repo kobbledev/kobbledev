@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kobble_dev/login_flow/home.dart';
-
-import 'demo.dart';
 import 'design_tools/colors.dart';
 
 void main() {
