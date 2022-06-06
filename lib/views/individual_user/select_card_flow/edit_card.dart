@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kobble_dev/global_widgets/header2.dart';
 import 'package:kobble_dev/models/stepclass.dart';
 import 'package:kobble_dev/design_tools/styles.dart';
-import 'package:kobble_dev/select_card_flow/kobblebox.dart';
-
-import '../design_tools/colors.dart';
+import '../../../design_tools/colors.dart';
+import '../../../design_tools/device_details.dart';
+import 'kobblebox.dart';
 import 'skip_customize.dart';
 
 class EditCard extends StatefulWidget {
@@ -79,7 +80,7 @@ class _EditCardState extends State<EditCard> {
           title: ''),
       StepCardModel(
           cardImage: 'assets/icons/edit_card/step1.png',
-          image: 'assets/icons/edit_card/step4/step4_2',
+          image: 'assets/icons/edit_card/step4/step4_2.png',
           title: ''),
       StepCardModel(
           cardImage: 'assets/icons/edit_card/step1.png',
@@ -139,85 +140,16 @@ class _EditCardState extends State<EditCard> {
   int upperBound = 4;
   @override
   Widget build(BuildContext context) {
+    double screenwidth = MediaQuery.of(context).size.width;
+    double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(150.0),
-        child: Center(
-          child: AppBar(
-            toolbarHeight: 145,
-            elevation: 7,
-            backgroundColor: Colors.white,
-            leading: const Text(''),
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                RichText(
-                    text: const TextSpan(
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        children: [
-                      TextSpan(
-                        text: 'K',
-                        style: TextStyle(
-                            fontFamily: Fonts.nunito,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 38,
-                            color: Color(0Xff0F1010)),
-                      ),
-                      TextSpan(
-                          text: 'O',
-                          style: TextStyle(
-                            fontFamily: Fonts.nunito,
-                            fontWeight: FontWeight.w900,
-                            fontSize: 45,
-                            color: Colors1.green,
-                          )),
-                      TextSpan(
-                        text: 'BBLE',
-                        style: TextStyle(
-                            fontFamily: Fonts.nunito,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 38,
-                            color: Color(0Xff0F1010)),
-                      ),
-                    ])),
-                Padding(
-                  padding: const EdgeInsets.only(right: 103.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                          color: Colors1.hgrad2,
-                          style: BorderStyle.solid,
-                          width: 2.3),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(6.0),
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: Image.asset(
-                            'assets/icons/global_icons/profile.png',
-                            width: 23,
-                            height: 25,
-                          )),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      appBar: Header2.stepHeader(screenheight),
       body: Row(
         children: [
           SizedBox(
-            width: 140,
-            height: (MediaQuery.of(context).size.height - 155),
-            child: Stack(
-              children: [
+              width: screenwidth * 0.305,
+              height: screenheight - DeviceDetails.appbarHeight,
+              child: Stack(children: [
                 ClipRRect(
                   borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(50),
@@ -228,90 +160,71 @@ class _EditCardState extends State<EditCard> {
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(50),
                             bottomRight: Radius.circular(50))),
-                    width: 140,
+                    width: screenwidth * 0.072,
                   ),
                 ),
-                SizedBox(
-                  width: 140,
-                  height: (MediaQuery.of(context).size.height - 155),
-                  child: Center(
-                    child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: _steps.length,
-                        itemBuilder: ((context, i) {
-                          return InkWell(
-                            onTap: () {
-                              // print(constraints.maxWidth);
-                              setState(() {
-                                _steps[i].isSelected = true;
-
-                                if (i >= 0 && i < 5) {
-                                  _selectedIndex = i;
-                                }
-                              });
-                            },
-                            child: Padding(
-                              padding: i == 4
-                                  ? const EdgeInsets.only(bottom: 1)
-                                  : const EdgeInsets.only(bottom: 47.0),
-                              child: Column(
-                                children: [
-                                  Card(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(30)),
-                                      color: _steps[i].isSelected
-                                          ? Colors1.green
-                                          : Colors1.iconBg,
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        width: 60,
-                                        height: 60,
-                                        child: _steps[i].isSelected
-                                            ? const Icon(
-                                                Icons.check,
-                                                size: 30,
-                                                color: Colors.white,
-                                              )
-                                            : const Text(
-                                                '!',
-                                                style: TextStyle(
-                                                    fontSize: 30,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black),
-                                                textAlign: TextAlign.center,
-                                              ),
-                                      )),
-                                  Text(
-                                    _steps[i].label,
-                                    style: const TextStyle(
-                                        fontFamily: Fonts.nunito,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 17,
-                                        color: Colors1.iconl),
-                                  )
-                                ],
-                              ),
-                            ),
-                          );
-                        })),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            alignment: Alignment.topLeft,
-            width: 447,
-            height: (MediaQuery.of(context).size.height - 155),
-            child: header(),
+                Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: screenheight * 0.083),
+                    child: LayoutBuilder(builder: ((context, constraints) {
+                      return Column(
+                        children: [
+                          stepsMethod(
+                              constraints,
+                              screenwidth,
+                              screenheight,
+                              0,
+                              _selectedIndex == 0
+                                  ? "Selection of\nQR Design."
+                                  : "",
+                              _selectedIndex == 0 ? ">>" : ""),
+                          stepsMethod(
+                              constraints,
+                              screenwidth,
+                              screenheight,
+                              1,
+                              _selectedIndex == 1 ? "Selection of\nFont." : "",
+                              _selectedIndex == 1 ? ">>" : ""),
+                          stepsMethod(
+                              constraints,
+                              screenwidth,
+                              screenheight,
+                              2,
+                              _selectedIndex == 2 ? "Style your\ncard" : "",
+                              _selectedIndex == 2 ? ">>" : ""),
+                          stepsMethod(
+                              constraints,
+                              screenwidth,
+                              screenheight,
+                              3,
+                              _selectedIndex == 3
+                                  ? "Customize with\nLogo."
+                                  : "",
+                              _selectedIndex == 3 ? ">>" : ""),
+                          stepsMethod(
+                              constraints,
+                              screenwidth,
+                              screenheight,
+                              4,
+                              _selectedIndex == 4
+                                  ? "Finally the card\nwas done."
+                                  : "",
+                              _selectedIndex == 4 ? ">>" : ""),
+                        ],
+                      );
+                    }))),
+              ])),
+          const VerticalDivider(
+            thickness: 1,
+            width: 1,
+            color: Color(0Xff9D9F9E),
           ),
           Expanded(child: LayoutBuilder(builder: ((context, constraints) {
             return Row(
               children: [
                 Container(
                     alignment: Alignment.center,
-                    width: constraints.maxWidth * 0.25,
+                    width: constraints.maxWidth * 0.21,
                     child: _selectedIndex == 0
                         ? const Text("")
                         : InkWell(
@@ -344,31 +257,36 @@ class _EditCardState extends State<EditCard> {
                     index: _selectedIndex,
                     children: [
                       selectCard(
-                        _selectedIndex,
-                        map1[_selectedIndex] as List<StepCardModel>,
-                      ),
+                          _selectedIndex,
+                          map1[_selectedIndex] as List<StepCardModel>,
+                          screenheight,
+                          screenwidth),
                       selectCard(
-                        _selectedIndex,
-                        map1[_selectedIndex] as List<StepCardModel>,
-                      ),
+                          _selectedIndex,
+                          map1[_selectedIndex] as List<StepCardModel>,
+                          screenheight,
+                          screenwidth),
                       selectCard(
-                        _selectedIndex,
-                        map1[_selectedIndex] as List<StepCardModel>,
-                      ),
+                          _selectedIndex,
+                          map1[_selectedIndex] as List<StepCardModel>,
+                          screenheight,
+                          screenwidth),
                       selectCard(
-                        _selectedIndex,
-                        map1[_selectedIndex] as List<StepCardModel>,
-                      ),
+                          _selectedIndex,
+                          map1[_selectedIndex] as List<StepCardModel>,
+                          screenheight,
+                          screenwidth),
                       selectCard(
-                        _selectedIndex,
-                        map1[_selectedIndex] as List<StepCardModel>,
-                      ),
+                          _selectedIndex,
+                          map1[_selectedIndex] as List<StepCardModel>,
+                          screenheight,
+                          screenwidth),
                     ],
                   ),
                 ),
                 Container(
                     alignment: Alignment.center,
-                    width: constraints.maxWidth * 0.25,
+                    width: constraints.maxWidth * 0.21,
                     child: _selectedIndex == 4
                         ? SizedBox(
                             width: 200,
@@ -448,7 +366,7 @@ class _EditCardState extends State<EditCard> {
     );
   }
 
-  Widget selectCard(int index, List<StepCardModel> scard) {
+  Widget selectCard(int index, List<StepCardModel> scard, double h, double w) {
     return Padding(
       padding: const EdgeInsets.only(top: 53.0),
       child: Column(
@@ -457,8 +375,8 @@ class _EditCardState extends State<EditCard> {
             color: const Color(0XffE8E8E8),
             child: Container(
               alignment: Alignment.center,
-              width: 601,
-              height: 601,
+              width: w * 0.313,
+              height: h * 0.55,
               child: Image.asset('assets/icons/edit_card/step1.png'),
             ),
           ),
@@ -602,6 +520,89 @@ class _EditCardState extends State<EditCard> {
     );
   }
 
+  Container stepsMethod(BoxConstraints constraints, double screenwidth,
+      double screenHeight, int i, String title, String marker) {
+    return Container(
+      width: constraints.maxWidth,
+      height: constraints.maxHeight / 5,
+      //color: _steps[i].isSelected ? Colors.cyan : null,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            alignment: Alignment.center,
+            width: screenwidth * 0.072,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                    color:
+                        _steps[i].isSelected ? Colors1.green : Colors1.iconBg,
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: 60,
+                      height: 60,
+                      child: _steps[i].isSelected
+                          ? const Icon(
+                              Icons.check,
+                              size: 30,
+                              color: Colors.white,
+                            )
+                          : const Text(
+                              '!',
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              textAlign: TextAlign.center,
+                            ),
+                    )),
+                Text(
+                  _steps[i].label,
+                  style: const TextStyle(
+                      fontFamily: Fonts.nunito,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 17,
+                      color: Colors1.iconl),
+                )
+              ],
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 19),
+                child: Text(
+                  marker,
+                  style: const TextStyle(
+                    color: Colors1.green,
+                    fontWeight: FontWeight.w900,
+                    fontSize: 40,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 33,
+              ),
+              Text(
+                title,
+                style: const TextStyle(
+                    fontFamily: Fonts.nunito,
+                    color: Color(0xff0F1010),
+                    fontSize: 40,
+                    fontWeight: FontWeight.w800),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
   String headerText() {
     switch (_selectedIndex) {
       case 1:
@@ -621,3 +622,98 @@ class _EditCardState extends State<EditCard> {
     }
   }
 }
+/*
+SizedBox(
+            width: 140,
+            height: (MediaQuery.of(context).size.height - 155),
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(50),
+                      bottomRight: Radius.circular(50)),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        color: Colors1.editBg,
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(50),
+                            bottomRight: Radius.circular(50))),
+                    width: 140,
+                  ),
+                ),
+                SizedBox(
+                  width: 140,
+                  height: (MediaQuery.of(context).size.height - 155),
+                  child: Center(
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: _steps.length,
+                        itemBuilder: ((context, i) {
+                          return InkWell(
+                            onTap: () {
+                              // print(constraints.maxWidth);
+                              setState(() {
+                                _steps[i].isSelected = true;
+
+                                if (i >= 0 && i < 5) {
+                                  _selectedIndex = i;
+                                }
+                              });
+                            },
+                            child: Padding(
+                              padding: i == 4
+                                  ? const EdgeInsets.only(bottom: 1)
+                                  : const EdgeInsets.only(bottom: 47.0),
+                              child: Column(
+                                children: [
+                                  Card(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(30)),
+                                      color: _steps[i].isSelected
+                                          ? Colors1.green
+                                          : Colors1.iconBg,
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        width: 60,
+                                        height: 60,
+                                        child: _steps[i].isSelected
+                                            ? const Icon(
+                                                Icons.check,
+                                                size: 30,
+                                                color: Colors.white,
+                                              )
+                                            : const Text(
+                                                '!',
+                                                style: TextStyle(
+                                                    fontSize: 30,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                      )),
+                                  Text(
+                                    _steps[i].label,
+                                    style: const TextStyle(
+                                        fontFamily: Fonts.nunito,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 17,
+                                        color: Colors1.iconl),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        })),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            alignment: Alignment.topLeft,
+            width: 447,
+            height: (MediaQuery.of(context).size.height - 155),
+            child: header(),
+          ),
+ */

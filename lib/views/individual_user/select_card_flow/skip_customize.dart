@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:kobble_dev/select_card_flow/kobblebox.dart';
 
-import '../design_tools/colors.dart';
-import '../design_tools/styles.dart';
-import '../global_widgets/header1.dart';
-import '../models/stepclass.dart';
-
+import '../../../design_tools/colors.dart';
+import '../../../design_tools/styles.dart';
+import '../../../global_widgets/header1.dart';
+import '../../../models/stepclass.dart';
+import 'kobblebox.dart';
 class SkipCustomLogo extends StatefulWidget {
   const SkipCustomLogo({Key? key}) : super(key: key);
 

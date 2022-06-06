@@ -1,104 +1,56 @@
 import 'package:flutter/material.dart';
 
-import '../design_tools/colors.dart';
-import '../design_tools/styles.dart';
+import '../../../design_tools/colors.dart';
+import '../../../design_tools/styles.dart';
+import '../../../global_widgets/header2.dart';
 
 class Address extends StatelessWidget {
   const Address({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double screenwidth = MediaQuery.of(context).size.width;
+    double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(150.0),
-        child: Stack(
-          children: [
-            Container(
-              color: const Color(0XffF1F1F1),
-              width: MediaQuery.of(context).size.width * 0.60,
-              height: 150,
-            ),
-            Center(
-              child: AppBar(
-                toolbarHeight: 145,
-                elevation: 7,
-                backgroundColor: Colors.white,
-                leading: const Text(''),
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    RichText(
-                        text: const TextSpan(
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            children: [
-                          TextSpan(
-                            text: 'K',
-                            style: TextStyle(
-                                fontFamily: Fonts.nunito,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 38,
-                                color: Color(0Xff0F1010)),
-                          ),
-                          TextSpan(
-                              text: 'O',
-                              style: TextStyle(
-                                fontFamily: Fonts.nunito,
-                                fontWeight: FontWeight.w900,
-                                fontSize: 45,
-                                color: Colors1.green,
-                              )),
-                          TextSpan(
-                            text: 'BBLE',
-                            style: TextStyle(
-                                fontFamily: Fonts.nunito,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 38,
-                                color: Color(0Xff0F1010)),
-                          ),
-                        ])),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 103.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                              color: Colors1.hgrad2,
-                              style: BorderStyle.solid,
-                              width: 2.3),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(6.0),
-                          child: IconButton(
-                              onPressed: () {},
-                              icon: Image.asset(
-                                'assets/icons/global_icons/profile.png',
-                                width: 23,
-                                height: 25,
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      appBar: Header2.stepHeader(screenheight),
       body: Row(
         children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.6,
-            height: MediaQuery.of(context).size.height - 150,
-            child: Image.asset("assets/icons/global_icons/addressPage.png"),
+          Container(
+            width: screenwidth * 0.538,
+            color: const Color(0XffF1F1F1),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Padding(
+                padding: EdgeInsets.only(
+                    left: screenwidth * 0.068, top: screenheight * 0.029),
+                child: const Text(
+                  "Thanks\nfor Shopping !",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                      fontFamily: Fonts.nunito,
+                      fontSize: 50,
+                      fontWeight: FontWeight.w800,
+                      color: Color(0Xff0F1010)),
+                ),
+              ),
+              Expanded(
+                child: Image.asset(
+                  "assets/icons/global_icons/addressPage.png",
+                  fit: BoxFit.cover,
+                ),
+              ),
+              SizedBox(
+                height: screenheight * 0.061,
+              )
+            ]),
           ),
           Expanded(
             child: Padding(
-                padding: const EdgeInsets.all(69),
+                padding: EdgeInsets.only(
+                    left: screenwidth * 0.034,
+                    right: screenwidth * 0.034,
+                    top: screenheight * 0.035,
+                    bottom: screenheight * 0.07),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

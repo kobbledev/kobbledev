@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-import '../../design_tools/styles.dart';
-import '../../models/stepclass.dart';
+import '../../../../design_tools/styles.dart';
+import '../../../../models/stepclass.dart';
+
 
 class SelectCard extends StatefulWidget {
   //required this.selectedIndex

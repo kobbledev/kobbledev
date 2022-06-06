@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:kobble_dev/select_card_flow/address.dart';
 
-import '../design_tools/colors.dart';
-import '../design_tools/styles.dart';
-import '../models/stepclass.dart';
+import '../../../design_tools/colors.dart';
+import '../../../design_tools/device_details.dart';
+import '../../../design_tools/styles.dart';
+import '../../../global_widgets/header2.dart';
+import '../../../models/stepclass.dart';
+import 'address.dart';
 
 class ShoppingCart extends StatelessWidget {
   const ShoppingCart({Key? key}) : super(key: key);
@@ -19,90 +21,21 @@ class ShoppingCart extends StatelessWidget {
       CartTextModel("GST", "0.00"),
       CartTextModel("Delivery(GST)", "0.00"),
     ];
+    double screenwidth = MediaQuery.of(context).size.width;
+    double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(150.0),
-        child: Center(
-          child: AppBar(
-            toolbarHeight: 145,
-            elevation: 7,
-            backgroundColor: Colors.white,
-            leading: const Text(''),
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                RichText(
-                    text: const TextSpan(
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        children: [
-                      TextSpan(
-                        text: 'K',
-                        style: TextStyle(
-                            fontFamily: Fonts.nunito,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 38,
-                            color: Color(0Xff0F1010)),
-                      ),
-                      TextSpan(
-                          text: 'O',
-                          style: TextStyle(
-                            fontFamily: Fonts.nunito,
-                            fontWeight: FontWeight.w900,
-                            fontSize: 45,
-                            color: Colors1.green,
-                          )),
-                      TextSpan(
-                        text: 'BBLE',
-                        style: TextStyle(
-                            fontFamily: Fonts.nunito,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 38,
-                            color: Color(0Xff0F1010)),
-                      ),
-                    ])),
-                Padding(
-                  padding: const EdgeInsets.only(right: 103.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                          color: Colors1.hgrad2,
-                          style: BorderStyle.solid,
-                          width: 2.3),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(6.0),
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: Image.asset(
-                            'assets/icons/global_icons/profile.png',
-                            width: 23,
-                            height: 25,
-                          )),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      appBar: Header2.stepHeader(screenheight),
       body: Row(
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.61,
-            height: MediaQuery.of(context).size.height - 150,
+            width: screenwidth * 0.596,
             child: Padding(
-              padding: const EdgeInsets.only(left: 131),
+              padding: EdgeInsets.only(left: screenwidth * 0.068),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(
-                    height: 33,
+                    height: 0.039,
                   ),
                   const Text(
                     "Shopping Cart",
@@ -129,8 +62,8 @@ class ShoppingCart extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(14),
                         ),
-                        width: 309,
-                        height: 344,
+                        width: screenwidth * 0.16,
+                        height: screenheight * 0.318,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 15),
                           child: Image.asset(
@@ -139,7 +72,8 @@ class ShoppingCart extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 57),
+                        padding: EdgeInsets.only(
+                            left: screenwidth * 0.029), // screenwidth * 0.318),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -155,12 +89,19 @@ class ShoppingCart extends StatelessWidget {
                                   ),
                                 ),
                                 const SizedBox(
-                                  width: 25,
+                                  width: 13,
                                 ),
                                 IconButton(
                                     onPressed: () {},
-                                    icon: const Icon(Icons.delete))
+                                    icon: const Icon(
+                                      Icons.delete,
+                                      color: Colors.grey,
+                                      size: 40,
+                                    ))
                               ],
+                            ),
+                            const SizedBox(
+                              height: 10,
                             ),
                             const Text(
                               "Style - With Kobble Logo",
@@ -170,6 +111,9 @@ class ShoppingCart extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                   color: Color(0Xff9D9F9E)),
                             ),
+                            SizedBox(
+                              height: screenheight * 0.029,
+                            ),
                             const Text(
                               "\u{20B9} 599",
                               style: TextStyle(
@@ -178,9 +122,12 @@ class ShoppingCart extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   color: Color(0Xff9D9F9E)),
                             ),
+                            SizedBox(
+                              height: screenheight * 0.017,
+                            ),
                             Container(
-                              width: 143,
-                              height: 43,
+                              width: screenwidth * 0.073,
+                              height: screenheight * 0.039,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(6)),
                               child: Row(
@@ -188,7 +135,7 @@ class ShoppingCart extends StatelessWidget {
                                   Container(
                                     alignment: Alignment.center,
                                     color: const Color(0XffD3D3D3),
-                                    width: 143 / 3,
+                                    width: screenwidth * 0.073 / 3,
                                     height: 43,
                                     child: const Text(
                                       "-",
@@ -206,7 +153,7 @@ class ShoppingCart extends StatelessWidget {
                                   Container(
                                     alignment: Alignment.center,
                                     color: const Color(0XffD3D3D3),
-                                    width: 143 / 3,
+                                    width: screenwidth * 0.073 / 3,
                                     height: 43,
                                     child: const Text(
                                       "+",
@@ -216,8 +163,8 @@ class ShoppingCart extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            const SizedBox(
-                              height: 39,
+                            SizedBox(
+                              height: screenheight * 0.036,
                             ),
                             const Text(
                               "Total",
@@ -227,8 +174,8 @@ class ShoppingCart extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   color: Colors1.iconl),
                             ),
-                            const SizedBox(
-                              height: 11,
+                            SizedBox(
+                              height: screenheight * 0.010,
                             ),
                             const Text(
                               "\u{20B9} 599",
@@ -243,10 +190,10 @@ class ShoppingCart extends StatelessWidget {
                       )
                     ],
                   ),
-                  const Divider(
+                  Divider(
                     color: Colors1.hgrey,
                     thickness: 2,
-                    height: 53,
+                    height: screenheight * 0.03,
                   ),
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 25),
@@ -265,7 +212,7 @@ class ShoppingCart extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-                height: MediaQuery.of(context).size.height - 150,
+                height: screenheight - DeviceDetails.appbarHeight,
                 color: const Color(0XffF5F5F5),
                 child: Column(
                   children: [
@@ -276,14 +223,14 @@ class ShoppingCart extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.centerLeft,
                         color: const Color(0XffE9F6F0),
-                        height: 113,
-                        child: const Padding(
-                          padding: EdgeInsets.only(left: 95),
-                          child: Text(
+                        height: screenheight * 0.127,
+                        child: Padding(
+                          padding: EdgeInsets.only(left: screenwidth * 0.048),
+                          child: const Text(
                             "Subtotal",
                             style: TextStyle(
                                 fontFamily: Fonts.nunito,
-                                fontSize: 30,
+                                fontSize: 25,
                                 fontWeight: FontWeight.bold,
                                 color: Colors1.iconl),
                           ),
@@ -292,20 +239,21 @@ class ShoppingCart extends StatelessWidget {
                     ),
                     Expanded(
                         child: Padding(
-                      padding: const EdgeInsets.only(left: 95, right: 95),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: screenwidth * 0.048),
                       child: Container(
                         child: Column(children: [
                           Expanded(
                             child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 23),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: screenheight * 0.027),
                                 child: Column(
                                   children: [
                                     Column(
                                         children: _cartText.map((e) {
                                       return Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 17),
+                                        padding: EdgeInsets.only(
+                                            bottom: screenheight * 0.027),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -314,7 +262,7 @@ class ShoppingCart extends StatelessWidget {
                                               e.title,
                                               style: const TextStyle(
                                                   fontFamily: Fonts.nunito,
-                                                  fontSize: 25,
+                                                  fontSize: 17,
                                                   fontWeight: FontWeight.w600,
                                                   color: Colors1.iconl),
                                             ),
@@ -322,7 +270,7 @@ class ShoppingCart extends StatelessWidget {
                                               e.rate,
                                               style: const TextStyle(
                                                   fontFamily: Fonts.nunito,
-                                                  fontSize: 25,
+                                                  fontSize: 17,
                                                   fontWeight: FontWeight.w600,
                                                   color: Colors1.iconl),
                                             )
@@ -330,10 +278,10 @@ class ShoppingCart extends StatelessWidget {
                                         ),
                                       );
                                     }).toList()),
-                                    const Divider(
+                                    Divider(
                                       color: Colors1.hgrey,
                                       thickness: 2,
-                                      height: 13,
+                                      height: screenheight * 0.012,
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
@@ -346,7 +294,7 @@ class ShoppingCart extends StatelessWidget {
                                             "Total",
                                             style: TextStyle(
                                                 fontFamily: Fonts.nunito,
-                                                fontSize: 30,
+                                                fontSize: 25,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors1.iconl),
                                           ),
@@ -354,7 +302,7 @@ class ShoppingCart extends StatelessWidget {
                                             "\u{20B9} 599.00",
                                             style: TextStyle(
                                                 fontFamily: Fonts.nunito,
-                                                fontSize: 30,
+                                                fontSize: 25,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors1.iconl),
                                           )
@@ -365,47 +313,97 @@ class ShoppingCart extends StatelessWidget {
                                       children: [
                                         SizedBox(
                                           width: double.infinity,
-                                          height: 81,
+                                          height: screenheight * 0.074,
                                           child: Card(
                                             shape: RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(10)),
                                             color: Colors1.borderGrey,
-                                          ),
-                                        ),
-                                        Positioned(
-                                          right: 3,
-                                          top: 5,
-                                          bottom: 5,
-                                          child: SizedBox(
-                                            width: 183,
-                                            height: 81,
-                                            child: ElevatedButton(
-                                              onPressed: () {},
-                                              child: const Text(
-                                                "Apply",
-                                                style: TextStyle(
-                                                    fontFamily: Fonts.nunito,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 26,
-                                                    color: Colors.white),
-                                              ),
-                                              style: ElevatedButton.styleFrom(
-                                                  elevation: 1,
-                                                  primary:
-                                                      const Color(0Xff46BDF9),
-                                                  shape: RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10))),
+                                            child: Row(
+                                              children: [
+                                                const Expanded(
+                                                    child: SizedBox(
+                                                  child: TextField(
+                                                    decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 30),
+                                                      border: InputBorder.none,
+                                                    ),
+                                                    cursorHeight: 40,
+                                                    cursorColor: Colors.black,
+                                                    style: TextStyle(
+                                                        fontFamily:
+                                                            Fonts.nunito,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontSize: 30,
+                                                        color: Colors.black),
+                                                  ),
+                                                )),
+                                                Container(
+                                                  width: screenwidth * 0.095,
+                                                  height: screenheight * 0.074,
+                                                  child: ElevatedButton(
+                                                    onPressed: () {},
+                                                    child: const Text(
+                                                      "Apply",
+                                                      style: TextStyle(
+                                                          fontFamily:
+                                                              Fonts.nunito,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 26,
+                                                          color: Colors.white),
+                                                    ),
+                                                    style: ElevatedButton.styleFrom(
+                                                        elevation: 1,
+                                                        primary: const Color(
+                                                            0Xff46BDF9),
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10))),
+                                                  ),
+                                                )
+                                              ],
                                             ),
                                           ),
                                         ),
-                                        const Positioned(
-                                            child: TextField(
-                                                decoration: InputDecoration(
-                                          border: OutlineInputBorder(),
-                                        )))
+                                        // Positioned(
+                                        //   right: 3,
+                                        //   top: 5,
+                                        //   bottom: 5,
+                                        //   child: SizedBox(
+                                        //     width: 183,
+                                        //     height: 81,
+                                        //     child: ElevatedButton(
+                                        //       onPressed: () {},
+                                        //       child: const Text(
+                                        //         "Apply",
+                                        //         style: TextStyle(
+                                        //             fontFamily: Fonts.nunito,
+                                        //             fontWeight: FontWeight.bold,
+                                        //             fontSize: 26,
+                                        //             color: Colors.white),
+                                        //       ),
+                                        //       style: ElevatedButton.styleFrom(
+                                        //           elevation: 1,
+                                        //           primary:
+                                        //               const Color(0Xff46BDF9),
+                                        //           shape: RoundedRectangleBorder(
+                                        //               borderRadius:
+                                        //                   BorderRadius.circular(
+                                        //                       10))),
+                                        //     ),
+                                        //   ),
+                                        // ),
+                                        // const Positioned(
+                                        //     child: TextField(
+                                        //         decoration: InputDecoration(
+                                        //   border: OutlineInputBorder(),
+                                        // )))
 
                                         // SizedBox(
                                         //     height: 81,
@@ -432,9 +430,10 @@ class ShoppingCart extends StatelessWidget {
                                 )),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 61),
+                            padding:
+                                EdgeInsets.only(bottom: screenheight * 0.05),
                             child: SizedBox(
-                              height: 81,
+                              height: screenheight * 0.074,
                               child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.push(context,

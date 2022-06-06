@@ -1,7 +1,7 @@
 class StepModel {
   final String label;
   bool isSelected;
-
+  bool isActive = false;
   StepModel(this.label, this.isSelected);
 }
 

@@ -1,31 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:kobble_dev/login_flow/user_details.dart';
 
-import '../design_tools/colors.dart';
-import '../design_tools/styles.dart';
-import '../global_widgets/header1.dart';
+import '../../../../design_tools/colors.dart';
+import '../../../../design_tools/styles.dart';
+import '../../../../global_widgets/header1.dart';
+import 'user_details.dart';
 
 class FlowInfo extends StatelessWidget {
   const FlowInfo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double screenwidth = MediaQuery.of(context).size.width;
+    double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors1.bg,
       body: Row(
         children: [
-          Container(
-            width: MediaQuery.of(context).size.width * 0.45,
-            height: MediaQuery.of(context).size.height,
+          SizedBox(
+            width: screenwidth * 0.381,
+            height: screenheight,
             child: Padding(
-              padding: const EdgeInsets.only(left: 139, top: 81),
+              padding: EdgeInsets.only(
+                left: screenwidth * 0.072,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Header(),
-                  const SizedBox(
-                    height: 123,
+                  Padding(
+                    padding: EdgeInsets.only(
+                        bottom: screenheight * 0.035,
+                        top: screenheight * 0.074),
+                    child: const Header(),
                   ),
+                  SizedBox(height: screenheight * 0.113),
                   const Text(
                     "A few simple\nsteps make your\nkobble card.",
                     style: TextStyle(
@@ -34,8 +41,8 @@ class FlowInfo extends StatelessWidget {
                         fontSize: 60,
                         fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(
-                    height: 90,
+                  SizedBox(
+                    height: screenheight * 0.083,
                   ),
                   Container(
                     margin: EdgeInsets.zero,
@@ -82,7 +89,7 @@ class FlowInfo extends StatelessWidget {
               ),
             ),
           ),
-          const Expanded(child: Text("Card"))
+          Expanded(child: Image.asset("assets/icons/global_icons/info.png"))
         ],
       ),
     );

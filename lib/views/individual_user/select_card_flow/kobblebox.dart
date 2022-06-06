@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kobble_dev/select_card_flow/shopping_cart.dart';
 
-import '../design_tools/colors.dart';
-import '../design_tools/styles.dart';
+import '../../../design_tools/colors.dart';
+import '../../../design_tools/styles.dart';
+import '../../../global_widgets/header2.dart';
+import 'shopping_cart.dart';
 
 class KobbleBox extends StatefulWidget {
   const KobbleBox({Key? key}) : super(key: key);
@@ -15,78 +16,10 @@ class _KobbleBoxState extends State<KobbleBox> {
   //bool _isActive = false;
   @override
   Widget build(BuildContext context) {
+    double screenwidth = MediaQuery.of(context).size.width;
+    double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(150.0),
-        child: Center(
-          child: AppBar(
-            toolbarHeight: 145,
-            elevation: 7,
-            backgroundColor: Colors.white,
-            leading: const Text(''),
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                RichText(
-                    text: const TextSpan(
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        children: [
-                      TextSpan(
-                        text: 'K',
-                        style: TextStyle(
-                            fontFamily: Fonts.nunito,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 38,
-                            color: Color(0Xff0F1010)),
-                      ),
-                      TextSpan(
-                          text: 'O',
-                          style: TextStyle(
-                            fontFamily: Fonts.nunito,
-                            fontWeight: FontWeight.w900,
-                            fontSize: 45,
-                            color: Colors1.green,
-                          )),
-                      TextSpan(
-                        text: 'BBLE',
-                        style: TextStyle(
-                            fontFamily: Fonts.nunito,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 38,
-                            color: Color(0Xff0F1010)),
-                      ),
-                    ])),
-                Padding(
-                  padding: const EdgeInsets.only(right: 103.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                          color: Colors1.hgrad2,
-                          style: BorderStyle.solid,
-                          width: 2.3),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(6.0),
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: Image.asset(
-                            'assets/icons/global_icons/profile.png',
-                            width: 23,
-                            height: 25,
-                          )),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      appBar: Header2.stepHeader(screenheight),
       body: Column(
         children: [
           Padding(
@@ -125,18 +58,19 @@ class _KobbleBoxState extends State<KobbleBox> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 boxCard("assets/icons/global_icons/boxcard1.png", "Steel card",
-                    293, 191, false),
+                    293, 191, screenheight, screenwidth),
                 boxCard("assets/icons/global_icons/boxcard2.png", "Logo Badges",
-                    241, 243, false),
+                    241, 243, screenheight, screenwidth),
                 boxCard("assets/icons/global_icons/boxcard3.png", "Stickers",
-                    230, 231, false),
+                    230, 231, screenheight, screenwidth),
               ],
             ),
           ),
         ],
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(bottom: 73, right: 133),
+        padding: EdgeInsets.only(
+            bottom: screenheight * 0.06, right: screenwidth * 0.069),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -230,7 +164,13 @@ class _KobbleBoxState extends State<KobbleBox> {
   }
 
   Column boxCard(
-      String image, String title, double w, double h, bool _isActive) {
+    String image,
+    String title,
+    double w,
+    double h,
+    double scr_h,
+    double scr_w,
+  ) {
     return Column(
       children: [
         Container(
@@ -243,8 +183,8 @@ class _KobbleBoxState extends State<KobbleBox> {
             ),
             borderRadius: BorderRadius.circular(15),
           ),
-          width: 400,
-          height: 400,
+          width: scr_w * 0.208,
+          height: scr_h * 0.370,
           child: Image.asset(
             image,
             width: w,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kobble_dev/login_flow/home.dart';
+import 'package:kobble_dev/views/individual_user/login_flow/home.dart';
 import 'design_tools/colors.dart';
+import 'views/individual_user/select_card_flow/widgets/stepsInfo.dart';
 
 void main() {
   runApp(const MyApp());
