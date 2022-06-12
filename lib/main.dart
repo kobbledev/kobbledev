@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kobble_dev/views/individual_user/login_flow/home.dart';
+
 import 'design_tools/colors.dart';
-import 'views/individual_user/select_card_flow/widgets/stepsInfo.dart';
+import 'views/individual_user/login_flow/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors1.bg,
       ),
-      home: const HomePage(),
+      home: const SignUp(),
     );
   }
 }

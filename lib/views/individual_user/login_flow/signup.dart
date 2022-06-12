@@ -17,8 +17,8 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
-    double screenwidth = MediaQuery.of(context).size.width;
-    double screenheight = MediaQuery.of(context).size.height;
+    // double constraints.maxWidth = MediaQuery.of(context).size.width;
+    // double constraints.maxHeight = MediaQuery.of(context).size.height;
 
     //Mobile Controllers
     final _m_mobileController = TextEditingController();
@@ -52,33 +52,34 @@ class _SignUpState extends State<SignUp> {
     }
 
     return Scaffold(
-        backgroundColor: Colors1.bg,
-        body: Row(
+      backgroundColor: Colors1.bg,
+      body: LayoutBuilder(builder: ((context, constraints) {
+        return Row(
           children: [
             SizedBox(
-              width: screenwidth * 0.57,
-              height: screenheight,
+              width: constraints.maxWidth * 0.57,
+              height: constraints.maxHeight,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
-                        left: screenwidth * 0.072,
-                        bottom: screenheight * 0.035,
-                        top: screenheight * 0.074),
+                        left: constraints.maxWidth * 0.072,
+                        bottom: constraints.maxHeight * 0.035,
+                        top: constraints.maxHeight * 0.074),
                     child: const Header(),
                   ),
                   Image.asset(
                     "assets/icons/global_icons/loginPic.png",
-                    width: screenwidth * 0.377,
-                    height: screenheight * 0.695,
+                    width: constraints.maxWidth * 0.377,
+                    height: constraints.maxHeight * 0.695,
                   ),
                 ],
               ),
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.only(right: screenwidth * 0.096),
+                padding: EdgeInsets.only(right: constraints.maxWidth * 0.096),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,7 +93,7 @@ class _SignUpState extends State<SignUp> {
                           color: Colors.white),
                     ),
                     SizedBox(
-                      height: screenheight * 0.023,
+                      height: constraints.maxHeight * 0.023,
                     ),
                     const Text(
                       'You will receive a 4 digit code for mobile\nnumber verification.',
@@ -103,7 +104,7 @@ class _SignUpState extends State<SignUp> {
                           color: Colors1.hgrey),
                     ),
                     SizedBox(
-                      height: screenheight * 0.042,
+                      height: constraints.maxHeight * 0.042,
                     ),
                     Form(
                       key: _w_signupkey,
@@ -115,7 +116,7 @@ class _SignUpState extends State<SignUp> {
                             Card(
                                 color: Colors1.formBg,
                                 child: SizedBox(
-                                  //  width: screenwidth * 0.26,
+                                  //  width: constraints.maxWidth * 0.26,
                                   child: ListTile(
                                     contentPadding: const EdgeInsets.symmetric(
                                         vertical: 20, horizontal: 43),
@@ -137,7 +138,7 @@ class _SignUpState extends State<SignUp> {
                             Card(
                                 color: Colors1.formBg,
                                 child: SizedBox(
-                                    //  width: screenwidth * 0.26,
+                                    //  width: constraints.maxWidth * 0.26,
                                     child: TextFormField(
                                   cursorColor: Colors1.hgrey,
                                   style: const TextStyle(
@@ -178,7 +179,7 @@ class _SignUpState extends State<SignUp> {
                                   },
                                 ))),
                             SizedBox(
-                              height: screenheight * 0.048,
+                              height: constraints.maxHeight * 0.048,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -249,7 +250,9 @@ class _SignUpState extends State<SignUp> {
               ),
             )
           ],
-        ));
+        );
+      })),
+    );
   }
 }
 
