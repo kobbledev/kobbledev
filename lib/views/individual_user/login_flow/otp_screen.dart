@@ -95,7 +95,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                       'OTP\nVerification.',
                       style: TextStyle(
                           fontFamily: Fonts.nunito,
-                          fontSize: 41,
+                          fontSize: 35,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
                     ),
@@ -107,7 +107,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                       style: const TextStyle(
                           fontFamily: Fonts.nunito,
                           fontWeight: FontWeight.normal,
-                          fontSize: 21,
+                          fontSize: 19,
                           color: Color(0Xff9D9F9E)),
                     ),
                     SizedBox(
@@ -184,7 +184,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: screenheight * 0.062,
+                      height: screenheight * 0.052,
                     ),
                     SizedBox(
                       //width: 500,
@@ -195,18 +195,18 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                             Row(
                               children: const [
                                 Text(
-                                  "Didn't receive the OTP ?",
+                                  "Didn't receive the OTP ? ",
                                   style: TextStyle(
                                       fontFamily: Fonts.nunito,
                                       color: Colors1.borderGrey,
-                                      fontSize: 23,
+                                      fontSize: 19,
                                       fontWeight: FontWeight.w400),
                                 ),
-                                Text("Resend",
+                                Text(" Resend",
                                     style: TextStyle(
                                       fontFamily: Fonts.nunito,
                                       color: Colors.green,
-                                      fontSize: 23,
+                                      fontSize: 19,
                                       fontWeight: FontWeight.w600,
                                     ))
                               ],
@@ -235,8 +235,8 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                             //     ])),
 
                             SizedBox(
-                              width: 91,
-                              height: 79,
+                              width: 81,
+                              height: 69,
                               child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.push(context,

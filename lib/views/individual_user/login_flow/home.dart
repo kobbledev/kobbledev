@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                 RichText(
                     text: const TextSpan(
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 18,
                           fontWeight: FontWeight.w500,
                         ),
                         children: [
@@ -75,15 +75,14 @@ class _HomePageState extends State<HomePage> {
                             color: Colors.white),
                       ),
                     ])),
-
                 Padding(
                   padding: EdgeInsets.only(right: screenwidth * 0.06),
                   child: Container(
                     margin: EdgeInsets.zero,
-                    height: 56,
-                    width: 183,
+                    height: 46,
+                    width: 163,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(13),
+                        borderRadius: BorderRadius.circular(11),
                         gradient: const LinearGradient(
                             colors: [Colors1.hgrad1, Colors1.hgrad2])),
                     child: ElevatedButton(
@@ -98,51 +97,10 @@ class _HomePageState extends State<HomePage> {
                           primary: Colors.transparent,
                           shadowColor: Colors.transparent,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(13))),
+                              borderRadius: BorderRadius.circular(11))),
                     ),
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.only(left: 103, right: 103.0),
-                //   child: Container(
-                //     decoration: BoxDecoration(
-                //       shape: BoxShape.circle,
-                //       border: Border.all(
-                //           color: Colors1.hgrad2,
-                //           style: BorderStyle.solid,
-                //           width: 2.3),
-                //     ),
-                //     child: Padding(
-                //       padding: const EdgeInsets.all(6.0),
-                //       child: IconButton(
-                //           onPressed: () {},
-                //           icon: const Icon(
-                //             Icons.person_outlined,
-                //             color: Colors.white,
-                //           )),
-                //     ),
-                //   ),
-
-                //   //  Container(
-                //   //   decoration: BoxDecoration(
-                //   //     shape: BoxShape.circle,
-                //   //     border: Border.all(
-                //   //         color: Colors1.hgrad2,
-                //   //         style: BorderStyle.solid,
-                //   //         width: 2.3),
-                //   //   ),
-                //   //   child: Padding(
-                //   //     padding: const EdgeInsets.all(6.0),
-                //   //     child: IconButton(
-                //   //         onPressed: () {},
-                //   //         icon: Image.asset(
-                //   //           'assets/icons/global_icons/profile.png',
-                //   //           width: 23,
-                //   //           height: 25,
-                //   //         )),
-                //   //   ),
-                //   // ),
-                // ),
               ],
             ),
           ),
@@ -156,7 +114,7 @@ class _HomePageState extends State<HomePage> {
             bottom: 0,
             child: Container(
               width: double.infinity,
-              height: screenheight * 0.21,
+              height: screenheight * 0.19,
               color: Colors.black,
               child: Padding(
                 padding: EdgeInsets.only(
@@ -181,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                             style: TextStyle(
                                 fontFamily: Fonts.nunito,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 35,
+                                fontSize: 30,
                                 color: Colors1.green),
                           ),
                           subtitle: const Text(
@@ -189,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                             style: TextStyle(
                               fontFamily: Fonts.nunito,
                               fontWeight: FontWeight.normal,
-                              fontSize: 22,
+                              fontSize: 18,
                               color: Colors1.hgrey,
                             ),
                           ),
@@ -209,7 +167,7 @@ class _HomePageState extends State<HomePage> {
                             style: TextStyle(
                                 fontFamily: Fonts.nunito,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 35,
+                                fontSize: 30,
                                 color: Colors1.green),
                           ),
                           subtitle: const Text(
@@ -217,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                             style: TextStyle(
                               fontFamily: Fonts.nunito,
                               fontWeight: FontWeight.normal,
-                              fontSize: 22,
+                              fontSize: 18,
                               color: Colors1.hgrey,
                             ),
                           ),
@@ -237,7 +195,7 @@ class _HomePageState extends State<HomePage> {
                             style: TextStyle(
                                 fontFamily: Fonts.nunito,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 35,
+                                fontSize: 30,
                                 color: Colors1.green),
                           ),
                           subtitle: const Text(
@@ -245,7 +203,7 @@ class _HomePageState extends State<HomePage> {
                             style: TextStyle(
                               fontFamily: Fonts.nunito,
                               fontWeight: FontWeight.normal,
-                              fontSize: 22,
+                              fontSize: 18,
                               color: Colors1.hgrey,
                             ),
                           ),
@@ -258,12 +216,12 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Positioned(
-            top: 50,
+            top: 27,
             right: 57,
             child: Image.asset(
               "assets/icons/bgCard.png",
               width: screenwidth * 0.33,
-              height: screenheight * 0.66,
+              height: screenheight * 0.76,
             ),
           ),
           Padding(
@@ -272,98 +230,8 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                // Padding(
-                //   padding: const EdgeInsets.only(
-                //     top: 40,
-                //   ),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       RichText(
-                //           text: const TextSpan(
-                //               style: TextStyle(
-                //                 fontSize: 22,
-                //                 fontWeight: FontWeight.w500,
-                //               ),
-                //               children: [
-                //             TextSpan(
-                //               text: 'K',
-                //               style: TextStyle(
-                //                   fontFamily: Fonts.nunito,
-                //                   fontWeight: FontWeight.bold,
-                //                   fontSize: 38,
-                //                   color: Colors.white),
-                //             ),
-                //             TextSpan(
-                //                 text: 'O',
-                //                 style: TextStyle(
-                //                   fontFamily: Fonts.nunito,
-                //                   fontWeight: FontWeight.w900,
-                //                   fontSize: 45,
-                //                   color: Colors1.green,
-                //                 )),
-                //             TextSpan(
-                //               text: 'BBLE',
-                //               style: TextStyle(
-                //                   fontFamily: Fonts.nunito,
-                //                   fontWeight: FontWeight.bold,
-                //                   fontSize: 38,
-                //                   color: Colors.white),
-                //             ),
-                //           ])),
-                //       Row(
-                //         children: [
-                //           Container(
-                //             margin: EdgeInsets.zero,
-                //             height: 56,
-                //             width: 183,
-                //             decoration: BoxDecoration(
-                //                 borderRadius: BorderRadius.circular(13),
-                //                 gradient: const LinearGradient(
-                //                     colors: [Colors1.hgrad1, Colors1.hgrad2])),
-                //             child: ElevatedButton(
-                //               onPressed: () {
-                //                 Navigator.push(
-                //                     context,
-                //                     MaterialPageRoute(
-                //                         builder: (context) => const SignUp()));
-                //               },
-                //               child: const Text("Get Card"),
-                //               style: ElevatedButton.styleFrom(
-                //                   primary: Colors.transparent,
-                //                   shadowColor: Colors.transparent,
-                //                   shape: RoundedRectangleBorder(
-                //                       borderRadius: BorderRadius.circular(13))),
-                //             ),
-                //           ),
-                //           const SizedBox(
-                //             width: 53,
-                //           ),
-                //           Container(
-                //             decoration: BoxDecoration(
-                //               shape: BoxShape.circle,
-                //               border: Border.all(
-                //                   color: Colors1.hgrad2,
-                //                   style: BorderStyle.solid,
-                //                   width: 2.3),
-                //             ),
-                //             child: Padding(
-                //               padding: const EdgeInsets.all(6.0),
-                //               child: IconButton(
-                //                   onPressed: () {},
-                //                   icon: const Icon(
-                //                     Icons.person_outlined,
-                //                     color: Colors.white,
-                //                   )),
-                //             ),
-                //           ),
-                //         ],
-                //       )
-                //     ],
-                //   ),
-                // ),
                 Padding(
-                  padding: EdgeInsets.only(top: screenheight * 0.058),
+                  padding: EdgeInsets.only(top: screenheight * 0.047),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: const [
@@ -371,7 +239,7 @@ class _HomePageState extends State<HomePage> {
                         'Welcome to Kobble.',
                         textAlign: TextAlign.left,
                         style: TextStyle(
-                            fontSize: 28,
+                            fontSize: 26,
                             fontWeight: FontWeight.w400,
                             fontFamily: Fonts.nunito,
                             color: Colors.white),
@@ -385,11 +253,11 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: EdgeInsets.only(
                         left: 0,
-                        top: screenheight * 0.039, // 27,
+                        top: screenheight * 0.031, // 27,
                       ),
                       child: Image.asset(
                         'assets/icons/bgText.png',
-                        height: screenheight * 0.194, // 207,
+                        height: screenheight * 0.201, // 207,
                       ),
                     ),
                   ],
@@ -397,13 +265,13 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: screenheight * 0.042),
+                      padding: EdgeInsets.only(top: screenheight * 0.031),
                       child: const Text(
                         'With a tap of your device or scan code, share \n '
                         'your info with anyone you meet.',
                         style: TextStyle(
                             fontFamily: Fonts.nunito,
-                            fontSize: 24,
+                            fontSize: 21,
                             color: Colors1.hgrey),
                       ),
                     )
@@ -452,104 +320,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-/*
- :
-        //Mobile View
-        Scaffold(
-            backgroundColor: Colors1.bg,
-            body: Column(
-              children: [
-                Container(
-                  alignment: Alignment.center,
-                  height: 521,
-                  child: const Text(
-                    'under contruction',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'Welcome to\nKobble.',
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w800,
-                          fontFamily: Fonts.nunito,
-                          color: Colors.white),
-                    ),
-                    SizedBox(
-                      height: 41,
-                    ),
-                    Text(
-                      'Instantly Share Anything',
-                      style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: Fonts.nunito,
-                          color: Colors1.signupbgtxt),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'With a tap of your device or scan code, share \n'
-                      'your info with anyone you meet.',
-                      style: TextStyle(
-                          fontFamily: Fonts.nunito,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: Colors1.hgrey),
-                    ),
-                  ],
-                )
-              ],
-            ),
-            bottomNavigationBar: Padding(
-              padding: const EdgeInsets.only(bottom: 45, left: 28, right: 28),
-              child: Container(
-                margin: EdgeInsets.zero,
-                height: 50,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(13),
-                    gradient: const LinearGradient(
-                        colors: [Color(0Xff7EFFD0), Color(0Xff0BFFA6)])),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SignUp()));
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/icons/login_assets/mobile.png',
-                        width: 20,
-                        height: 13,
-                        alignment: Alignment.center,
-                      ),
-                      const Text(
-                        "Continue With Mobile Number",
-                        style: TextStyle(
-                          fontFamily: Fonts.nunito,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Color(0Xff1A1A1A),
-                        ),
-                      ),
-                    ],
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.transparent,
-                      shadowColor: Colors.transparent,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(13))),
-                ),
-              ),
-            ),
-          )
- */

@@ -32,24 +32,24 @@ class FlowInfo extends StatelessWidget {
                         top: screenheight * 0.074),
                     child: const Header(),
                   ),
-                  SizedBox(height: screenheight * 0.113),
+                  SizedBox(height: screenheight * 0.083),
                   const Text(
                     "A few simple\nsteps make your\nkobble card.",
                     style: TextStyle(
                         fontFamily: Fonts.nunito,
                         color: Color(0XffF0F0F0),
-                        fontSize: 60,
+                        fontSize: 47,
                         fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    height: screenheight * 0.083,
+                    height: screenheight * 0.081,
                   ),
                   Container(
                     margin: EdgeInsets.zero,
-                    height: 79.3,
-                    width: 311,
+                    height: 67.3,
+                    width: 293,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
+                        borderRadius: BorderRadius.circular(35),
                         gradient: const LinearGradient(
                             colors: [Colors1.lightgreen, Colors1.hgrad2])),
                     child: ElevatedButton(
@@ -66,7 +66,7 @@ class FlowInfo extends StatelessWidget {
                               style: TextStyle(
                                   fontFamily: Fonts.nunito,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 30,
+                                  fontSize: 27,
                                   color: Color(0Xff0F1010))),
                           const SizedBox(
                             width: 27,

@@ -96,23 +96,23 @@ class _UserFormState extends State<UserForm> {
                     'Please enter your Name &\nEmail ID.',
                     style: TextStyle(
                         fontFamily: Fonts.nunito,
-                        fontSize: 40,
+                        fontSize: 33,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
                   SizedBox(
-                    height: screenheight * 0.023,
+                    height: screenheight * 0.019,
                   ),
                   const Text(
                     'These fields are displaying on the kobble card.',
                     style: TextStyle(
                         fontFamily: Fonts.nunito,
                         fontWeight: FontWeight.normal,
-                        fontSize: 21,
+                        fontSize: 19,
                         color: Colors1.hgrey),
                   ),
                   SizedBox(
-                    height: screenheight * 0.066,
+                    height: screenheight * 0.053,
                   ),
                   Form(
                     key: _userFormkey,
@@ -121,186 +121,186 @@ class _UserFormState extends State<UserForm> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Card(
-                              color: Colors1.formBg,
-                              child: SizedBox(
-                                  //  width: screenwidth * 0.30,
-                                  child: TextFormField(
-                                cursorColor: Colors1.hgrey,
-                                style: const TextStyle(
-                                    fontFamily: Fonts.nunito,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 24,
-                                    color: Colors1.formgrey),
-                                controller: _nameController,
-                                decoration: InputDecoration(
-                                  prefixIcon: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 43),
-                                    child: Image.asset(
-                                      "assets/icons/login_assets/mail.png",
-                                      width: 28.1,
-                                      height: 23,
-                                    ),
-                                  ),
-                                  suffixIcon: const Padding(
-                                    padding: EdgeInsets.only(top: 7.0),
-                                    child: Text(
-                                      "*",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 30),
-                                    ),
-                                  ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors1.formBrd, width: 2),
-                                  ),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 35, horizontal: 23),
-                                  hintText: 'Name',
-                                  hintStyle: const TextStyle(
-                                      fontFamily: Fonts.nunito,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 24,
-                                      color: Colors1.formgrey),
+                          SizedBox(
+                              //  width: screenwidth * 0.30,
+                              child: TextFormField(
+                            cursorColor: Colors1.hgrey,
+                            style: const TextStyle(
+                                fontFamily: Fonts.nunito,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20,
+                                color: Colors1.formgrey),
+                            controller: _nameController,
+                            decoration: InputDecoration(
+                              prefixIcon: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 43),
+                                child: Image.asset(
+                                  "assets/icons/login_assets/mail.png",
+                                  width: 28.1,
+                                  height: 23,
                                 ),
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'Name is Required';
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                                focusNode: _nameFocusNode,
-                                keyboardType: TextInputType.text,
-                                textInputAction: TextInputAction.next,
-                                onFieldSubmitted: (_) {
-                                  _nameFocusNode.unfocus();
-                                  FocusScope.of(context)
-                                      .requestFocus(_emailFocusNode);
-                                },
-                              ))),
-                          Card(
-                              color: Colors1.formBg,
-                              child: SizedBox(
-                                  //width: 500,
-                                  child: TextFormField(
-                                cursorColor: Colors1.hgrey,
-                                style: const TextStyle(
-                                    fontFamily: Fonts.nunito,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 24,
-                                    color: Colors1.formgrey),
-                                controller: _emailController,
-                                decoration: InputDecoration(
-                                  prefixIcon: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 43),
-                                    child: Image.asset(
-                                      "assets/icons/login_assets/mail.png",
-                                      width: 28.1,
-                                      height: 23,
-                                    ),
-                                  ),
-                                  suffixIcon: const Padding(
-                                    padding: EdgeInsets.only(top: 7.0),
-                                    child: Text(
-                                      "*",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 30),
-                                    ),
-                                  ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors1.formBrd, width: 2),
-                                  ),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 35, horizontal: 23),
-                                  hintText: 'Email ID',
-                                  hintStyle: const TextStyle(
-                                      fontFamily: Fonts.nunito,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 24,
-                                      color: Colors1.formgrey),
+                              ),
+                              suffixIcon: const Padding(
+                                padding: EdgeInsets.only(top: 7.0),
+                                child: Text(
+                                  "*",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 28),
                                 ),
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'Email ID is Required';
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                                focusNode: _emailFocusNode,
-                                keyboardType: TextInputType.emailAddress,
-                                textInputAction: TextInputAction.next,
-                                onFieldSubmitted: (_) {
-                                  _emailFocusNode.unfocus();
-                                  FocusScope.of(context)
-                                      .requestFocus(_mobileFocusNode);
-                                },
-                              ))),
-                          Card(
-                              color: Colors1.formBg,
-                              child: SizedBox(
-                                  //width: 500,
-                                  child: TextFormField(
-                                cursorColor: Colors1.hgrey,
-                                style: const TextStyle(
-                                    fontFamily: Fonts.nunito,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 24,
-                                    color: Colors1.formgrey),
-                                controller: _mobileController,
-                                decoration: InputDecoration(
-                                  prefixIcon: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 43),
-                                    child: Image.asset(
-                                      "assets/icons/login_assets/mail.png",
-                                      width: 28.1,
-                                      height: 23,
-                                    ),
-                                  ),
-                                  suffixIcon: const Padding(
-                                    padding: EdgeInsets.only(top: 7.0),
-                                    child: Text(
-                                      "*",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 30),
-                                    ),
-                                  ),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors1.formBrd, width: 2),
-                                  ),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 35, horizontal: 23),
-                                  hintText: 'Phone Number',
-                                  hintStyle: const TextStyle(
-                                      fontFamily: Fonts.nunito,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 24,
-                                      color: Colors1.formgrey),
+                              ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: const OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors1.green, width: 2),
+                              ),
+                              filled: true,
+                              fillColor: Colors1.formBg,
+                              contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 27, horizontal: 23),
+                              hintText: 'Name',
+                              hintStyle: const TextStyle(
+                                  fontFamily: Fonts.nunito,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                  color: Colors1.formgrey),
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Name is Required';
+                              } else {
+                                return null;
+                              }
+                            },
+                            focusNode: _nameFocusNode,
+                            keyboardType: TextInputType.text,
+                            textInputAction: TextInputAction.next,
+                            onFieldSubmitted: (_) {
+                              _nameFocusNode.unfocus();
+                              FocusScope.of(context)
+                                  .requestFocus(_emailFocusNode);
+                            },
+                          )),
+                          SizedBox(
+                              //width: 500,
+                              child: TextFormField(
+                            cursorColor: Colors1.hgrey,
+                            style: const TextStyle(
+                                fontFamily: Fonts.nunito,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20,
+                                color: Colors1.formgrey),
+                            controller: _emailController,
+                            decoration: InputDecoration(
+                              prefixIcon: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 43),
+                                child: Image.asset(
+                                  "assets/icons/login_assets/mail.png",
+                                  width: 28.1,
+                                  height: 23,
                                 ),
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return 'Phone Number is Required';
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                                focusNode: _mobileFocusNode,
-                                keyboardType: TextInputType.phone,
-                                textInputAction: TextInputAction.next,
-                                onFieldSubmitted: (_) {
-                                  _mobileFocusNode.unfocus();
-                                  FocusScope.of(context)
-                                      .requestFocus(_submitFocusNode);
-                                },
-                              ))),
+                              ),
+                              suffixIcon: const Padding(
+                                padding: EdgeInsets.only(top: 7.0),
+                                child: Text(
+                                  "*",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 28),
+                                ),
+                              ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: const OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors1.green, width: 2),
+                              ),
+                              filled: true,
+                              fillColor: Colors1.formBg,
+                              contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 27, horizontal: 23),
+                              hintText: 'Email ID',
+                              hintStyle: const TextStyle(
+                                  fontFamily: Fonts.nunito,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                  color: Colors1.formgrey),
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Email ID is Required';
+                              } else {
+                                return null;
+                              }
+                            },
+                            focusNode: _emailFocusNode,
+                            keyboardType: TextInputType.emailAddress,
+                            textInputAction: TextInputAction.next,
+                            onFieldSubmitted: (_) {
+                              _emailFocusNode.unfocus();
+                              FocusScope.of(context)
+                                  .requestFocus(_mobileFocusNode);
+                            },
+                          )),
+                          SizedBox(
+                              //width: 500,
+                              child: TextFormField(
+                            cursorColor: Colors1.hgrey,
+                            style: const TextStyle(
+                                fontFamily: Fonts.nunito,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20,
+                                color: Colors1.formgrey),
+                            controller: _mobileController,
+                            decoration: InputDecoration(
+                              prefixIcon: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 43),
+                                child: Image.asset(
+                                  "assets/icons/login_assets/mail.png",
+                                  width: 28.1,
+                                  height: 23,
+                                ),
+                              ),
+                              suffixIcon: const Padding(
+                                padding: EdgeInsets.only(top: 7.0),
+                                child: Text(
+                                  "*",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 28),
+                                ),
+                              ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: const OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors1.green, width: 2),
+                              ),
+                              filled: true,
+                              fillColor: Colors1.formBg,
+                              contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 27, horizontal: 23),
+                              hintText: 'Phone Number',
+                              hintStyle: const TextStyle(
+                                  fontFamily: Fonts.nunito,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                  color: Colors1.formgrey),
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Phone Number is Required';
+                              } else {
+                                return null;
+                              }
+                            },
+                            focusNode: _mobileFocusNode,
+                            keyboardType: TextInputType.phone,
+                            textInputAction: TextInputAction.next,
+                            onFieldSubmitted: (_) {
+                              _mobileFocusNode.unfocus();
+                              FocusScope.of(context)
+                                  .requestFocus(_submitFocusNode);
+                            },
+                          )),
                           SizedBox(
                             height: screenheight * 0.043,
                           ),
@@ -316,12 +316,12 @@ class _UserFormState extends State<UserForm> {
                                       style: TextStyle(
                                           fontFamily: Fonts.nunito,
                                           fontWeight: FontWeight.w600,
-                                          fontSize: 24,
+                                          fontSize: 21,
                                           color: Colors1.green),
                                     )),
                                 SizedBox(
-                                  width: 91,
-                                  height: 79,
+                                  width: 81,
+                                  height: 69,
                                   child: ElevatedButton(
                                     focusNode: _submitFocusNode,
                                     onPressed: () {

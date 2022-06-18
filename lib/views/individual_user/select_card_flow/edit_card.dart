@@ -237,8 +237,8 @@ class _EditCardState extends State<EditCard> {
                             }),
                             child: Container(
                               alignment: Alignment.center,
-                              width: 74,
-                              height: 74,
+                              width: 64,
+                              height: 64,
                               decoration: BoxDecoration(
                                 color: Colors1.green,
                                 border: Border.all(
@@ -253,35 +253,38 @@ class _EditCardState extends State<EditCard> {
                             ),
                           )),
                 Expanded(
-                  child: IndexedStack(
-                    index: _selectedIndex,
-                    children: [
-                      selectCard(
-                          _selectedIndex,
-                          map1[_selectedIndex] as List<StepCardModel>,
-                          screenheight,
-                          screenwidth),
-                      selectCard(
-                          _selectedIndex,
-                          map1[_selectedIndex] as List<StepCardModel>,
-                          screenheight,
-                          screenwidth),
-                      selectCard(
-                          _selectedIndex,
-                          map1[_selectedIndex] as List<StepCardModel>,
-                          screenheight,
-                          screenwidth),
-                      selectCard(
-                          _selectedIndex,
-                          map1[_selectedIndex] as List<StepCardModel>,
-                          screenheight,
-                          screenwidth),
-                      selectCard(
-                          _selectedIndex,
-                          map1[_selectedIndex] as List<StepCardModel>,
-                          screenheight,
-                          screenwidth),
-                    ],
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: IndexedStack(
+                      index: _selectedIndex,
+                      children: [
+                        selectCard(
+                            _selectedIndex,
+                            map1[_selectedIndex] as List<StepCardModel>,
+                            screenheight,
+                            screenwidth),
+                        selectCard(
+                            _selectedIndex,
+                            map1[_selectedIndex] as List<StepCardModel>,
+                            screenheight,
+                            screenwidth),
+                        selectCard(
+                            _selectedIndex,
+                            map1[_selectedIndex] as List<StepCardModel>,
+                            screenheight,
+                            screenwidth),
+                        selectCard(
+                            _selectedIndex,
+                            map1[_selectedIndex] as List<StepCardModel>,
+                            screenheight,
+                            screenwidth),
+                        selectCard(
+                            _selectedIndex,
+                            map1[_selectedIndex] as List<StepCardModel>,
+                            screenheight,
+                            screenwidth),
+                      ],
+                    ),
                   ),
                 ),
                 Container(
@@ -343,8 +346,8 @@ class _EditCardState extends State<EditCard> {
                             }),
                             child: Container(
                               alignment: Alignment.center,
-                              width: 74,
-                              height: 74,
+                              width: 64,
+                              height: 64,
                               decoration: BoxDecoration(
                                 color: Colors1.green,
                                 border: Border.all(
@@ -368,20 +371,22 @@ class _EditCardState extends State<EditCard> {
 
   Widget selectCard(int index, List<StepCardModel> scard, double h, double w) {
     return Padding(
-      padding: const EdgeInsets.only(top: 53.0),
+      padding: const EdgeInsets.only(top: 43.0),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Card(
             color: const Color(0XffE8E8E8),
             child: Container(
               alignment: Alignment.center,
-              width: w * 0.313,
-              height: h * 0.55,
+              width: w * 0.291,
+              height: h * 0.49,
               child: Image.asset('assets/icons/edit_card/step1.png'),
             ),
           ),
           const SizedBox(
-            height: 33,
+            height: 28,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -397,8 +402,8 @@ class _EditCardState extends State<EditCard> {
                     child: index == 1
                         ? Container(
                             alignment: Alignment.center,
-                            width: 170,
-                            height: 81,
+                            width: 120,
+                            height: 60,
                             decoration: BoxDecoration(
                                 color: e.isSelected
                                     ? Colors1.green
@@ -409,20 +414,20 @@ class _EditCardState extends State<EditCard> {
                                       ? Colors1.green
                                       : Colors.transparent,
                                 ),
-                                borderRadius: BorderRadius.circular(15)),
+                                borderRadius: BorderRadius.circular(13)),
                             child: Text(
                               e.image,
                               style: const TextStyle(
                                 fontFamily: Fonts.nunito,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 25,
+                                fontSize: 22,
                                 color: Color(0Xff0F1010),
                               ),
                             ),
                           )
                         : Container(
-                            width: 101,
-                            height: 103,
+                            width: 90,
+                            height: 90,
                             decoration: BoxDecoration(
                               border: Border.all(
                                 color: e.isSelected
@@ -430,7 +435,7 @@ class _EditCardState extends State<EditCard> {
                                     : const Color(0XffCCCCCC),
                                 width: e.isSelected ? 2 : 1.5,
                               ),
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(18),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(25.0),
@@ -447,7 +452,7 @@ class _EditCardState extends State<EditCard> {
                     e.title,
                     style: const TextStyle(
                         fontFamily: Fonts.nunito,
-                        fontSize: 15,
+                        fontSize: 12,
                         color: Color(0Xff0F1010),
                         fontWeight: FontWeight.bold),
                   )
@@ -581,19 +586,19 @@ class _EditCardState extends State<EditCard> {
                   style: const TextStyle(
                     color: Colors1.green,
                     fontWeight: FontWeight.w900,
-                    fontSize: 40,
+                    fontSize: 35,
                   ),
                 ),
               ),
               const SizedBox(
-                width: 33,
+                width: 23,
               ),
               Text(
                 title,
                 style: const TextStyle(
                     fontFamily: Fonts.nunito,
                     color: Color(0xff0F1010),
-                    fontSize: 40,
+                    fontSize: 30,
                     fontWeight: FontWeight.w800),
               )
             ],

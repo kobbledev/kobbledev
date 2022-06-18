@@ -21,9 +21,11 @@ class _KobbleBoxState extends State<KobbleBox> {
     return Scaffold(
       appBar: Header2.stepHeader(screenheight),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 33, bottom: 7),
+            padding: const EdgeInsets.only(top: 23, bottom: 7),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
@@ -32,7 +34,7 @@ class _KobbleBoxState extends State<KobbleBox> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontFamily: Fonts.nunito,
-                      fontSize: 50,
+                      fontSize: 35,
                       fontWeight: FontWeight.w800,
                       color: Colors1.green),
                 ),
@@ -47,22 +49,22 @@ class _KobbleBoxState extends State<KobbleBox> {
                 style: TextStyle(
                     fontFamily: Fonts.nunito,
                     fontWeight: FontWeight.w800,
-                    fontSize: 40,
+                    fontSize: 30,
                     color: Colors1.iconl),
               )
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 43, left: 193, right: 193),
+            padding: const EdgeInsets.only(top: 33, left: 193, right: 193),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 boxCard("assets/icons/global_icons/boxcard1.png", "Steel card",
-                    293, 191, screenheight, screenwidth),
+                    273, 171, screenheight, screenwidth),
                 boxCard("assets/icons/global_icons/boxcard2.png", "Logo Badges",
-                    241, 243, screenheight, screenwidth),
+                    221, 223, screenheight, screenwidth),
                 boxCard("assets/icons/global_icons/boxcard3.png", "Stickers",
-                    230, 231, screenheight, screenwidth),
+                    210, 201, screenheight, screenwidth),
               ],
             ),
           ),
@@ -155,7 +157,7 @@ class _KobbleBoxState extends State<KobbleBox> {
               style: ElevatedButton.styleFrom(
                   primary: Colors1.green,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50))),
+                      borderRadius: BorderRadius.circular(40))),
             )
           ],
         ),
@@ -183,8 +185,8 @@ class _KobbleBoxState extends State<KobbleBox> {
             ),
             borderRadius: BorderRadius.circular(15),
           ),
-          width: scr_w * 0.208,
-          height: scr_h * 0.370,
+          width: scr_w * 0.190,
+          height: scr_h * 0.300,
           child: Image.asset(
             image,
             width: w,
@@ -192,13 +194,13 @@ class _KobbleBoxState extends State<KobbleBox> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 27),
+          padding: const EdgeInsets.only(top: 25),
           child: Text(
             title,
             style: const TextStyle(
                 fontFamily: Fonts.nunito,
                 fontWeight: FontWeight.w800,
-                fontSize: 35,
+                fontSize: 28,
                 color: Colors1.iconl),
           ),
         )

@@ -5,6 +5,7 @@ import '../../../design_tools/styles.dart';
 import '../../../global_widgets/header1.dart';
 import '../../../models/stepclass.dart';
 import 'kobblebox.dart';
+
 class SkipCustomLogo extends StatefulWidget {
   const SkipCustomLogo({Key? key}) : super(key: key);
 
@@ -37,7 +38,8 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                 child: Container(
                   width: MediaQuery.of(context).size.width / 2,
                   height: MediaQuery.of(context).size.height,
-                  padding: const EdgeInsets.all(81),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 71, vertical: 27),
                   color: const Color(0Xff121313),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +53,7 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                             text: const TextSpan(
                                 style: TextStyle(
                                   fontFamily: Fonts.nunito,
-                                  fontSize: 31,
+                                  fontSize: 27,
                                   fontWeight: FontWeight.bold,
                                   color: Colors1.borderGrey,
                                 ),
@@ -69,7 +71,7 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                                         child: Text("Premium Metal Card",
                                             style: TextStyle(
                                               fontFamily: Fonts.nunito,
-                                              fontSize: 31,
+                                              fontSize: 27,
                                               fontWeight: FontWeight.bold,
                                               color: Colors1.iconl,
                                             )),
@@ -89,7 +91,7 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                                     width: 2.3),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(6.0),
+                                padding: const EdgeInsets.all(5.0),
                                 child: IconButton(
                                     onPressed: () {
                                       Navigator.pop(context);
@@ -108,69 +110,26 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                         child: Center(
                           child: Image.asset(
                             "assets/icons/global_icons/selectCard.png",
-                            width: 429,
-                            height: 487,
+                            width: 390,
+                            height: 400,
                           ),
                         ),
                       ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const KobbleBox()));
-                        },
-                        child: SizedBox(
-                            height: 203,
-                            child: ListView.builder(
-                                itemCount: _customSelectModel.length,
-                                itemBuilder: ((context, i) {
-                                  return
-                                      //_customSelectModel[i].isSelected
-                                      //     ? SizedBox(
-                                      //         width: 500,
-                                      //         height: 120,
-                                      //         child: Card(
-                                      //           color: Colors.transparent,
-                                      //           borderOnForeground: true,
-                                      //           child: ListTile(
-                                      //             onTap: (() {
-                                      //               setState(() {
-                                      //                 _customSelectModel[i]
-                                      //                         .isSelected
-                                      //                     ? false
-                                      //                     : true;
-                                      //               });
-                                      //             }),
-                                      //             leading: const Icon(
-                                      //               Icons.check_circle,
-                                      //               color: Colors1.green,
-                                      //             ),
-                                      //             title: Text(
-                                      //               _customSelectModel[i].title,
-                                      //               style: const TextStyle(
-                                      //                   fontFamily: Fonts.nunito,
-                                      //                   color: Colors1.borderGrey,
-                                      //                   fontSize: 25,
-                                      //                   fontWeight:
-                                      //                       FontWeight.bold),
-                                      //             ),
-                                      //             trailing: Text(
-                                      //               "\u{20B9} ${_customSelectModel[i].price}",
-                                      //               style: const TextStyle(
-                                      //                   fontFamily: Fonts.nunito,
-                                      //                   color: Colors1.borderGrey,
-                                      //                   fontSize: 25,
-                                      //                   fontWeight:
-                                      //                       FontWeight.bold),
-                                      //             ),
-                                      //           ),
-                                      //         ),
-                                      //       )
-                                      //     :
-                                      SizedBox(
-                                    width: 433,
-                                    height: 113,
+                      Expanded(
+                          child: ListView.builder(
+                              itemCount: _customSelectModel.length,
+                              itemBuilder: ((context, i) {
+                                return InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const KobbleBox()));
+                                  },
+                                  child: SizedBox(
+                                    width: 350,
+                                    height: 85,
                                     child: Card(
                                       color: Colors.transparent,
                                       borderOnForeground: true,
@@ -195,7 +154,7 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                                           style: const TextStyle(
                                               fontFamily: Fonts.nunito,
                                               color: Colors1.borderGrey,
-                                              fontSize: 23,
+                                              fontSize: 20,
                                               fontWeight: FontWeight.bold),
                                         ),
                                         trailing: Text(
@@ -203,14 +162,68 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                                           style: const TextStyle(
                                               fontFamily: Fonts.nunito,
                                               color: Colors1.borderGrey,
-                                              fontSize: 23,
+                                              fontSize: 20,
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ),
                                     ),
-                                  );
-                                }))),
-                      )
+                                  ),
+                                );
+                              }))),
+
+                      // InkWell(
+                      //   onTap: () {
+
+                      //   },
+                      //   child: SizedBox(
+                      //       height: 203,
+                      //       child: ListView.builder(
+                      //           itemCount: _customSelectModel.length,
+                      //           itemBuilder: ((context, i) {
+                      //             return SizedBox(
+                      //               width: 380,
+                      //               height: 50,
+                      //               child: Card(
+                      //                 color: Colors.transparent,
+                      //                 borderOnForeground: true,
+                      //                 child: ListTile(
+                      //                   onTap: () {
+                      //                     setState(() {
+                      //                       Navigator.push(
+                      //                           context,
+                      //                           MaterialPageRoute(
+                      //                               builder: (context) =>
+                      //                                   const KobbleBox()));
+                      //                       // _customSelectModel[i]
+                      //                       //         .isSelected
+                      //                       //     ? false
+                      //                       //     : true;
+                      //                     });
+                      //                   },
+                      //                   leading:
+                      //                       const Icon(Icons.circle_outlined),
+                      //                   title: Text(
+                      //                     _customSelectModel[i].title,
+                      //                     style: const TextStyle(
+                      //                         fontFamily: Fonts.nunito,
+                      //                         color: Colors1.borderGrey,
+                      //                         fontSize: 20,
+                      //                         fontWeight: FontWeight.bold),
+                      //                   ),
+                      //                   trailing: Text(
+                      //                     "\u{20B9} ${_customSelectModel[i].price}",
+                      //                     style: const TextStyle(
+                      //                         fontFamily: Fonts.nunito,
+                      //                         color: Colors1.borderGrey,
+                      //                         fontSize: 20,
+                      //                         fontWeight: FontWeight.bold),
+                      //                   ),
+                      //                 ),
+                      //               ),
+                      //             );
+                      //           }))
+                      //           ),
+                      // )
                     ],
                   ),
                 ),
@@ -233,25 +246,25 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                 children: [
                   const Header(),
                   const SizedBox(
-                    height: 123,
+                    height: 80,
                   ),
                   const Text(
                     "Want to customize\nyour card with logo ?",
                     style: TextStyle(
                         fontFamily: Fonts.nunito,
                         color: Color(0XffF0F0F0),
-                        fontSize: 60,
+                        fontSize: 45,
                         fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
-                    height: 67,
+                    height: 57,
                   ),
                   Row(
                     children: [
                       Container(
                         margin: EdgeInsets.zero,
-                        height: 79.3,
-                        width: 311,
+                        height: 67.3,
+                        width: 293,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(40),
                             gradient: const LinearGradient(
@@ -270,7 +283,7 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                                   style: TextStyle(
                                       fontFamily: Fonts.nunito,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 30,
+                                      fontSize: 27,
                                       color: Color(0Xff0F1010))),
                               const SizedBox(
                                 width: 27,
@@ -293,8 +306,8 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                         width: 26.11,
                       ),
                       SizedBox(
-                        height: 79.3,
-                        width: 175.8,
+                        height: 67.3,
+                        width: 150,
                         child: OutlinedButton(
                           onPressed: () {
                             _showCustomDialog(context);
@@ -304,7 +317,7 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                             style: TextStyle(
                                 fontFamily: Fonts.nunito,
                                 color: Colors1.borderGrey,
-                                fontSize: 30,
+                                fontSize: 27,
                                 fontWeight: FontWeight.bold),
                           ),
                           style: OutlinedButton.styleFrom(
@@ -324,8 +337,8 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
           Expanded(
             child: Image.asset(
               "assets/icons/global_icons/customCard.png",
-              width: 617,
-              height: 697.67,
+              width: 560,
+              height: 620.67,
             ),
           ),
         ],

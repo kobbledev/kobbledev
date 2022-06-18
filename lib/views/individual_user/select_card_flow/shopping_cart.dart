@@ -12,6 +12,9 @@ class ShoppingCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenwidth = MediaQuery.of(context).size.width;
+    double screenheight = MediaQuery.of(context).size.height;
+
     List<CartTextModel> _cartText = [
       CartTextModel("Amount", "\u{20B9} 599.00"),
       CartTextModel("Basic", "0.00"),
@@ -21,8 +24,6 @@ class ShoppingCart extends StatelessWidget {
       CartTextModel("GST", "0.00"),
       CartTextModel("Delivery(GST)", "0.00"),
     ];
-    double screenwidth = MediaQuery.of(context).size.width;
-    double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: Header2.stepHeader(screenheight),
       body: Row(
@@ -35,20 +36,20 @@ class ShoppingCart extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(
-                    height: 0.039,
+                    height: 0.070,
                   ),
                   const Text(
                     "Shopping Cart",
                     style: TextStyle(
                         fontFamily: Fonts.nunito,
-                        fontSize: 40,
+                        fontSize: 35,
                         fontWeight: FontWeight.bold,
                         color: Colors1.iconl),
                   ),
                   const Divider(
                     color: Colors1.hgrey,
                     thickness: 2,
-                    height: 53,
+                    height: 43,
                   ),
                   Row(
                     children: [
@@ -63,9 +64,9 @@ class ShoppingCart extends StatelessWidget {
                           borderRadius: BorderRadius.circular(14),
                         ),
                         width: screenwidth * 0.16,
-                        height: screenheight * 0.318,
+                        height: screenheight * 0.300,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          padding: const EdgeInsets.symmetric(horizontal: 14),
                           child: Image.asset(
                             "assets/icons/global_icons/boxcard1.png",
                           ),
@@ -83,7 +84,7 @@ class ShoppingCart extends StatelessWidget {
                                   "Set of Metal card, Stickers, Badge",
                                   style: TextStyle(
                                     fontFamily: Fonts.nunito,
-                                    fontSize: 30,
+                                    fontSize: 26,
                                     fontWeight: FontWeight.bold,
                                     color: Colors1.iconl,
                                   ),
@@ -96,7 +97,7 @@ class ShoppingCart extends StatelessWidget {
                                     icon: const Icon(
                                       Icons.delete,
                                       color: Colors.grey,
-                                      size: 40,
+                                      size: 36,
                                     ))
                               ],
                             ),
@@ -107,7 +108,7 @@ class ShoppingCart extends StatelessWidget {
                               "Style - With Kobble Logo",
                               style: TextStyle(
                                   fontFamily: Fonts.nunito,
-                                  fontSize: 25,
+                                  fontSize: 22,
                                   fontWeight: FontWeight.w600,
                                   color: Color(0Xff9D9F9E)),
                             ),
@@ -118,7 +119,7 @@ class ShoppingCart extends StatelessWidget {
                               "\u{20B9} 599",
                               style: TextStyle(
                                   fontFamily: Fonts.nunito,
-                                  fontSize: 30,
+                                  fontSize: 26,
                                   fontWeight: FontWeight.bold,
                                   color: Color(0Xff9D9F9E)),
                             ),
@@ -136,7 +137,7 @@ class ShoppingCart extends StatelessWidget {
                                     alignment: Alignment.center,
                                     color: const Color(0XffD3D3D3),
                                     width: screenwidth * 0.073 / 3,
-                                    height: 43,
+                                    height: 38,
                                     child: const Text(
                                       "-",
                                       style: TextStyle(fontSize: 25),
@@ -154,7 +155,7 @@ class ShoppingCart extends StatelessWidget {
                                     alignment: Alignment.center,
                                     color: const Color(0XffD3D3D3),
                                     width: screenwidth * 0.073 / 3,
-                                    height: 43,
+                                    height: 38,
                                     child: const Text(
                                       "+",
                                       style: TextStyle(fontSize: 25),
@@ -170,7 +171,7 @@ class ShoppingCart extends StatelessWidget {
                               "Total",
                               style: TextStyle(
                                   fontFamily: Fonts.nunito,
-                                  fontSize: 30,
+                                  fontSize: 27,
                                   fontWeight: FontWeight.bold,
                                   color: Colors1.iconl),
                             ),
@@ -181,7 +182,7 @@ class ShoppingCart extends StatelessWidget {
                               "\u{20B9} 599",
                               style: TextStyle(
                                   fontFamily: Fonts.nunito,
-                                  fontSize: 30,
+                                  fontSize: 27,
                                   fontWeight: FontWeight.bold,
                                   color: Colors1.iconl),
                             ),
@@ -201,7 +202,7 @@ class ShoppingCart extends StatelessWidget {
                       "Add-ons",
                       style: TextStyle(
                           fontFamily: Fonts.nunito,
-                          fontSize: 30,
+                          fontSize: 27,
                           fontWeight: FontWeight.bold,
                           color: Colors1.iconl),
                     ),
@@ -230,7 +231,7 @@ class ShoppingCart extends StatelessWidget {
                             "Subtotal",
                             style: TextStyle(
                                 fontFamily: Fonts.nunito,
-                                fontSize: 25,
+                                fontSize: 23,
                                 fontWeight: FontWeight.bold,
                                 color: Colors1.iconl),
                           ),
@@ -253,7 +254,7 @@ class ShoppingCart extends StatelessWidget {
                                         children: _cartText.map((e) {
                                       return Padding(
                                         padding: EdgeInsets.only(
-                                            bottom: screenheight * 0.027),
+                                            bottom: screenheight * 0.020),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -294,7 +295,7 @@ class ShoppingCart extends StatelessWidget {
                                             "Total",
                                             style: TextStyle(
                                                 fontFamily: Fonts.nunito,
-                                                fontSize: 25,
+                                                fontSize: 23,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors1.iconl),
                                           ),
@@ -302,7 +303,7 @@ class ShoppingCart extends StatelessWidget {
                                             "\u{20B9} 599.00",
                                             style: TextStyle(
                                                 fontFamily: Fonts.nunito,
-                                                fontSize: 25,
+                                                fontSize: 23,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors1.iconl),
                                           )
@@ -337,7 +338,7 @@ class ShoppingCart extends StatelessWidget {
                                                             Fonts.nunito,
                                                         fontWeight:
                                                             FontWeight.w600,
-                                                        fontSize: 30,
+                                                        fontSize: 27,
                                                         color: Colors.black),
                                                   ),
                                                 )),
@@ -353,7 +354,7 @@ class ShoppingCart extends StatelessWidget {
                                                               Fonts.nunito,
                                                           fontWeight:
                                                               FontWeight.bold,
-                                                          fontSize: 26,
+                                                          fontSize: 24,
                                                           color: Colors.white),
                                                     ),
                                                     style: ElevatedButton.styleFrom(
@@ -371,59 +372,6 @@ class ShoppingCart extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        // Positioned(
-                                        //   right: 3,
-                                        //   top: 5,
-                                        //   bottom: 5,
-                                        //   child: SizedBox(
-                                        //     width: 183,
-                                        //     height: 81,
-                                        //     child: ElevatedButton(
-                                        //       onPressed: () {},
-                                        //       child: const Text(
-                                        //         "Apply",
-                                        //         style: TextStyle(
-                                        //             fontFamily: Fonts.nunito,
-                                        //             fontWeight: FontWeight.bold,
-                                        //             fontSize: 26,
-                                        //             color: Colors.white),
-                                        //       ),
-                                        //       style: ElevatedButton.styleFrom(
-                                        //           elevation: 1,
-                                        //           primary:
-                                        //               const Color(0Xff46BDF9),
-                                        //           shape: RoundedRectangleBorder(
-                                        //               borderRadius:
-                                        //                   BorderRadius.circular(
-                                        //                       10))),
-                                        //     ),
-                                        //   ),
-                                        // ),
-                                        // const Positioned(
-                                        //     child: TextField(
-                                        //         decoration: InputDecoration(
-                                        //   border: OutlineInputBorder(),
-                                        // )))
-
-                                        // SizedBox(
-                                        //     height: 81,
-                                        //     child: TextField(
-                                        //       decoration: InputDecoration(
-
-                                        //         border: const OutlineInputBorder(),
-                                        //         focusedBorder:
-                                        //             const OutlineInputBorder(),
-                                        //         contentPadding:
-                                        //             const EdgeInsets.only(left: 41),
-                                        //         hintText: 'Apply Coupon Code',
-                                        //         hintStyle: const TextStyle(
-                                        //             fontFamily: Fonts.nunito,
-                                        //             fontWeight: FontWeight.w600,
-                                        //             fontSize: 24,
-                                        //             color: Colors1.formgrey),
-                                        //       ),
-                                        //     ),
-                                        //   ),
                                       ],
                                     ),
                                   ],
@@ -447,7 +395,7 @@ class ShoppingCart extends StatelessWidget {
                                     style: TextStyle(
                                         fontFamily: Fonts.nunito,
                                         fontWeight: FontWeight.w800,
-                                        fontSize: 25,
+                                        fontSize: 22,
                                         color: Color(0Xff0F1010)),
                                   ),
                                 ),
@@ -470,62 +418,3 @@ class ShoppingCart extends StatelessWidget {
     );
   }
 }
-// child:
-                        //  Column(
-                        //   children: [
-                        //     Container(
-                        //       alignment: Alignment.centerLeft,
-                        //       height: 138,
-                        //       decoration:
-                        //           const BoxDecoration(color: Color(0XffE9F6F0)),
-                        //       child: const Padding(
-                        //         padding: EdgeInsets.only(left: 95),
-                        //         child: Text(
-                        //           "Subtotal",
-                        //           style: TextStyle(
-                        //               fontFamily: Fonts.nunito,
-                        //               fontSize: 30,
-                        //               fontWeight: FontWeight.bold,
-                        //               color: Colors1.iconl),
-                        //         ),
-                        //       ),
-                        //     ),
-                        //     Padding(
-                        //       padding: const EdgeInsets.only(left: 95),
-                        //       child: Column(
-                        //         children: [
-                        //           Expanded(
-                        //               child: Padding(
-                        //             padding: const EdgeInsets.symmetric(vertical: 30),
-                        //             child: ListView.builder(
-                        //                 itemCount: _cartText.length,
-                        //                 itemBuilder: ((context, i) {
-                        //                   return Row(
-                        //                     mainAxisAlignment:
-                        //                         MainAxisAlignment.spaceBetween,
-                        //                     children: [
-                        //                       Text(
-                        //                         _cartText[i].title,
-                        //                         style: const TextStyle(
-                        //                             fontFamily: Fonts.nunito,
-                        //                             fontSize: 25,
-                        //                             fontWeight: FontWeight.w600,
-                        //                             color: Colors1.iconl),
-                        //                       ),
-                        //                       Text(
-                        //                         _cartText[i].rate,
-                        //                         style: const TextStyle(
-                        //                             fontFamily: Fonts.nunito,
-                        //                             fontSize: 25,
-                        //                             fontWeight: FontWeight.w600,
-                        //                             color: Colors1.iconl),
-                        //                       )
-                        //                     ],
-                        //                   );
-                        //                 })),
-                        //           ))
-                        //         ],
-                        //       ),
-                        //     )
-                        //   ],
-                        // ),

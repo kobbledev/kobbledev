@@ -28,7 +28,7 @@ class Address extends StatelessWidget {
                   textAlign: TextAlign.left,
                   style: TextStyle(
                       fontFamily: Fonts.nunito,
-                      fontSize: 50,
+                      fontSize: 40,
                       fontWeight: FontWeight.w800,
                       color: Color(0Xff0F1010)),
                 ),
@@ -64,11 +64,11 @@ class Address extends StatelessWidget {
                                   style: TextStyle(
                                       fontFamily: Fonts.nunito,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 25,
+                                      fontSize: 23,
                                       color: Color(0Xff0F1010))),
                               SizedBox(
-                                height: 58.3,
-                                width: 176.1,
+                                height: 50.3,
+                                width: 156.1,
                                 child: OutlinedButton(
                                   onPressed: () {
                                     //_showCustomDialog(context);
@@ -78,7 +78,7 @@ class Address extends StatelessWidget {
                                     style: TextStyle(
                                         fontFamily: Fonts.nunito,
                                         color: Color(0Xff006432),
-                                        fontSize: 24,
+                                        fontSize: 22,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   style: OutlinedButton.styleFrom(
@@ -88,17 +88,17 @@ class Address extends StatelessWidget {
                                           color: Colors1.green, width: 2.1),
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(29.1))),
+                                              BorderRadius.circular(28))),
                                 ),
                               ),
                             ],
                           ),
                           const SizedBox(
-                            height: 33,
+                            height: 28,
                           ),
                           Container(
                             alignment: Alignment.center,
-                            height: 107,
+                            height: 100,
                             decoration: BoxDecoration(
                                 border: Border.all(
                                   color: const Color(0XffDDDDDD),
@@ -108,26 +108,26 @@ class Address extends StatelessWidget {
                             child: ListTile(
                               leading: SizedBox(
                                 width: 105,
-                                height: 89,
+                                height: 84,
                                 child: Image.asset(
                                   "assets/icons/global_icons/boxcard2.png",
                                   fit: BoxFit.cover,
                                 ),
                               ),
                               title: const Padding(
-                                padding: EdgeInsets.only(left: 47),
+                                padding: EdgeInsets.only(left: 42),
                                 child: Text("Get your kobble box delivered..!",
                                     style: TextStyle(
                                         fontFamily: Fonts.nunito,
                                         //To Do: add font Elephant Regular
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 23,
+                                        fontSize: 21,
                                         color: Color(0Xff0F1010))),
                               ),
                             ),
                           ),
                           const SizedBox(
-                            height: 41,
+                            height: 37,
                           ),
                           Container(
                             decoration: BoxDecoration(
@@ -135,21 +135,21 @@ class Address extends StatelessWidget {
                                   color: Colors1.green,
                                   width: 1.1,
                                 ),
-                                borderRadius: BorderRadius.circular(14.0)),
+                                borderRadius: BorderRadius.circular(13.0)),
                             child: Padding(
-                                padding: const EdgeInsets.all(27),
+                                padding: const EdgeInsets.all(25),
                                 child: ListTile(
                                   title: const Text("John williams",
                                       style: TextStyle(
                                           fontFamily: Fonts.nunito,
                                           //To Do: add font Elephant Regular
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 23,
+                                          fontSize: 21,
                                           color: Color(0Xff0F1010))),
                                   trailing: const Icon(
                                     Icons.check_circle_outline,
                                     color: Colors1.green,
-                                    size: 30,
+                                    size: 28,
                                   ),
                                   subtitle: Padding(
                                     padding: const EdgeInsets.only(top: 13),
@@ -164,7 +164,7 @@ class Address extends StatelessWidget {
                                                 fontFamily: Fonts.nunito,
                                                 //To Do: add font Elephant Regular
                                                 fontWeight: FontWeight.normal,
-                                                fontSize: 23,
+                                                fontSize: 21,
                                                 color: Color(0Xff0F1010))),
                                         Padding(
                                           padding: EdgeInsets.only(top: 7.0),
@@ -173,7 +173,7 @@ class Address extends StatelessWidget {
                                                   fontFamily: Fonts.nunito,
                                                   //To Do: add font Elephant Regular
                                                   fontWeight: FontWeight.normal,
-                                                  fontSize: 23,
+                                                  fontSize: 21,
                                                   color: Color(0Xff0F1010))),
                                         )
                                       ],
@@ -205,7 +205,7 @@ class Address extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 81,
+                      height: 73,
                       child: ElevatedButton(
                         onPressed: () {
                           // Navigator.push(context,
@@ -219,7 +219,7 @@ class Address extends StatelessWidget {
                             style: TextStyle(
                                 fontFamily: Fonts.nunito,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 30,
+                                fontSize: 27,
                                 color: Colors.white),
                           ),
                         ),
