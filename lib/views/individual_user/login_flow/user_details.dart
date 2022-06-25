@@ -1,4 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:kobble_dev/apis/ApiConstants.dart';
 import '../../../../design_tools/colors.dart';
 import '../../../../design_tools/styles.dart';
 import '../../../../global_widgets/header1.dart';
@@ -16,6 +18,8 @@ class _UserFormState extends State<UserForm> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _mobileController = TextEditingController();
+
+
 
 //key
   final GlobalKey<FormState> _userFormkey = GlobalKey<FormState>();
@@ -39,6 +43,9 @@ class _UserFormState extends State<UserForm> {
   Widget build(BuildContext context) {
     double screenwidth = MediaQuery.of(context).size.width;
     double screenheight = MediaQuery.of(context).size.height;
+
+    getUserDetailsApi();
+
 
     return Scaffold(
       backgroundColor: Colors1.bg,
@@ -357,4 +364,16 @@ class _UserFormState extends State<UserForm> {
       ),
     );
   }
+
+  void getUserDetailsApi() async{
+      try {
+        var response = await Dio().get(ApiConstants().BASE_URL+ApiConstants().PRODUCT_URL);
+        _mobileController.text = response.statusCode.toString();
+        print("--->> " + response.toString());
+      } catch (e) {
+        print(e);
+      }
+  }
+
+
 }
