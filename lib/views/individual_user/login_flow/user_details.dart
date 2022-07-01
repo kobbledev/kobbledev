@@ -1,9 +1,15 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:kobble_dev/apis/ApiConstants.dart';
+import 'package:kobble_dev/apis/Urls.dart';
+import 'package:kobble_dev/models/LoginRequest.dart';
+import 'package:kobble_dev/models/SignupRequest.dart';
 import '../../../../design_tools/colors.dart';
 import '../../../../design_tools/styles.dart';
 import '../../../../global_widgets/header1.dart';
+import '../../../models/BaseResponse.dart';
+import '../../../utils/Dialogs.dart';
 import '../select_card_flow/edit_card.dart';
 
 class UserForm extends StatefulWidget {
@@ -16,19 +22,22 @@ class UserForm extends StatefulWidget {
 class _UserFormState extends State<UserForm> {
 //Controllers
   final _nameController = TextEditingController();
+  final _firstnameController = TextEditingController();
+  final _lastnameController = TextEditingController();
   final _emailController = TextEditingController();
   final _mobileController = TextEditingController();
-
-
 
 //key
   final GlobalKey<FormState> _userFormkey = GlobalKey<FormState>();
 
 //FocusNodes
   final _nameFocusNode = FocusNode();
+  final _firstnameFocusNode = FocusNode();
+  final _lastnameFocusNode = FocusNode();
   final _emailFocusNode = FocusNode();
   final _mobileFocusNode = FocusNode();
   final _submitFocusNode = FocusNode();
+
 
   @override
   void dispose() {
@@ -38,13 +47,34 @@ class _UserFormState extends State<UserForm> {
     _submitFocusNode.dispose();
     super.dispose();
   }
+  bool error = false;
+
+
 
   @override
   Widget build(BuildContext context) {
     double screenwidth = MediaQuery.of(context).size.width;
     double screenheight = MediaQuery.of(context).size.height;
 
-    getUserDetailsApi();
+    //getUserDetailsApi();
+    //signInIndividualUser();
+    //getOtpToRegister();
+    // register();
+    void onSubmit(GlobalKey<FormState> userFormkey) {
+      if (userFormkey.currentState!.validate()) {
+
+
+        setState(() { error = false; });
+        register(context, _nameController.text, _lastnameController.text, _emailController.text);
+
+       // error = false;
+
+      }
+      else
+        {
+          error=true;
+        }
+    }
 
 
     return Scaffold(
@@ -118,6 +148,11 @@ class _UserFormState extends State<UserForm> {
                         fontSize: 19,
                         color: Colors1.hgrey),
                   ),
+                  error?const Text("Please fill all fields",style: TextStyle(
+                      fontFamily: Fonts.nunito,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 19,
+                      color: Colors.redAccent),): const Text(""),
                   SizedBox(
                     height: screenheight * 0.053,
                   ),
@@ -165,7 +200,7 @@ class _UserFormState extends State<UserForm> {
                               fillColor: Colors1.formBg,
                               contentPadding: const EdgeInsets.symmetric(
                                   vertical: 27, horizontal: 23),
-                              hintText: 'Name',
+                              hintText: 'First Name',
                               hintStyle: const TextStyle(
                                   fontFamily: Fonts.nunito,
                                   fontWeight: FontWeight.w600,
@@ -174,7 +209,7 @@ class _UserFormState extends State<UserForm> {
                             ),
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Name is Required';
+                                return 'First Name is Required';
                               } else {
                                 return null;
                               }
@@ -186,6 +221,66 @@ class _UserFormState extends State<UserForm> {
                               _nameFocusNode.unfocus();
                               FocusScope.of(context)
                                   .requestFocus(_emailFocusNode);
+                            },
+                          )),
+                          SizedBox(
+                              //width: 500,
+                              child: TextFormField(
+                            cursorColor: Colors1.hgrey,
+                            style: const TextStyle(
+                                fontFamily: Fonts.nunito,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20,
+                                color: Colors1.formgrey),
+                            controller: _lastnameController,
+                            decoration: InputDecoration(
+                              prefixIcon: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 43),
+                                child: Image.asset(
+                                  "assets/icons/login_assets/mail.png",
+                                  width: 28.1,
+                                  height: 23,
+                                ),
+                              ),
+                              suffixIcon: const Padding(
+                                padding: EdgeInsets.only(top: 7.0),
+                                child: Text(
+                                  "*",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 28),
+                                ),
+                              ),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: const OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors1.green, width: 2),
+                              ),
+                              filled: true,
+                              fillColor: Colors1.formBg,
+                              contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 27, horizontal: 23),
+                              hintText: 'Last Name',
+                              hintStyle: const TextStyle(
+                                  fontFamily: Fonts.nunito,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                  color: Colors1.formgrey),
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Last Name is Required';
+                              } else {
+                                return null;
+                              }
+                            },
+                            focusNode: _lastnameFocusNode,
+                            keyboardType: TextInputType.text,
+                            textInputAction: TextInputAction.next,
+                            onFieldSubmitted: (_) {
+                              _emailFocusNode.unfocus();
+                              FocusScope.of(context)
+                                  .requestFocus(_mobileFocusNode);
                             },
                           )),
                           SizedBox(
@@ -225,7 +320,7 @@ class _UserFormState extends State<UserForm> {
                               fillColor: Colors1.formBg,
                               contentPadding: const EdgeInsets.symmetric(
                                   vertical: 27, horizontal: 23),
-                              hintText: 'Email ID',
+                              hintText: 'Email Id',
                               hintStyle: const TextStyle(
                                   fontFamily: Fonts.nunito,
                                   fontWeight: FontWeight.w600,
@@ -234,7 +329,7 @@ class _UserFormState extends State<UserForm> {
                             ),
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Email ID is Required';
+                                return 'Email Id is Required';
                               } else {
                                 return null;
                               }
@@ -244,66 +339,6 @@ class _UserFormState extends State<UserForm> {
                             textInputAction: TextInputAction.next,
                             onFieldSubmitted: (_) {
                               _emailFocusNode.unfocus();
-                              FocusScope.of(context)
-                                  .requestFocus(_mobileFocusNode);
-                            },
-                          )),
-                          SizedBox(
-                              //width: 500,
-                              child: TextFormField(
-                            cursorColor: Colors1.hgrey,
-                            style: const TextStyle(
-                                fontFamily: Fonts.nunito,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                                color: Colors1.formgrey),
-                            controller: _mobileController,
-                            decoration: InputDecoration(
-                              prefixIcon: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 43),
-                                child: Image.asset(
-                                  "assets/icons/login_assets/mail.png",
-                                  width: 28.1,
-                                  height: 23,
-                                ),
-                              ),
-                              suffixIcon: const Padding(
-                                padding: EdgeInsets.only(top: 7.0),
-                                child: Text(
-                                  "*",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 28),
-                                ),
-                              ),
-                              border: const OutlineInputBorder(),
-                              focusedBorder: const OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors1.green, width: 2),
-                              ),
-                              filled: true,
-                              fillColor: Colors1.formBg,
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 27, horizontal: 23),
-                              hintText: 'Phone Number',
-                              hintStyle: const TextStyle(
-                                  fontFamily: Fonts.nunito,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 20,
-                                  color: Colors1.formgrey),
-                            ),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'Phone Number is Required';
-                              } else {
-                                return null;
-                              }
-                            },
-                            focusNode: _mobileFocusNode,
-                            keyboardType: TextInputType.phone,
-                            textInputAction: TextInputAction.next,
-                            onFieldSubmitted: (_) {
-                              _mobileFocusNode.unfocus();
                               FocusScope.of(context)
                                   .requestFocus(_submitFocusNode);
                             },
@@ -317,7 +352,9 @@ class _UserFormState extends State<UserForm> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+
+                                    },
                                     child: const Text(
                                       "Skip >>",
                                       style: TextStyle(
@@ -332,6 +369,7 @@ class _UserFormState extends State<UserForm> {
                                   child: ElevatedButton(
                                     focusNode: _submitFocusNode,
                                     onPressed: () {
+                                      return onSubmit(_userFormkey);
                                       Navigator.push(context, MaterialPageRoute(
                                           builder: ((context) {
                                         return const EditCard();
@@ -366,14 +404,99 @@ class _UserFormState extends State<UserForm> {
   }
 
   void getUserDetailsApi() async{
-      try {
-        var response = await Dio().get(ApiConstants().BASE_URL+ApiConstants().PRODUCT_URL);
-        _mobileController.text = response.statusCode.toString();
-        print("--->> " + response.toString());
-      } catch (e) {
-        print(e);
-      }
+      // try {
+      //   var response = await Dio().post(ApiConstants().BASE_URL+ApiConstants().GET_USER_DETAILS, data: '{}');
+      //   _mobileController.text = response.statusCode.toString();
+      //   print("--->> " + response.toString());
+      // } catch (e) {
+      //   print(e);
+      // }
   }
 
+  void signInIndividualUser(BuildContext context, String enteredMobileNo) async{
+
+    try{
+      var loginRequestObject = LoginRequest();
+      loginRequestObject.countryCode = "+91";
+      loginRequestObject.phoneNumber = "9515135136";
+      loginRequestObject.otpNumber = "1234";
+
+      var response = await Dio().post(ApiConstants.SIGN_IN, data: loginRequestObject);
+      print("---> response"+ response.toString());
+      _mobileController.text = response.statusCode.toString();
+
+    }catch(e){
+      print(e);
+    }
+  }
+
+
+  // OTP to REGISTER API CALL
+  void getOtpToRegister() async{
+
+    try{
+      var loginRequestObject = LoginRequest();
+      loginRequestObject.countryCode = "+91";
+      loginRequestObject.phoneNumber = "9515135136";
+
+      var response = await Dio().post(ApiConstants.GET_OTP_TO_SIGNUP, data: loginRequestObject);
+
+      BaseResponse otpResponse = BaseResponse.fromJson(jsonDecode(response.toString()));
+      _mobileController.text = otpResponse.message.toString();
+      print("---> response "+ otpResponse.message.toString());
+
+    }catch(e){
+      print(e);
+    }
+  }
+
+
+  // OTP TO LOGIN API CALL
+  void getOtpToLogin() async{
+
+    try{
+      var loginRequestObject = LoginRequest();
+      loginRequestObject.countryCode = "+91";
+      loginRequestObject.phoneNumber = "9515135136";
+
+      var response = await Dio().post(ApiConstants.GET_OTP_TO_SIGNIN, data: loginRequestObject);
+
+      BaseResponse otpResponse = BaseResponse.fromJson(jsonDecode(response.toString()));
+      _mobileController.text = otpResponse.message.toString();
+      print("---> response "+ otpResponse.message.toString());
+
+    }catch(e){
+      print(e);
+    }
+  }
+
+
+  // sign up API CALL
+  void register(BuildContext context, String firstName, String lastName, String emailId) async{
+
+    try{
+      var signupRequestObject = signupRequest();
+      signupRequestObject.countryCode = "+91";
+      signupRequestObject.phoneNumber = "9392704000";
+      signupRequestObject.firstName = firstName;
+      signupRequestObject.lastName = lastName;
+      signupRequestObject.email = emailId;
+      signupRequestObject.otpNumber = "12345";
+
+      var response = await Dio().post(ApiConstants.SIGN_UP, data: signupRequestObject);
+
+      BaseResponse baseResponse = BaseResponse.fromJson(jsonDecode(response.toString()));
+      if (baseResponse.status == 1){
+        Navigator.push(context, MaterialPageRoute(
+            builder: ((context) {
+              return const EditCard();
+            })));
+      }else{
+        Dialogs.showAlertDialog(context, baseResponse.message.toString(), 3);
+      }
+    }catch(e){
+      print(e);
+    }
+  }
 
 }

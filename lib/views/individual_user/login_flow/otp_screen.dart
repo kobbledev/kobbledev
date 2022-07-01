@@ -25,13 +25,13 @@ class PinCodeVerificationScreen extends StatefulWidget {
 class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
   TextEditingController textEditingController = TextEditingController();
   // ..text = "123456";
-
   // ignore: close_sinks
   StreamController<ErrorAnimationType>? errorController;
 
   bool hasError = false;
   String currentText = "";
   final formKey = GlobalKey<FormState>();
+
 
   @override
   void initState() {
@@ -42,7 +42,6 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
   @override
   void dispose() {
     errorController!.close();
-
     super.dispose();
   }
 
