@@ -1,13 +1,25 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:kobble_dev/design_tools/colors.dart';
+import 'package:kobble_dev/models/OtpResponse.dart';
 
 import '../../../../design_tools/colors.dart';
 import '../../../../design_tools/styles.dart';
+import '../../../apis/Urls.dart';
+import '../../../apis/apiController.dart';
+import '../../../models/BaseResponse.dart';
+import '../../../models/LoginRequest.dart';
+import '../../../utils/Constants.dart';
+import '../../../utils/Dialogs.dart';
+import '../select_card_flow/edit_card.dart';
 import 'otp_screen.dart';
 
 class SignUp extends StatefulWidget {
+
   const SignUp({Key? key}) : super(key: key);
 
   @override
@@ -15,6 +27,9 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  var statusCode;
+  var statusMessage;
+
   @override
   Widget build(BuildContext context) {
     // double constraints.maxWidth = MediaQuery.of(context).size.width;
@@ -40,14 +55,12 @@ class _SignUpState extends State<SignUp> {
     final _w_mobileFocusNode = FocusNode();
     final _w_submitFocusNode = FocusNode();
 
+
+
     bool _oncheck = true;
     void onSubmit(GlobalKey<FormState> signUpkey) {
       if (signUpkey.currentState!.validate()) {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    PinCodeVerificationScreen(phoneNumber: enteredMobileNo)));
+        callOtpApi(context, enteredMobileNo);
       }
     }
 
@@ -85,7 +98,7 @@ class _SignUpState extends State<SignUp> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Enter your mobile\nnumber.',
+                      'Enter your mobile number.',
                       style: TextStyle(
                           fontFamily: Fonts.nunito,
                           fontSize: 35,
@@ -146,6 +159,7 @@ class _SignUpState extends State<SignUp> {
                                     child: SizedBox(
                                         //  width: constraints.maxWidth * 0.26,
                                         child: TextFormField(
+                                          maxLength: 10,
                                       cursorColor: Colors1.hgrey,
                                       style: const TextStyle(
                                           fontFamily: Fonts.nunito,
@@ -156,11 +170,13 @@ class _SignUpState extends State<SignUp> {
                                       decoration: const InputDecoration(
                                         filled: true,
                                         fillColor: Colors1.formBg,
+
                                         border: OutlineInputBorder(),
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(
                                               color: Colors1.green, width: 2),
                                         ),
+
                                         contentPadding: EdgeInsets.symmetric(
                                             vertical: 23, horizontal: 33),
                                         hintText: 'Mobile Number',
@@ -173,8 +189,10 @@ class _SignUpState extends State<SignUp> {
                                       validator: (value) {
                                         if (value!.isEmpty) {
                                           return 'Mobile is Required';
-                                        } else {
-                                          return null;
+                                        } else if(value.length != 10) {
+                                          return 'Please enter 10 digits';
+                                        } else if(!isNumeric(value)){
+                                          return 'Invalid Mobile Number';
                                         }
                                       },
                                       focusNode: _w_mobileFocusNode,
@@ -268,7 +286,46 @@ class _SignUpState extends State<SignUp> {
       })),
     );
   }
+
+  bool isNumeric(String phoneNumber) {
+    String regexPattern = r'^(?:[1-9])?[0-9]{10,12}$';
+    var regExp = new RegExp(regexPattern);
+
+    if (phoneNumber.length == 0) {
+      return false;
+    } else if (regExp.hasMatch(phoneNumber)) {
+      return true;
+    }
+    return false;
+  }
+
+  void callOtpApi(BuildContext context,
+      String enteredMobileNo) async {
+    try {
+      var loginRequestObject = LoginRequest();
+      loginRequestObject.countryCode = Constants.COUNTRY_CODE;
+      loginRequestObject.phoneNumber = enteredMobileNo.toString();
+      String url = ApiConstants.SEND_OTP ;
+      var response = await Dio().post(url, data: loginRequestObject);
+      print('--->> '+ url);
+      print('--->> '+ response.toString());
+      OtpResponse baseResponse = OtpResponse.fromJson(jsonDecode(response.toString()));
+
+      statusCode = baseResponse.status;
+      statusMessage = baseResponse.message;
+
+      if (baseResponse.status == 1){
+           Dialogs.showAlertDialog(context, statusMessage, baseResponse.isUserAlreadtRegistered); // user already registered
+      }else{
+        Dialogs.showAlertDialog(context, statusMessage, 3);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
 }
+
 
 class Header extends StatelessWidget {
   const Header({
@@ -338,6 +395,8 @@ class Header extends StatelessWidget {
     );
   }
 }
+
+
 /*
  : Scaffold(
             appBar: PreferredSize(
@@ -501,3 +560,9 @@ class Header extends StatelessWidget {
           );
   
  */
+
+
+
+
+
+
