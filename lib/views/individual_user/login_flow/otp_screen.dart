@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:kobble_dev/design_tools/colors.dart';
 
@@ -7,7 +9,16 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../../design_tools/colors.dart';
 import '../../../../design_tools/styles.dart';
 import '../../../../global_widgets/header1.dart';
+import '../../../models/ValidateOtpRequest.dart';
+import '../../../models/otp_response.dart';
+import '../../../utils/api_controller.dart';
+import '../../../utils/api_list.dart';
+import '../../../utils/constants.dart';
+import '../../../utils/helper.dart';
+import '../../../utils/local_storage.dart';
+import '../../../utils/uihints.dart';
 import 'flow_info.dart';
+import 'user_details.dart';
 
 class PinCodeVerificationScreen extends StatefulWidget {
   final String? phoneNumber;
@@ -23,7 +34,7 @@ class PinCodeVerificationScreen extends StatefulWidget {
 }
 
 class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
-  TextEditingController textEditingController = TextEditingController();
+  TextEditingController otpController = TextEditingController();
   // ..text = "123456";
 
   // ignore: close_sinks
@@ -158,7 +169,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                       animationDuration: const Duration(milliseconds: 300),
 
                       errorAnimationController: errorController,
-                      controller: textEditingController,
+                      controller: otpController,
                       keyboardType: TextInputType.number,
                       boxShadows: const [
                         BoxShadow(
@@ -243,10 +254,52 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                             height: 69,
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: ((context) {
-                                  return const FlowInfo();
-                                })));
+                                // Navigator.push(context,
+                                //     MaterialPageRoute(builder: ((context) {
+                                //   return const FlowInfo();
+                                // })));
+                                Map<String, String> headers = {
+                                  Constants.contentType:
+                                      Constants.applicationJson,
+                                };
+                                var request = ValidateOtpRequest();
+                                request.phoneNumber = widget.phoneNumber;
+                                request.countryCode = '+91';
+                                request.otpNumber = otpController.text.trim();
+                                LocalStorage.setStringData(LocalStorage.otp,
+                                    otpController.text.trim());
+                                ApiController.postAPI(Apis.validateOtp, headers,
+                                        jsonEncode(request))
+                                    .then((value) {
+                                  if (value.statusCode == 200 ||
+                                      value.statusCode == 201) {
+                                    if (kDebugMode) {
+                                      print(
+                                          'verify otp Response: ${value.body}');
+                                    }
+                                    OtpResponse response = OtpResponse.fromJson(
+                                        jsonDecode(value.body));
+                                    if (response.status == 1) {
+                                      if (response.isUserAlreadtRegistered == 0) {
+                                        // 0 then user is not registered then call register call
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const FillUserDetails()));
+                                      } else {
+                                        //Already registered Success
+                                        UIHints.showDialogMessage(
+                                            response.message, context, Constants.TYPE_LOGIN_WEB, request.phoneNumber.toString());
+
+                                       
+                                      }
+                                    } else {
+                                      UIHints.showDialogMessage(
+                                          value.message.toString(), context,Constants.TYPE_LOGIN_WEB, request.phoneNumber.toString());
+                                    }
+                                  }
+                                });
                               },
                               child: Image.asset(
                                 "assets/icons/global_icons/arrow-right.png",

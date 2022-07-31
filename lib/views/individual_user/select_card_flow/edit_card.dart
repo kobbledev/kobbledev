@@ -7,14 +7,14 @@ import '../../../design_tools/device_details.dart';
 import 'kobblebox.dart';
 import 'skip_customize.dart';
 
-class EditCard extends StatefulWidget {
-  const EditCard({Key? key}) : super(key: key);
+class BuildCard extends StatefulWidget {
+  const BuildCard({Key? key}) : super(key: key);
 
   @override
-  State<EditCard> createState() => _EditCardState();
+  State<BuildCard> createState() => _BuildCardState();
 }
 
-class _EditCardState extends State<EditCard> {
+class _BuildCardState extends State<BuildCard> {
   Map<int, List<StepCardModel>> map1 = {
     //step 1 details
     0: [

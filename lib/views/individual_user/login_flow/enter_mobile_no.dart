@@ -1,10 +1,19 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:kobble_dev/design_tools/colors.dart';
 
 import '../../../../design_tools/colors.dart';
 import '../../../../design_tools/styles.dart';
+import '../../../models/otp_request.dart';
+import '../../../models/otp_response.dart';
+import '../../../utils/api_controller.dart';
+import '../../../utils/api_list.dart';
+import '../../../utils/constants.dart';
+import '../../../utils/local_storage.dart';
 import 'otp_screen.dart';
 
 class SignUp extends StatefulWidget {
@@ -15,6 +24,8 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  bool _oncheck = false;
+
   @override
   Widget build(BuildContext context) {
     double screenwidth = MediaQuery.of(context).size.width;
@@ -24,9 +35,9 @@ class _SignUpState extends State<SignUp> {
     final _m_mobileController = TextEditingController();
 
     //Web Controllers
-    final _wmobileController = TextEditingController();
+    final phoneNoController = TextEditingController();
 
-    String enteredMobileNo = (_wmobileController.text).trim();
+    String enteredMobileNo = (phoneNoController.text).trim();
 
     //Mobile Formkey
     final GlobalKey<FormState> _m_signupkey = GlobalKey<FormState>();
@@ -40,14 +51,41 @@ class _SignUpState extends State<SignUp> {
     final _w_mobileFocusNode = FocusNode();
     final _w_submitFocusNode = FocusNode();
 
-    bool _oncheck = true;
+    // void onSubmit(GlobalKey<FormState> signUpkey) {
+    //   if (signUpkey.currentState!.validate()) {
+    //     Navigator.push(
+    //         context,
+    //         MaterialPageRoute(
+    //             builder: (context) =>
+    //                 PinCodeVerificationScreen(phoneNumber: enteredMobileNo)));
+    //   }
+    // }
     void onSubmit(GlobalKey<FormState> signUpkey) {
       if (signUpkey.currentState!.validate()) {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    PinCodeVerificationScreen(phoneNumber: enteredMobileNo)));
+        Map<String, String> headers = {
+          Constants.contentType: Constants.applicationJson,
+        };
+        OtpRequest otpRequest = OtpRequest();
+        otpRequest.countryCode = '+91';
+        otpRequest.phoneNumber = phoneNoController.text.trim();
+        LocalStorage.setPhoneNumber(
+            phoneNoController.text.trim(), otpRequest.countryCode!);
+        ApiController.postAPI(Apis.sendOtp, headers, jsonEncode(otpRequest))
+            .then((value) {
+          if (kDebugMode) {
+            print('OTP Response: ${value.body}');
+          }
+          if (value.statusCode == 200 || value.statusCode == 201) {
+            OtpResponse otpResponse =
+                OtpResponse.fromJson(jsonDecode(value.body));
+
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => PinCodeVerificationScreen(
+                        phoneNumber: phoneNoController.text.trim())));
+          }
+        });
       }
     }
 
@@ -157,7 +195,7 @@ class _SignUpState extends State<SignUp> {
                                             fontWeight: FontWeight.w600,
                                             fontSize: 21,
                                             color: Colors1.formgrey),
-                                        controller: _wmobileController,
+                                        controller: phoneNoController,
                                         decoration: const InputDecoration(
                                           filled: true,
                                           fillColor: Colors1.formBg,
