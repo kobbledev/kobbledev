@@ -15,20 +15,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Kobble',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors1.bg,
       ),
       builder: (context, child) => ResponsiveWrapper.builder(
         child,
-        maxWidth: 1920,
+        maxWidth: 2000,
         minWidth: 800,
         defaultScale: true,
         breakpoints: [
           const ResponsiveBreakpoint.autoScale(1024, name: DESKTOP),
           const ResponsiveBreakpoint.autoScale(1440, name: "Web2"),
-          const ResponsiveBreakpoint.resize(1920, name: "Web3"),
+          const ResponsiveBreakpoint.resize(1980, name: "Web3"),
         ],
       ),
       home: const HomePage(),

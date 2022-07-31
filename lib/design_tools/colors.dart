@@ -29,5 +29,10 @@ class Colors1 {
   static const lightgreen = Color(0Xff7EFFD0);
 
   static const borderGrey = Color(0XffF0F0F0);
+
+  //bg
+  // ignore: constant_identifier_names
+  static const BG= LinearGradient(
+                              colors: [Color(0Xff202623), Color(0Xff0F1010)]);
   
 }

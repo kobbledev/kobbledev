@@ -80,6 +80,7 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                                   ),
                                 ]),
                           ),
+                          
                           Padding(
                             padding: const EdgeInsets.only(left: 7.0, top: 3),
                             child: Container(
@@ -230,6 +231,7 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
               ),
             );
           });
+    
     }
 
     return Scaffold(

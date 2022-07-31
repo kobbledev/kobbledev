@@ -5,6 +5,9 @@ class DeviceDetails {
     return 0.127;
   }
 
+   
+
+
   double deviceWidth(BuildContext ctx) {
     return MediaQuery.of(ctx).size.width;
   }

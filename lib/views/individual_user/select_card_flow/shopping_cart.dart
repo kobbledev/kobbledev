@@ -310,6 +310,7 @@ class ShoppingCart extends StatelessWidget {
                                         ],
                                       ),
                                     ),
+                                    
                                     Stack(
                                       children: [
                                         SizedBox(
