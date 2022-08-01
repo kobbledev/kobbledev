@@ -81,10 +81,8 @@ flutter:
     - assets/icons/login_assets/
     - assets/icons/edit_card/
     - assets/icons/edit_card/step1/
-    - assets/icons/edit_card/step2/
     - assets/icons/edit_card/step3/
     - assets/icons/edit_card/step4/
-    - assets/icons/edit_card/step5/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

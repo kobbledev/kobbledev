@@ -24,18 +24,16 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  bool _oncheck = false;
+  int _oncheck = 1; //Default True
+  //Mobile Controllers
+  final _m_mobileController = TextEditingController();
 
+  //Web Controllers
+  final phoneNoController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double screenwidth = MediaQuery.of(context).size.width;
     double screenheight = MediaQuery.of(context).size.height;
-
-    //Mobile Controllers
-    final _m_mobileController = TextEditingController();
-
-    //Web Controllers
-    final phoneNoController = TextEditingController();
 
     String enteredMobileNo = (phoneNoController.text).trim();
 
@@ -245,14 +243,14 @@ class _SignUpState extends State<SignUp> {
                                             InkWell(
                                                 onTap: () {
                                                   setState(() {
-                                                    if (_oncheck == false) {
-                                                      _oncheck = true;
+                                                    if (_oncheck == 0) {
+                                                      _oncheck = 1;
                                                     } else {
-                                                      _oncheck = false;
+                                                      _oncheck = 0;
                                                     }
                                                   });
                                                 },
-                                                child: _oncheck == true
+                                                child: _oncheck == 1 //IF True
                                                     ? const Icon(
                                                         Icons.check_circle,
                                                         color: Colors1.green,

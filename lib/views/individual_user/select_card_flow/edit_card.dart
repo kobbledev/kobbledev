@@ -15,6 +15,7 @@ class BuildCard extends StatefulWidget {
 }
 
 class _BuildCardState extends State<BuildCard> {
+  
   Map<int, List<StepCardModel>> map1 = {
     //step 1 details
     0: [
@@ -110,6 +111,7 @@ class _BuildCardState extends State<BuildCard> {
           title: 'Design 4')
     ],
   };
+  
   late List<StepCardModel> scard = [];
   int _selectedIndex = 0;
 
@@ -627,6 +629,7 @@ class _BuildCardState extends State<BuildCard> {
     }
   }
 }
+
 /*
 SizedBox(
             width: 140,
