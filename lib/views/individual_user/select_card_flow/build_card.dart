@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:kobble_dev/global_widgets/header2.dart';
 import 'package:kobble_dev/models/stepclass.dart';
@@ -15,12 +17,22 @@ class BuildCard extends StatefulWidget {
 }
 
 class _BuildCardState extends State<BuildCard> {
-  
+  late File fileImage;
+  //String? _imgPath;
+
+  //final ImagePicker _picker = ImagePicker();
+
+  var textBtnbg = const Color(0xff252727);
+
+  //late MasterDataResponse masterData;
+
+  String title = "Customize with Logo.";
+
   Map<int, List<StepCardModel>> map1 = {
     //step 1 details
     0: [
       StepCardModel(
-        cardImage: 'assets/icons/edit_card/step1.png',
+        cardImage: 'assets/icons/edit_card/stepCard_1.png',
         image: 'assets/icons/edit_card/step1/qrcode1.png',
         title: 'Design 1',
       ),
@@ -34,84 +46,161 @@ class _BuildCardState extends State<BuildCard> {
           title: 'Design 3'),
       StepCardModel(
           cardImage: 'assets/icons/edit_card/step1.png',
-          image: 'assets/icons/edit_card/step1/qrcode3.png',
+          image: 'assets/icons/edit_card/step1/qrcode4.png',
           title: 'Design 4')
     ],
     1: [
       StepCardModel(
-        cardImage: 'assets/icons/edit_card/step1.png',
+        cardImage: 'assets/icons/edit_card/stepCard_2.png',
         image: 'Algerian',
         title: '',
       ),
       StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
+          cardImage: 'assets/icons/edit_card/stepCard_2.png',
           image: 'Barlow',
           title: ''),
       StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
+          cardImage: 'assets/icons/edit_card/stepCard_2.png',
           image: 'Cocogoose',
           title: ''),
       StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
+          cardImage: 'assets/icons/edit_card/stepCard_2.png',
           image: 'Proxima',
           title: '')
     ],
     2: [
       StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
+          cardImage: 'assets/icons/edit_card/stepCard_3.png',
           image: 'assets/icons/edit_card/step3/step3_1.png',
-          title: 'Left'),
+          title: ''),
       StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
+          cardImage: 'assets/icons/edit_card/stepCard_3.png',
           image: 'assets/icons/edit_card/step3/step3_2.png',
-          title: 'Center'),
+          title: ''),
       StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
+          cardImage: 'assets/icons/edit_card/stepCard_3.png',
           image: 'assets/icons/edit_card/step3/step3_3.png',
-          title: 'Right'),
+          title: ''),
       StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
-          image: 'assets/icons/edit_card/step3/step3_4.png',
-          title: 'Left upside')
+          cardImage: 'assets/icons/edit_card/stepCard_3.png',
+          image: 'assets/icons/edit_card/step3/step3_3.png',
+          title: '')
     ],
     3: [
       StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
-          image: 'assets/icons/edit_card/step4/step4_1.png',
+          cardImage: 'assets/icons/edit_card/stepCard_4.png',
+          image: 'assets/icons/edit_card/step3/step3_1.png',
           title: ''),
       StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
-          image: 'assets/icons/edit_card/step4/step4_2.png',
+          cardImage: 'assets/icons/edit_card/stepCard_4.png',
+          image: 'assets/icons/edit_card/step3/step3_2.png',
           title: ''),
       StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
-          image: 'assets/icons/edit_card/step4/step4_3.png',
+          cardImage: 'assets/icons/edit_card/stepCard_4.png',
+          image: 'assets/icons/edit_card/step3/step3_3.png',
           title: ''),
       StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
-          image: 'assets/icons/edit_card/step4/step4_4.png',
+          cardImage: 'assets/icons/edit_card/stepCard_4.png',
+          image: 'assets/icons/edit_card/step3/step3_3.png',
           title: '')
     ],
-    4: [
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
-          image: 'assets/icons/edit_card/step1/qrcode1.png',
-          title: 'Design 1'),
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
-          image: 'assets/icons/edit_card/step1/qrcode2.png',
-          title: 'Design 2'),
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
-          image: 'assets/icons/edit_card/step1/qrcode1.png',
-          title: 'Design 3'),
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
-          image: 'assets/icons/edit_card/step1/qrcode3.png',
-          title: 'Design 4')
-    ],
   };
-  
+  // Map<int, List<StepCardModel>> map1 = {
+  //   //step 1 details
+  //   0: [
+  //     StepCardModel(
+  //       cardImage: 'assets/icons/edit_card/step1.png',
+  //       image: 'assets/icons/edit_card/step1/qrcode1.png',
+  //       title: 'Design 1',
+  //     ),
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'assets/icons/edit_card/step1/qrcode2.png',
+  //         title: 'Design 2'),
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'assets/icons/edit_card/step1/qrcode1.png',
+  //         title: 'Design 3'),
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'assets/icons/edit_card/step1/qrcode3.png',
+  //         title: 'Design 4')
+  //   ],
+  //   1: [
+  //     StepCardModel(
+  //       cardImage: 'assets/icons/edit_card/step1.png',
+  //       image: 'Algerian',
+  //       title: '',
+  //     ),
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'Barlow',
+  //         title: ''),
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'Cocogoose',
+  //         title: ''),
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'Proxima',
+  //         title: '')
+  //   ],
+  //   2: [
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'assets/icons/edit_card/step3/step3_1.png',
+  //         title: 'Left'),
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'assets/icons/edit_card/step3/step3_2.png',
+  //         title: 'Center'),
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'assets/icons/edit_card/step3/step3_3.png',
+  //         title: 'Right'),
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'assets/icons/edit_card/step3/step3_4.png',
+  //         title: 'Left upside')
+  //   ],
+  //   3: [
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'assets/icons/edit_card/step4/step4_1.png',
+  //         title: ''),
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'assets/icons/edit_card/step4/step4_2.png',
+  //         title: ''),
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'assets/icons/edit_card/step4/step4_3.png',
+  //         title: ''),
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'assets/icons/edit_card/step4/step4_4.png',
+  //         title: '')
+  //   ],
+  //   4: [
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'assets/icons/edit_card/step1/qrcode1.png',
+  //         title: 'Design 1'),
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'assets/icons/edit_card/step1/qrcode2.png',
+  //         title: 'Design 2'),
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'assets/icons/edit_card/step1/qrcode1.png',
+  //         title: 'Design 3'),
+  //     StepCardModel(
+  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         image: 'assets/icons/edit_card/step1/qrcode3.png',
+  //         title: 'Design 4')
+  //   ],
+  // };
+
   late List<StepCardModel> scard = [];
   int _selectedIndex = 0;
 
@@ -310,7 +399,7 @@ class _BuildCardState extends State<BuildCard> {
                                     Text(
                                       "Next",
                                       style: TextStyle(
-                                          fontFamily: Fonts.nunito,
+                                          fontFamily: FontFamily.nunito,
                                           fontWeight: FontWeight.w800,
                                           fontSize: 25,
                                           color: Color(0Xff0F1010)),
@@ -420,7 +509,7 @@ class _BuildCardState extends State<BuildCard> {
                             child: Text(
                               e.image,
                               style: const TextStyle(
-                                fontFamily: Fonts.nunito,
+                                fontFamily: FontFamily.nunito,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 22,
                                 color: Color(0Xff0F1010),
@@ -453,7 +542,7 @@ class _BuildCardState extends State<BuildCard> {
                   Text(
                     e.title,
                     style: const TextStyle(
-                        fontFamily: Fonts.nunito,
+                        fontFamily: FontFamily.nunito,
                         fontSize: 12,
                         color: Color(0Xff0F1010),
                         fontWeight: FontWeight.bold),
@@ -512,7 +601,7 @@ class _BuildCardState extends State<BuildCard> {
           child: Text(
             headerText(),
             style: const TextStyle(
-                fontFamily: Fonts.nunito,
+                fontFamily: FontFamily.nunito,
                 color: Color(0xff0F1010),
                 fontSize: 50,
                 fontWeight: FontWeight.w800),
@@ -569,7 +658,7 @@ class _BuildCardState extends State<BuildCard> {
                 Text(
                   _steps[i].label,
                   style: const TextStyle(
-                      fontFamily: Fonts.nunito,
+                      fontFamily: FontFamily.nunito,
                       fontWeight: FontWeight.w600,
                       fontSize: 17,
                       color: Colors1.iconl),
@@ -598,7 +687,7 @@ class _BuildCardState extends State<BuildCard> {
               Text(
                 title,
                 style: const TextStyle(
-                    fontFamily: Fonts.nunito,
+                    fontFamily: FontFamily.nunito,
                     color: Color(0xff0F1010),
                     fontSize: 30,
                     fontWeight: FontWeight.w800),

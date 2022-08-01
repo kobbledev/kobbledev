@@ -127,7 +127,7 @@ class _SignUpState extends State<SignUp> {
                       const Text(
                         'Enter your mobile\nnumber.',
                         style: TextStyle(
-                            fontFamily: Fonts.nunito,
+                            fontFamily: FontFamily.nunito,
                             fontSize: 35,
                             fontWeight: FontWeight.bold,
                             color: Colors.white),
@@ -138,7 +138,7 @@ class _SignUpState extends State<SignUp> {
                       const Text(
                         'You will receive a 4 digit code for mobile\nnumber verification.',
                         style: TextStyle(
-                            fontFamily: Fonts.nunito,
+                            fontFamily: FontFamily.nunito,
                             fontWeight: FontWeight.normal,
                             fontSize: 19,
                             color: Colors1.hgrey),
@@ -174,7 +174,7 @@ class _SignUpState extends State<SignUp> {
                                             title: const Text(
                                               " India",
                                               style: TextStyle(
-                                                  fontFamily: Fonts.nunito,
+                                                  fontFamily: FontFamily.nunito,
                                                   fontWeight: FontWeight.w600,
                                                   fontSize: 21,
                                                   color: Colors.white),
@@ -189,7 +189,7 @@ class _SignUpState extends State<SignUp> {
                                           child: TextFormField(
                                         cursorColor: Colors1.hgrey,
                                         style: const TextStyle(
-                                            fontFamily: Fonts.nunito,
+                                            fontFamily: FontFamily.nunito,
                                             fontWeight: FontWeight.w600,
                                             fontSize: 21,
                                             color: Colors1.formgrey),
@@ -206,7 +206,7 @@ class _SignUpState extends State<SignUp> {
                                               vertical: 23, horizontal: 33),
                                           hintText: 'Mobile Number',
                                           hintStyle: TextStyle(
-                                              fontFamily: Fonts.nunito,
+                                              fontFamily: FontFamily.nunito,
                                               fontWeight: FontWeight.w600,
                                               fontSize: 21,
                                               color: Colors1.formgrey),
@@ -262,7 +262,7 @@ class _SignUpState extends State<SignUp> {
                                             const Text(
                                               " I agree to terms - privacy policy and\n allow access to my information.",
                                               style: TextStyle(
-                                                  fontFamily: Fonts.nunito,
+                                                  fontFamily: FontFamily.nunito,
                                                   fontWeight: FontWeight.normal,
                                                   fontSize: 18,
                                                   color: Colors1.hgrey),
@@ -295,6 +295,69 @@ class _SignUpState extends State<SignUp> {
                                   ),
                                   const SizedBox(
                                     height: 37,
+                                  ),
+                                  SizedBox(
+                                    width: constraints1.maxWidth * 0.9,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          margin: EdgeInsets.zero,
+                                          height: 70,
+                                          width: 320,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(45),
+                                          ),
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              // need to ccreate corroparate signup and redirect
+                                              // _sharedPreferences.setString(
+                                              //     Constants.userType,
+                                              //     Constants.typeCorporate);
+                                              // Navigator.pushNamed(
+                                              //     context, AppRoutes.signup);
+                                              // setState(() {
+                                              //   addButton = true;
+                                              // });
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                primary:
+                                                    const Color(0xff3427E1),
+                                                // shadowColor: Colors.transparent,
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            45))),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Image.asset(
+                                                  'assets/icons/global_icons/icon_corp.png',
+                                                  width: 37,
+                                                  height: 37,
+                                                  alignment: Alignment.center,
+                                                ),
+                                                const Text(
+                                                  " Register as Corporate user ?",
+                                                  style: TextStyle(
+                                                    fontFamily:
+                                                        FontFamily.nunito,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 17,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               );
@@ -334,7 +397,7 @@ class Header extends StatelessWidget {
                 const TextSpan(
                   text: 'K',
                   style: TextStyle(
-                      fontFamily: Fonts.nunito,
+                      fontFamily: FontFamily.nunito,
                       fontWeight: FontWeight.bold,
                       fontSize: 38,
                       color: Colors.white),
@@ -369,7 +432,7 @@ class Header extends StatelessWidget {
                 const TextSpan(
                   text: 'BBLE',
                   style: TextStyle(
-                      fontFamily: Fonts.nunito,
+                      fontFamily: FontFamily.nunito,
                       fontWeight: FontWeight.bold,
                       fontSize: 38,
                       color: Colors.white),

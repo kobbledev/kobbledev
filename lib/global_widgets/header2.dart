@@ -4,10 +4,10 @@ import '../design_tools/colors.dart';
 import '../design_tools/device_details.dart';
 import '../design_tools/styles.dart';
 
-class Header2{
- static PreferredSize stepHeader(double screenheight) {
+class Header2 {
+  static PreferredSize stepHeader(double screenheight) {
     return PreferredSize(
-      preferredSize:  Size.fromHeight(screenheight * DeviceDetails.appbarHeight),
+      preferredSize: Size.fromHeight(screenheight * DeviceDetails.appbarHeight),
       child: Center(
         child: AppBar(
           toolbarHeight: (screenheight * DeviceDetails.appbarHeight) - 5,
@@ -28,7 +28,7 @@ class Header2{
                     TextSpan(
                       text: 'K',
                       style: TextStyle(
-                          fontFamily: Fonts.nunito,
+                          fontFamily: FontFamily.nunito,
                           fontWeight: FontWeight.bold,
                           fontSize: 38,
                           color: Color(0Xff0F1010)),
@@ -36,7 +36,7 @@ class Header2{
                     TextSpan(
                         text: 'O',
                         style: TextStyle(
-                          fontFamily: Fonts.nunito,
+                          fontFamily: FontFamily.nunito,
                           fontWeight: FontWeight.w900,
                           fontSize: 45,
                           color: Colors1.green,
@@ -44,7 +44,7 @@ class Header2{
                     TextSpan(
                       text: 'BBLE',
                       style: TextStyle(
-                          fontFamily: Fonts.nunito,
+                          fontFamily: FontFamily.nunito,
                           fontWeight: FontWeight.bold,
                           fontSize: 38,
                           color: Color(0Xff0F1010)),
@@ -78,5 +78,4 @@ class Header2{
       ),
     );
   }
-
 }

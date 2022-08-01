@@ -109,7 +109,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                   const Text(
                     'OTP\nVerification.',
                     style: TextStyle(
-                        fontFamily: Fonts.nunito,
+                        fontFamily: FontFamily.nunito,
                         fontSize: 35,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
@@ -120,7 +120,7 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                   Text(
                     'Enter the OTP sent to +91 ${widget.phoneNumber}',
                     style: const TextStyle(
-                        fontFamily: Fonts.nunito,
+                        fontFamily: FontFamily.nunito,
                         fontWeight: FontWeight.normal,
                         fontSize: 19,
                         color: Color(0Xff9D9F9E)),
@@ -133,13 +133,13 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                     child: PinCodeTextField(
                       autoFocus: true,
                       textStyle: const TextStyle(
-                          fontFamily: Fonts.nunito,
+                          fontFamily: FontFamily.nunito,
                           color: Colors.white,
                           fontSize: 40,
                           fontWeight: FontWeight.w300),
                       appContext: context,
                       pastedTextStyle: const TextStyle(
-                          fontFamily: Fonts.nunito,
+                          fontFamily: FontFamily.nunito,
                           color: Colors.white,
                           fontSize: 40,
                           fontWeight: FontWeight.w300),
@@ -212,14 +212,14 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                               Text(
                                 "Didn't receive the OTP ? ",
                                 style: TextStyle(
-                                    fontFamily: Fonts.nunito,
+                                    fontFamily: FontFamily.nunito,
                                     color: Colors1.borderGrey,
                                     fontSize: 19,
                                     fontWeight: FontWeight.w400),
                               ),
                               Text(" Resend",
                                   style: TextStyle(
-                                    fontFamily: Fonts.nunito,
+                                    fontFamily: FontFamily.nunito,
                                     color: Colors.green,
                                     fontSize: 19,
                                     fontWeight: FontWeight.w600,
@@ -280,7 +280,8 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                                     OtpResponse response = OtpResponse.fromJson(
                                         jsonDecode(value.body));
                                     if (response.status == 1) {
-                                      if (response.isUserAlreadtRegistered == 0) {
+                                      if (response.isUserAlreadtRegistered ==
+                                          0) {
                                         // 0 then user is not registered then call register call
                                         Navigator.push(
                                             context,
@@ -290,13 +291,17 @@ class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
                                       } else {
                                         //Already registered Success
                                         UIHints.showDialogMessage(
-                                            response.message, context, Constants.TYPE_LOGIN_WEB, request.phoneNumber.toString());
-
-                                       
+                                            response.message,
+                                            context,
+                                            Constants.TYPE_LOGIN_WEB,
+                                            request.phoneNumber.toString());
                                       }
                                     } else {
                                       UIHints.showDialogMessage(
-                                          value.message.toString(), context,Constants.TYPE_LOGIN_WEB, request.phoneNumber.toString());
+                                          value.message.toString(),
+                                          context,
+                                          Constants.TYPE_LOGIN_WEB,
+                                          request.phoneNumber.toString());
                                     }
                                   }
                                 });

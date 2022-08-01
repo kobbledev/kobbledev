@@ -41,7 +41,7 @@ class ShoppingCart extends StatelessWidget {
                   const Text(
                     "Shopping Cart",
                     style: TextStyle(
-                        fontFamily: Fonts.nunito,
+                        fontFamily: FontFamily.nunito,
                         fontSize: 35,
                         fontWeight: FontWeight.bold,
                         color: Colors1.iconl),
@@ -83,7 +83,7 @@ class ShoppingCart extends StatelessWidget {
                                 const Text(
                                   "Set of Metal card, Stickers, Badge",
                                   style: TextStyle(
-                                    fontFamily: Fonts.nunito,
+                                    fontFamily: FontFamily.nunito,
                                     fontSize: 26,
                                     fontWeight: FontWeight.bold,
                                     color: Colors1.iconl,
@@ -107,7 +107,7 @@ class ShoppingCart extends StatelessWidget {
                             const Text(
                               "Style - With Kobble Logo",
                               style: TextStyle(
-                                  fontFamily: Fonts.nunito,
+                                  fontFamily: FontFamily.nunito,
                                   fontSize: 22,
                                   fontWeight: FontWeight.w600,
                                   color: Color(0Xff9D9F9E)),
@@ -118,7 +118,7 @@ class ShoppingCart extends StatelessWidget {
                             const Text(
                               "\u{20B9} 599",
                               style: TextStyle(
-                                  fontFamily: Fonts.nunito,
+                                  fontFamily: FontFamily.nunito,
                                   fontSize: 26,
                                   fontWeight: FontWeight.bold,
                                   color: Color(0Xff9D9F9E)),
@@ -170,7 +170,7 @@ class ShoppingCart extends StatelessWidget {
                             const Text(
                               "Total",
                               style: TextStyle(
-                                  fontFamily: Fonts.nunito,
+                                  fontFamily: FontFamily.nunito,
                                   fontSize: 27,
                                   fontWeight: FontWeight.bold,
                                   color: Colors1.iconl),
@@ -181,7 +181,7 @@ class ShoppingCart extends StatelessWidget {
                             const Text(
                               "\u{20B9} 599",
                               style: TextStyle(
-                                  fontFamily: Fonts.nunito,
+                                  fontFamily: FontFamily.nunito,
                                   fontSize: 27,
                                   fontWeight: FontWeight.bold,
                                   color: Colors1.iconl),
@@ -201,7 +201,7 @@ class ShoppingCart extends StatelessWidget {
                     child: Text(
                       "Add-ons",
                       style: TextStyle(
-                          fontFamily: Fonts.nunito,
+                          fontFamily: FontFamily.nunito,
                           fontSize: 27,
                           fontWeight: FontWeight.bold,
                           color: Colors1.iconl),
@@ -230,7 +230,7 @@ class ShoppingCart extends StatelessWidget {
                           child: const Text(
                             "Subtotal",
                             style: TextStyle(
-                                fontFamily: Fonts.nunito,
+                                fontFamily: FontFamily.nunito,
                                 fontSize: 23,
                                 fontWeight: FontWeight.bold,
                                 color: Colors1.iconl),
@@ -262,7 +262,7 @@ class ShoppingCart extends StatelessWidget {
                                             Text(
                                               e.title,
                                               style: const TextStyle(
-                                                  fontFamily: Fonts.nunito,
+                                                  fontFamily: FontFamily.nunito,
                                                   fontSize: 17,
                                                   fontWeight: FontWeight.w600,
                                                   color: Colors1.iconl),
@@ -270,7 +270,7 @@ class ShoppingCart extends StatelessWidget {
                                             Text(
                                               e.rate,
                                               style: const TextStyle(
-                                                  fontFamily: Fonts.nunito,
+                                                  fontFamily: FontFamily.nunito,
                                                   fontSize: 17,
                                                   fontWeight: FontWeight.w600,
                                                   color: Colors1.iconl),
@@ -294,7 +294,7 @@ class ShoppingCart extends StatelessWidget {
                                           Text(
                                             "Total",
                                             style: TextStyle(
-                                                fontFamily: Fonts.nunito,
+                                                fontFamily: FontFamily.nunito,
                                                 fontSize: 23,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors1.iconl),
@@ -302,7 +302,7 @@ class ShoppingCart extends StatelessWidget {
                                           Text(
                                             "\u{20B9} 599.00",
                                             style: TextStyle(
-                                                fontFamily: Fonts.nunito,
+                                                fontFamily: FontFamily.nunito,
                                                 fontSize: 23,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors1.iconl),
@@ -310,7 +310,6 @@ class ShoppingCart extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                    
                                     Stack(
                                       children: [
                                         SizedBox(
@@ -336,7 +335,7 @@ class ShoppingCart extends StatelessWidget {
                                                     cursorColor: Colors.black,
                                                     style: TextStyle(
                                                         fontFamily:
-                                                            Fonts.nunito,
+                                                            FontFamily.nunito,
                                                         fontWeight:
                                                             FontWeight.w600,
                                                         fontSize: 27,
@@ -352,7 +351,7 @@ class ShoppingCart extends StatelessWidget {
                                                       "Apply",
                                                       style: TextStyle(
                                                           fontFamily:
-                                                              Fonts.nunito,
+                                                              FontFamily.nunito,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           fontSize: 24,
@@ -394,7 +393,7 @@ class ShoppingCart extends StatelessWidget {
                                   child: Text(
                                     "Proceed",
                                     style: TextStyle(
-                                        fontFamily: Fonts.nunito,
+                                        fontFamily: FontFamily.nunito,
                                         fontWeight: FontWeight.w800,
                                         fontSize: 22,
                                         color: Color(0Xff0F1010)),

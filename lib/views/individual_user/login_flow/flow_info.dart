@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../design_tools/colors.dart';
 import '../../../../design_tools/styles.dart';
 import '../../../../global_widgets/header1.dart';
-import '../select_card_flow/edit_card.dart';
+import '../select_card_flow/build_card.dart';
 import 'user_details.dart';
 
 class FlowInfo extends StatefulWidget {
@@ -52,7 +52,7 @@ class _FlowInfoState extends State<FlowInfo> {
                       const Text(
                         "A few simple\nsteps make your\nkobble card.",
                         style: TextStyle(
-                            fontFamily: Fonts.nunito,
+                            fontFamily: FontFamily.nunito,
                             color: Color(0XffF0F0F0),
                             fontSize: 47,
                             fontWeight: FontWeight.bold),
@@ -80,7 +80,7 @@ class _FlowInfoState extends State<FlowInfo> {
                             children: [
                               const Text("Happy to go",
                                   style: TextStyle(
-                                      fontFamily: Fonts.nunito,
+                                      fontFamily: FontFamily.nunito,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 27,
                                       color: Color(0Xff0F1010))),

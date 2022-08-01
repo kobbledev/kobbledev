@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../design_tools/styles.dart';
@@ -25,7 +24,7 @@ class Header extends StatelessWidget {
                 const TextSpan(
                   text: 'K',
                   style: TextStyle(
-                      fontFamily: Fonts.nunito,
+                      fontFamily: FontFamily.nunito,
                       fontWeight: FontWeight.bold,
                       fontSize: 38,
                       color: Colors.white),
@@ -60,7 +59,7 @@ class Header extends StatelessWidget {
                 const TextSpan(
                   text: 'BBLE',
                   style: TextStyle(
-                      fontFamily: Fonts.nunito,
+                      fontFamily: FontFamily.nunito,
                       fontWeight: FontWeight.bold,
                       fontSize: 38,
                       color: Colors.white),

@@ -27,7 +27,7 @@ class Address extends StatelessWidget {
                   "Thanks\nfor Shopping !",
                   textAlign: TextAlign.left,
                   style: TextStyle(
-                      fontFamily: Fonts.nunito,
+                      fontFamily: FontFamily.nunito,
                       fontSize: 40,
                       fontWeight: FontWeight.w800,
                       color: Color(0Xff0F1010)),
@@ -62,7 +62,7 @@ class Address extends StatelessWidget {
                             children: [
                               const Text("Select Delivery Address",
                                   style: TextStyle(
-                                      fontFamily: Fonts.nunito,
+                                      fontFamily: FontFamily.nunito,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 23,
                                       color: Color(0Xff0F1010))),
@@ -76,7 +76,7 @@ class Address extends StatelessWidget {
                                   child: const Text(
                                     "Add New",
                                     style: TextStyle(
-                                        fontFamily: Fonts.nunito,
+                                        fontFamily: FontFamily.nunito,
                                         color: Color(0Xff006432),
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold),
@@ -118,7 +118,7 @@ class Address extends StatelessWidget {
                                 padding: EdgeInsets.only(left: 42),
                                 child: Text("Get your kobble box delivered..!",
                                     style: TextStyle(
-                                        fontFamily: Fonts.nunito,
+                                        fontFamily: FontFamily.nunito,
                                         //To Do: add font Elephant Regular
                                         fontWeight: FontWeight.bold,
                                         fontSize: 21,
@@ -141,7 +141,7 @@ class Address extends StatelessWidget {
                                 child: ListTile(
                                   title: const Text("John williams",
                                       style: TextStyle(
-                                          fontFamily: Fonts.nunito,
+                                          fontFamily: FontFamily.nunito,
                                           //To Do: add font Elephant Regular
                                           fontWeight: FontWeight.bold,
                                           fontSize: 21,
@@ -161,7 +161,7 @@ class Address extends StatelessWidget {
                                             "2-9-46/7,Bondada Street, Near Perlvari jn vizag - 500400",
                                             maxLines: 2,
                                             style: TextStyle(
-                                                fontFamily: Fonts.nunito,
+                                                fontFamily: FontFamily.nunito,
                                                 //To Do: add font Elephant Regular
                                                 fontWeight: FontWeight.normal,
                                                 fontSize: 21,
@@ -170,7 +170,7 @@ class Address extends StatelessWidget {
                                           padding: EdgeInsets.only(top: 7.0),
                                           child: Text("Mobile - 99 234 45 789",
                                               style: TextStyle(
-                                                  fontFamily: Fonts.nunito,
+                                                  fontFamily: FontFamily.nunito,
                                                   //To Do: add font Elephant Regular
                                                   fontWeight: FontWeight.normal,
                                                   fontSize: 21,
@@ -217,7 +217,7 @@ class Address extends StatelessWidget {
                           child: Text(
                             "Deliver Here",
                             style: TextStyle(
-                                fontFamily: Fonts.nunito,
+                                fontFamily: FontFamily.nunito,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 27,
                                 color: Colors.white),

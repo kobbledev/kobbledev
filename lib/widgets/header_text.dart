@@ -18,7 +18,7 @@ class KobbleHeader extends StatelessWidget {
           TextSpan(
             text: 'K',
             style: TextStyle(
-                fontFamily: Fonts.nunito,
+                fontFamily: FontFamily.nunito,
                 fontWeight: FontWeight.bold,
                 fontSize: 38,
                 color: Colors.white),
@@ -26,7 +26,7 @@ class KobbleHeader extends StatelessWidget {
           TextSpan(
               text: 'O',
               style: TextStyle(
-                fontFamily: Fonts.nunito,
+                fontFamily: FontFamily.nunito,
                 fontWeight: FontWeight.w900,
                 fontSize: 45,
                 color: Colors1.green,
@@ -34,7 +34,7 @@ class KobbleHeader extends StatelessWidget {
           TextSpan(
             text: 'BBLE',
             style: TextStyle(
-                fontFamily: Fonts.nunito,
+                fontFamily: FontFamily.nunito,
                 fontWeight: FontWeight.bold,
                 fontSize: 38,
                 color: Colors.white),

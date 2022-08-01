@@ -15,7 +15,7 @@ import '../../../utils/api_list.dart';
 import '../../../utils/constants.dart';
 import '../../../utils/device/device_utils.dart';
 import '../../../utils/local_storage.dart';
-import '../select_card_flow/edit_card.dart';
+import '../select_card_flow/build_card.dart';
 import 'flow_info.dart';
 
 class FillUserDetails extends StatefulWidget {
@@ -192,7 +192,7 @@ class _FillUserDetailsState extends State<FillUserDetails> {
                     const Text(
                       'Please enter your Name &\nEmail ID.',
                       style: TextStyle(
-                          fontFamily: Fonts.nunito,
+                          fontFamily: FontFamily.nunito,
                           fontSize: 33,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
@@ -203,7 +203,7 @@ class _FillUserDetailsState extends State<FillUserDetails> {
                     const Text(
                       'These fields are displaying on the kobble card.',
                       style: TextStyle(
-                          fontFamily: Fonts.nunito,
+                          fontFamily: FontFamily.nunito,
                           fontWeight: FontWeight.normal,
                           fontSize: 19,
                           color: Colors1.hgrey),
@@ -223,7 +223,7 @@ class _FillUserDetailsState extends State<FillUserDetails> {
                                 child: TextFormField(
                               cursorColor: Colors1.hgrey,
                               style: const TextStyle(
-                                  fontFamily: Fonts.nunito,
+                                  fontFamily: FontFamily.nunito,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 20,
                                   color: Colors1.formgrey),
@@ -256,7 +256,7 @@ class _FillUserDetailsState extends State<FillUserDetails> {
                                     vertical: 27, horizontal: 23),
                                 hintText: 'First Name',
                                 hintStyle: const TextStyle(
-                                    fontFamily: Fonts.nunito,
+                                    fontFamily: FontFamily.nunito,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 20,
                                     color: Colors1.formgrey),
@@ -276,7 +276,7 @@ class _FillUserDetailsState extends State<FillUserDetails> {
                                 child: TextFormField(
                               cursorColor: Colors1.hgrey,
                               style: const TextStyle(
-                                  fontFamily: Fonts.nunito,
+                                  fontFamily: FontFamily.nunito,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 20,
                                   color: Colors1.formgrey),
@@ -309,7 +309,7 @@ class _FillUserDetailsState extends State<FillUserDetails> {
                                     vertical: 27, horizontal: 23),
                                 hintText: 'Last Name',
                                 hintStyle: const TextStyle(
-                                    fontFamily: Fonts.nunito,
+                                    fontFamily: FontFamily.nunito,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 20,
                                     color: Colors1.formgrey),
@@ -329,7 +329,7 @@ class _FillUserDetailsState extends State<FillUserDetails> {
                                 child: TextFormField(
                               cursorColor: Colors1.hgrey,
                               style: const TextStyle(
-                                  fontFamily: Fonts.nunito,
+                                  fontFamily: FontFamily.nunito,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 20,
                                   color: Colors1.formgrey),
@@ -362,7 +362,7 @@ class _FillUserDetailsState extends State<FillUserDetails> {
                                     vertical: 27, horizontal: 23),
                                 hintText: 'Email Id',
                                 hintStyle: const TextStyle(
-                                    fontFamily: Fonts.nunito,
+                                    fontFamily: FontFamily.nunito,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 20,
                                     color: Colors1.formgrey),
@@ -399,7 +399,7 @@ class _FillUserDetailsState extends State<FillUserDetails> {
                                       child: const Text(
                                         "Skip >>",
                                         style: TextStyle(
-                                            fontFamily: Fonts.nunito,
+                                            fontFamily: FontFamily.nunito,
                                             fontWeight: FontWeight.w600,
                                             fontSize: 21,
                                             color: Colors1.green),

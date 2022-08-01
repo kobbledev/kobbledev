@@ -52,7 +52,7 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                             textAlign: TextAlign.left,
                             text: const TextSpan(
                                 style: TextStyle(
-                                  fontFamily: Fonts.nunito,
+                                  fontFamily: FontFamily.nunito,
                                   fontSize: 27,
                                   fontWeight: FontWeight.bold,
                                   color: Colors1.borderGrey,
@@ -70,7 +70,7 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                                             horizontal: 11, vertical: 3),
                                         child: Text("Premium Metal Card",
                                             style: TextStyle(
-                                              fontFamily: Fonts.nunito,
+                                              fontFamily: FontFamily.nunito,
                                               fontSize: 27,
                                               fontWeight: FontWeight.bold,
                                               color: Colors1.iconl,
@@ -80,7 +80,6 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                                   ),
                                 ]),
                           ),
-                          
                           Padding(
                             padding: const EdgeInsets.only(left: 7.0, top: 3),
                             child: Container(
@@ -153,7 +152,7 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                                         title: Text(
                                           _customSelectModel[i].title,
                                           style: const TextStyle(
-                                              fontFamily: Fonts.nunito,
+                                              fontFamily: FontFamily.nunito,
                                               color: Colors1.borderGrey,
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold),
@@ -161,7 +160,7 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                                         trailing: Text(
                                           "\u{20B9} ${_customSelectModel[i].price}",
                                           style: const TextStyle(
-                                              fontFamily: Fonts.nunito,
+                                              fontFamily: FontFamily.nunito,
                                               color: Colors1.borderGrey,
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold),
@@ -231,7 +230,6 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
               ),
             );
           });
-    
     }
 
     return Scaffold(
@@ -253,7 +251,7 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                   const Text(
                     "Want to customize\nyour card with logo ?",
                     style: TextStyle(
-                        fontFamily: Fonts.nunito,
+                        fontFamily: FontFamily.nunito,
                         color: Color(0XffF0F0F0),
                         fontSize: 45,
                         fontWeight: FontWeight.bold),
@@ -283,7 +281,7 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                             children: [
                               const Text("Happy to go",
                                   style: TextStyle(
-                                      fontFamily: Fonts.nunito,
+                                      fontFamily: FontFamily.nunito,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 27,
                                       color: Color(0Xff0F1010))),
@@ -317,7 +315,7 @@ class _SkipCustomLogoState extends State<SkipCustomLogo> {
                           child: const Text(
                             "Skip",
                             style: TextStyle(
-                                fontFamily: Fonts.nunito,
+                                fontFamily: FontFamily.nunito,
                                 color: Colors1.borderGrey,
                                 fontSize: 27,
                                 fontWeight: FontWeight.bold),

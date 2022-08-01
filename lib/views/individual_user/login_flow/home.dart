@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                             title: const Text(
                               'Instant',
                               style: TextStyle(
-                                  fontFamily: Fonts.nunito,
+                                  fontFamily: FontFamily.nunito,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 30,
                                   color: Colors1.green),
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                             subtitle: const Text(
                               'Share anything with a tap or scan.',
                               style: TextStyle(
-                                fontFamily: Fonts.nunito,
+                                fontFamily: FontFamily.nunito,
                                 fontWeight: FontWeight.normal,
                                 fontSize: 18,
                                 color: Colors1.hgrey,
@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                             title: const Text(
                               'Easy',
                               style: TextStyle(
-                                  fontFamily: Fonts.nunito,
+                                  fontFamily: FontFamily.nunito,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 30,
                                   color: Colors1.green),
@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                             subtitle: const Text(
                               'Others don\'t need an app.',
                               style: TextStyle(
-                                fontFamily: Fonts.nunito,
+                                fontFamily: FontFamily.nunito,
                                 fontWeight: FontWeight.normal,
                                 fontSize: 18,
                                 color: Colors1.hgrey,
@@ -121,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                             title: const Text(
                               'Compatible',
                               style: TextStyle(
-                                  fontFamily: Fonts.nunito,
+                                  fontFamily: FontFamily.nunito,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 30,
                                   color: Colors1.green),
@@ -129,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                             subtitle: const Text(
                               'Works on Apple and Android.',
                               style: TextStyle(
-                                fontFamily: Fonts.nunito,
+                                fontFamily: FontFamily.nunito,
                                 fontWeight: FontWeight.normal,
                                 fontSize: 18,
                                 color: Colors1.hgrey,
@@ -165,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                               TextSpan(
                                 text: 'K',
                                 style: TextStyle(
-                                    fontFamily: Fonts.nunito,
+                                    fontFamily: FontFamily.nunito,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 38,
                                     color: Colors.white),
@@ -173,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                               TextSpan(
                                   text: 'O',
                                   style: TextStyle(
-                                    fontFamily: Fonts.nunito,
+                                    fontFamily: FontFamily.nunito,
                                     fontWeight: FontWeight.w900,
                                     fontSize: 45,
                                     color: Colors1.green,
@@ -181,7 +181,7 @@ class _HomePageState extends State<HomePage> {
                               TextSpan(
                                 text: 'BBLE',
                                 style: TextStyle(
-                                    fontFamily: Fonts.nunito,
+                                    fontFamily: FontFamily.nunito,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 38,
                                     color: Colors.white),
@@ -195,7 +195,7 @@ class _HomePageState extends State<HomePage> {
                                 child: const Text(
                                   "Products",
                                   style: TextStyle(
-                                      fontFamily: Fonts.nunito,
+                                      fontFamily: FontFamily.nunito,
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400,
                                       color: Colors.white),
@@ -206,7 +206,7 @@ class _HomePageState extends State<HomePage> {
                                 child: const Text(
                                   "About us",
                                   style: TextStyle(
-                                      fontFamily: Fonts.nunito,
+                                      fontFamily: FontFamily.nunito,
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400,
                                       color: Colors.white),
@@ -217,7 +217,7 @@ class _HomePageState extends State<HomePage> {
                                 child: const Text(
                                   "Refer a Friend",
                                   style: TextStyle(
-                                      fontFamily: Fonts.nunito,
+                                      fontFamily: FontFamily.nunito,
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400,
                                       color: Colors.white),
@@ -228,7 +228,7 @@ class _HomePageState extends State<HomePage> {
                                 child: const Text(
                                   "Corporate Solution",
                                   style: TextStyle(
-                                      fontFamily: Fonts.nunito,
+                                      fontFamily: FontFamily.nunito,
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400,
                                       color: Colors.white),
@@ -261,7 +261,7 @@ class _HomePageState extends State<HomePage> {
                                       child: Text(
                                         "GET CARD",
                                         style: TextStyle(
-                                            fontFamily: Fonts.nunito,
+                                            fontFamily: FontFamily.nunito,
                                             fontWeight: FontWeight.w800,
                                             fontSize: 20,
                                             color: Colors1.green),
@@ -299,7 +299,7 @@ class _HomePageState extends State<HomePage> {
                                   style: TextStyle(
                                       fontSize: 26,
                                       fontWeight: FontWeight.w400,
-                                      fontFamily: Fonts.nunito,
+                                      fontFamily: FontFamily.nunito,
                                       color: Colors.white),
                                 ),
                               ],
@@ -327,7 +327,7 @@ class _HomePageState extends State<HomePage> {
                                 'With a tap of your device or scan code, share \n '
                                 'your info with anyone you meet.',
                                 style: TextStyle(
-                                    fontFamily: Fonts.nunito,
+                                    fontFamily: FontFamily.nunito,
                                     fontSize: 21,
                                     color: Colors1.hgrey),
                               ),
@@ -354,7 +354,7 @@ class _HomePageState extends State<HomePage> {
                                       child: const Text(
                                         "More Info >",
                                         style: TextStyle(
-                                            fontFamily: Fonts.nunito,
+                                            fontFamily: FontFamily.nunito,
                                             fontWeight: FontWeight.w300,
                                             fontSize: 20,
                                             color: Colors1.hgrey),

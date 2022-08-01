@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
-class Fonts {
+class FontFamily {
   static const String nunito = "NunitoSans";
 }
 

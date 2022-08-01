@@ -33,7 +33,7 @@ class _KobbleBoxState extends State<KobbleBox> {
                   "Kobble - Box",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontFamily: Fonts.nunito,
+                      fontFamily: FontFamily.nunito,
                       fontSize: 35,
                       fontWeight: FontWeight.w800,
                       color: Colors1.green),
@@ -47,7 +47,7 @@ class _KobbleBoxState extends State<KobbleBox> {
               Text(
                 "All Digital Business Card Products",
                 style: TextStyle(
-                    fontFamily: Fonts.nunito,
+                    fontFamily: FontFamily.nunito,
                     fontWeight: FontWeight.w800,
                     fontSize: 30,
                     color: Colors1.iconl),
@@ -85,7 +85,7 @@ class _KobbleBoxState extends State<KobbleBox> {
             const Text(
               "Happy to go",
               style: TextStyle(
-                  fontFamily: Fonts.nunito,
+                  fontFamily: FontFamily.nunito,
                   fontWeight: FontWeight.bold,
                   fontSize: 50,
                   color: Color(0XffD4D4D4)),
@@ -111,7 +111,7 @@ class _KobbleBoxState extends State<KobbleBox> {
                     Text(
                       "Back",
                       style: TextStyle(
-                          fontFamily: Fonts.nunito,
+                          fontFamily: FontFamily.nunito,
                           fontWeight: FontWeight.w800,
                           fontSize: 25,
                           color: Color(0Xff0F1010)),
@@ -139,7 +139,7 @@ class _KobbleBoxState extends State<KobbleBox> {
                     Text(
                       "Next",
                       style: TextStyle(
-                          fontFamily: Fonts.nunito,
+                          fontFamily: FontFamily.nunito,
                           fontWeight: FontWeight.w800,
                           fontSize: 25,
                           color: Color(0Xff0F1010)),
@@ -198,7 +198,7 @@ class _KobbleBoxState extends State<KobbleBox> {
           child: Text(
             title,
             style: const TextStyle(
-                fontFamily: Fonts.nunito,
+                fontFamily: FontFamily.nunito,
                 fontWeight: FontWeight.w800,
                 fontSize: 28,
                 color: Colors1.iconl),
