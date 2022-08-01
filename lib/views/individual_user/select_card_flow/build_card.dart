@@ -1,12 +1,19 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:kobble_dev/global_widgets/header2.dart';
-import 'package:kobble_dev/models/stepclass.dart';
 import 'package:kobble_dev/design_tools/styles.dart';
+import 'package:provider/provider.dart';
 import '../../../design_tools/colors.dart';
 import '../../../design_tools/device_details.dart';
+import '../../../models/masterdata_response.dart';
+import '../../../models/steps.dart';
+import '../../../utils/device/device_utils.dart';
+import '../../../utils/local_storage.dart';
+import 'customlogo_dialog.dart';
 import 'kobblebox.dart';
+import 'provider/build_card_provider.dart';
 import 'skip_customize.dart';
 
 class BuildCard extends StatefulWidget {
@@ -18,98 +25,22 @@ class BuildCard extends StatefulWidget {
 
 class _BuildCardState extends State<BuildCard> {
   late File fileImage;
-  //String? _imgPath;
+  String? _imgPath;
 
-  //final ImagePicker _picker = ImagePicker();
+  final ImagePicker _picker = ImagePicker();
+  bool _isLoading = true;
 
   var textBtnbg = const Color(0xff252727);
 
-  //late MasterDataResponse masterData;
+  late MasterDataResponse masterData;
 
   String title = "Customize with Logo.";
 
-  Map<int, List<StepCardModel>> map1 = {
-    //step 1 details
-    0: [
-      StepCardModel(
-        cardImage: 'assets/icons/edit_card/stepCard_1.png',
-        image: 'assets/icons/edit_card/step1/qrcode1.png',
-        title: 'Design 1',
-      ),
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
-          image: 'assets/icons/edit_card/step1/qrcode2.png',
-          title: 'Design 2'),
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
-          image: 'assets/icons/edit_card/step1/qrcode1.png',
-          title: 'Design 3'),
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/step1.png',
-          image: 'assets/icons/edit_card/step1/qrcode4.png',
-          title: 'Design 4')
-    ],
-    1: [
-      StepCardModel(
-        cardImage: 'assets/icons/edit_card/stepCard_2.png',
-        image: 'Algerian',
-        title: '',
-      ),
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/stepCard_2.png',
-          image: 'Barlow',
-          title: ''),
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/stepCard_2.png',
-          image: 'Cocogoose',
-          title: ''),
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/stepCard_2.png',
-          image: 'Proxima',
-          title: '')
-    ],
-    2: [
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/stepCard_3.png',
-          image: 'assets/icons/edit_card/step3/step3_1.png',
-          title: ''),
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/stepCard_3.png',
-          image: 'assets/icons/edit_card/step3/step3_2.png',
-          title: ''),
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/stepCard_3.png',
-          image: 'assets/icons/edit_card/step3/step3_3.png',
-          title: ''),
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/stepCard_3.png',
-          image: 'assets/icons/edit_card/step3/step3_3.png',
-          title: '')
-    ],
-    3: [
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/stepCard_4.png',
-          image: 'assets/icons/edit_card/step3/step3_1.png',
-          title: ''),
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/stepCard_4.png',
-          image: 'assets/icons/edit_card/step3/step3_2.png',
-          title: ''),
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/stepCard_4.png',
-          image: 'assets/icons/edit_card/step3/step3_3.png',
-          title: ''),
-      StepCardModel(
-          cardImage: 'assets/icons/edit_card/stepCard_4.png',
-          image: 'assets/icons/edit_card/step3/step3_3.png',
-          title: '')
-    ],
-  };
   // Map<int, List<StepCardModel>> map1 = {
   //   //step 1 details
   //   0: [
   //     StepCardModel(
-  //       cardImage: 'assets/icons/edit_card/step1.png',
+  //       cardImage: 'assets/icons/edit_card/stepCard_1.png',
   //       image: 'assets/icons/edit_card/step1/qrcode1.png',
   //       title: 'Design 1',
   //     ),
@@ -123,81 +54,63 @@ class _BuildCardState extends State<BuildCard> {
   //         title: 'Design 3'),
   //     StepCardModel(
   //         cardImage: 'assets/icons/edit_card/step1.png',
-  //         image: 'assets/icons/edit_card/step1/qrcode3.png',
+  //         image: 'assets/icons/edit_card/step1/qrcode4.png',
   //         title: 'Design 4')
   //   ],
   //   1: [
   //     StepCardModel(
-  //       cardImage: 'assets/icons/edit_card/step1.png',
+  //       cardImage: 'assets/icons/edit_card/stepCard_2.png',
   //       image: 'Algerian',
   //       title: '',
   //     ),
   //     StepCardModel(
-  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         cardImage: 'assets/icons/edit_card/stepCard_2.png',
   //         image: 'Barlow',
   //         title: ''),
   //     StepCardModel(
-  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         cardImage: 'assets/icons/edit_card/stepCard_2.png',
   //         image: 'Cocogoose',
   //         title: ''),
   //     StepCardModel(
-  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         cardImage: 'assets/icons/edit_card/stepCard_2.png',
   //         image: 'Proxima',
   //         title: '')
   //   ],
   //   2: [
   //     StepCardModel(
-  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         cardImage: 'assets/icons/edit_card/stepCard_3.png',
   //         image: 'assets/icons/edit_card/step3/step3_1.png',
-  //         title: 'Left'),
+  //         title: ''),
   //     StepCardModel(
-  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         cardImage: 'assets/icons/edit_card/stepCard_3.png',
   //         image: 'assets/icons/edit_card/step3/step3_2.png',
-  //         title: 'Center'),
+  //         title: ''),
   //     StepCardModel(
-  //         cardImage: 'assets/icons/edit_card/step1.png',
+  //         cardImage: 'assets/icons/edit_card/stepCard_3.png',
   //         image: 'assets/icons/edit_card/step3/step3_3.png',
-  //         title: 'Right'),
+  //         title: ''),
   //     StepCardModel(
-  //         cardImage: 'assets/icons/edit_card/step1.png',
-  //         image: 'assets/icons/edit_card/step3/step3_4.png',
-  //         title: 'Left upside')
+  //         cardImage: 'assets/icons/edit_card/stepCard_3.png',
+  //         image: 'assets/icons/edit_card/step3/step3_3.png',
+  //         title: '')
   //   ],
   //   3: [
   //     StepCardModel(
-  //         cardImage: 'assets/icons/edit_card/step1.png',
-  //         image: 'assets/icons/edit_card/step4/step4_1.png',
+  //         cardImage: 'assets/icons/edit_card/stepCard_4.png',
+  //         image: 'assets/icons/edit_card/step3/step3_1.png',
   //         title: ''),
   //     StepCardModel(
-  //         cardImage: 'assets/icons/edit_card/step1.png',
-  //         image: 'assets/icons/edit_card/step4/step4_2.png',
+  //         cardImage: 'assets/icons/edit_card/stepCard_4.png',
+  //         image: 'assets/icons/edit_card/step3/step3_2.png',
   //         title: ''),
   //     StepCardModel(
-  //         cardImage: 'assets/icons/edit_card/step1.png',
-  //         image: 'assets/icons/edit_card/step4/step4_3.png',
+  //         cardImage: 'assets/icons/edit_card/stepCard_4.png',
+  //         image: 'assets/icons/edit_card/step3/step3_3.png',
   //         title: ''),
   //     StepCardModel(
-  //         cardImage: 'assets/icons/edit_card/step1.png',
-  //         image: 'assets/icons/edit_card/step4/step4_4.png',
+  //         cardImage: 'assets/icons/edit_card/stepCard_4.png',
+  //         image: 'assets/icons/edit_card/step3/step3_3.png',
   //         title: '')
-  //   ],
-  //   4: [
-  //     StepCardModel(
-  //         cardImage: 'assets/icons/edit_card/step1.png',
-  //         image: 'assets/icons/edit_card/step1/qrcode1.png',
-  //         title: 'Design 1'),
-  //     StepCardModel(
-  //         cardImage: 'assets/icons/edit_card/step1.png',
-  //         image: 'assets/icons/edit_card/step1/qrcode2.png',
-  //         title: 'Design 2'),
-  //     StepCardModel(
-  //         cardImage: 'assets/icons/edit_card/step1.png',
-  //         image: 'assets/icons/edit_card/step1/qrcode1.png',
-  //         title: 'Design 3'),
-  //     StepCardModel(
-  //         cardImage: 'assets/icons/edit_card/step1.png',
-  //         image: 'assets/icons/edit_card/step1/qrcode3.png',
-  //         title: 'Design 4')
   //   ],
   // };
 
@@ -229,6 +142,50 @@ class _BuildCardState extends State<BuildCard> {
     StepModel("step 5", false)
   ];
   int upperBound = 4;
+
+//CustomLogo Dialog
+  void _showCustomDialog(BuildContext context) {
+    showGeneralDialog(
+        context: context,
+        pageBuilder: (BuildContext buildContext, Animation animation,
+            Animation secondaryAnimation) {
+          return const CustomLogoDialog();
+        });
+  }
+
+  //Image Picker method
+  Future<void> selectImage(sourceFrom) async {
+    final image = await _picker.pickImage(source: sourceFrom);
+    if (image != null) {
+      setState(() {
+        LocalStorage.setStringData(LocalStorage.imagePath, image.path)
+            .then((value) {
+          imageUploaded = true;
+          Navigator.pop(context);
+        });
+      });
+
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => UploadPage(fileImage)),
+      // );
+    } else {
+      return;
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    Provider.of<BuildCardProvider>(context, listen: false)
+        .fetchMasterData()
+        .then((value) => {
+              setState(() {
+                _isLoading = false;
+              })
+            });
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenwidth = MediaQuery.of(context).size.width;
@@ -344,40 +301,88 @@ class _BuildCardState extends State<BuildCard> {
                             ),
                           )),
                 Expanded(
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: IndexedStack(
-                      index: _selectedIndex,
-                      children: [
-                        selectCard(
-                            _selectedIndex,
-                            map1[_selectedIndex] as List<StepCardModel>,
-                            screenheight,
-                            screenwidth),
-                        selectCard(
-                            _selectedIndex,
-                            map1[_selectedIndex] as List<StepCardModel>,
-                            screenheight,
-                            screenwidth),
-                        selectCard(
-                            _selectedIndex,
-                            map1[_selectedIndex] as List<StepCardModel>,
-                            screenheight,
-                            screenwidth),
-                        selectCard(
-                            _selectedIndex,
-                            map1[_selectedIndex] as List<StepCardModel>,
-                            screenheight,
-                            screenwidth),
-                        selectCard(
-                            _selectedIndex,
-                            map1[_selectedIndex] as List<StepCardModel>,
-                            screenheight,
-                            screenwidth),
-                      ],
-                    ),
-                  ),
+                  child: _isLoading
+                      ? const Center(child: CircularProgressIndicator())
+                      : Consumer<BuildCardProvider>(
+                          builder: (context, buildCardProvider, child) =>
+                              IndexedStack(
+                                index: _selectedIndex,
+                                children: [
+                                  selectCard(
+                                      _selectedIndex,
+                                      buildCardProvider.map1[_selectedIndex]
+                                          as List<StepCardModel>,
+                                      screenheight,
+                                      screenwidth),
+                                  selectCard(
+                                      _selectedIndex,
+                                      buildCardProvider.map1[_selectedIndex]
+                                          as List<StepCardModel>,
+                                      screenheight,
+                                      screenwidth),
+                                  selectCard(
+                                      _selectedIndex,
+                                      buildCardProvider.map1[_selectedIndex]
+                                          as List<StepCardModel>,
+                                      screenheight,
+                                      screenwidth),
+                                  selectCard(
+                                      _selectedIndex,
+                                      buildCardProvider.map1[_selectedIndex]
+                                          as List<StepCardModel>,
+                                      screenheight,
+                                      screenwidth),
+                                  selectCard(
+                                      _selectedIndex,
+                                      buildCardProvider.map1[_selectedIndex]
+                                          as List<StepCardModel>,
+                                      screenheight,
+                                      screenwidth),
+                                ],
+                              )),
+
+                  //  Image.asset(
+                  //   "assets/icons/edit_card/step_1.png",
+                  //   // width: screenWidth * 0.78,
+                  //   // height: screenHeight * 0.248,
+                  // ),
                 ),
+
+                // Expanded(
+                //   child: Container(
+                //     alignment: Alignment.center,
+                //     child: IndexedStack(
+                //       index: _selectedIndex,
+                //       children: [
+                //         selectCard(
+                //             _selectedIndex,
+                //             map1[_selectedIndex] as List<StepCardModel>,
+                //             screenheight,
+                //             screenwidth),
+                //         selectCard(
+                //             _selectedIndex,
+                //             map1[_selectedIndex] as List<StepCardModel>,
+                //             screenheight,
+                //             screenwidth),
+                //         selectCard(
+                //             _selectedIndex,
+                //             map1[_selectedIndex] as List<StepCardModel>,
+                //             screenheight,
+                //             screenwidth),
+                //         selectCard(
+                //             _selectedIndex,
+                //             map1[_selectedIndex] as List<StepCardModel>,
+                //             screenheight,
+                //             screenwidth),
+                //         selectCard(
+                //             _selectedIndex,
+                //             map1[_selectedIndex] as List<StepCardModel>,
+                //             screenheight,
+                //             screenwidth),
+                //       ],
+                //     ),
+                //   ),
+                // ),
                 Container(
                     alignment: Alignment.center,
                     width: constraints.maxWidth * 0.21,
@@ -423,15 +428,16 @@ class _BuildCardState extends State<BuildCard> {
                         : InkWell(
                             onTap: (() {
                               setState(() {
-                                if (_selectedIndex == 3) {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: ((context) {
-                                    return const SkipCustomLogo();
-                                  })));
-                                }
-                                _steps[_selectedIndex].isSelected = true;
-                                if (_selectedIndex < upperBound) {
-                                  _selectedIndex++;
+                                if (_selectedIndex == 2) {
+                                  _showCustomDialog(context);
+                                  setState(() {
+                                    _selectedIndex++;
+                                  });
+                                } else {
+                                  if (_selectedIndex < upperBound) {
+                                    _steps[_selectedIndex].isSelected = true;
+                                    _selectedIndex++;
+                                  }
                                 }
                               });
                             }),
@@ -479,78 +485,81 @@ class _BuildCardState extends State<BuildCard> {
           const SizedBox(
             height: 28,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: scard.map((e) {
-              return Column(
-                children: [
-                  InkWell(
-                    onTap: (() {
-                      setState(() {
-                        e.isSelected = true;
-                      });
-                    }),
-                    child: index == 1
-                        ? Container(
-                            alignment: Alignment.center,
-                            width: 120,
-                            height: 60,
-                            decoration: BoxDecoration(
-                                color: e.isSelected
-                                    ? Colors1.green
-                                    : const Color(0XffCCCCCC),
-                                border: Border.all(
-                                  width: 2,
-                                  color: e.isSelected
-                                      ? Colors1.green
-                                      : Colors.transparent,
-                                ),
-                                borderRadius: BorderRadius.circular(13)),
-                            child: Text(
-                              e.image,
-                              style: const TextStyle(
-                                fontFamily: FontFamily.nunito,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 22,
-                                color: Color(0Xff0F1010),
-                              ),
-                            ),
-                          )
-                        : Container(
-                            width: 90,
-                            height: 90,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: e.isSelected
-                                    ? const Color(0Xff0F1010)
-                                    : const Color(0XffCCCCCC),
-                                width: e.isSelected ? 2 : 1.5,
-                              ),
-                              borderRadius: BorderRadius.circular(18),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(25.0),
-                              child: Image.asset(
-                                e.image,
-                              ),
-                            ),
-                          ),
-                  ),
-                  const SizedBox(
-                    height: 7,
-                  ),
-                  Text(
-                    e.title,
-                    style: const TextStyle(
-                        fontFamily: FontFamily.nunito,
-                        fontSize: 12,
-                        color: Color(0Xff0F1010),
-                        fontWeight: FontWeight.bold),
-                  )
-                ],
-              );
-            }).toList(),
+          Container(
+            alignment: Alignment.center,
+            height: 120,
+            width: double.infinity,
+            child: Center(child: listviewHorizontal(scard, index)),
           )
+          // scard.map((e) {
+          //   return Column(
+          //     children: [
+          //       InkWell(
+          //         onTap: (() {
+          //           setState(() {
+          //             e.isSelected = true;
+          //           });
+          //         }),
+          //         child: index == 1
+          //             ? Container(
+          //                 alignment: Alignment.center,
+          //                 width: 120,
+          //                 height: 60,
+          //                 decoration: BoxDecoration(
+          //                     color: e.isSelected
+          //                         ? Colors1.green
+          //                         : const Color(0XffCCCCCC),
+          //                     border: Border.all(
+          //                       width: 2,
+          //                       color: e.isSelected
+          //                           ? Colors1.green
+          //                           : Colors.transparent,
+          //                     ),
+          //                     borderRadius: BorderRadius.circular(13)),
+          //                 child: Text(
+          //                   e.image,
+          //                   style: const TextStyle(
+          //                     fontFamily: FontFamily.nunito,
+          //                     fontWeight: FontWeight.bold,
+          //                     fontSize: 22,
+          //                     color: Color(0Xff0F1010),
+          //                   ),
+          //                 ),
+          //               )
+          //             : Container(
+          //                 width: 90,
+          //                 height: 90,
+          //                 decoration: BoxDecoration(
+          //                   border: Border.all(
+          //                     color: e.isSelected
+          //                         ? const Color(0Xff0F1010)
+          //                         : const Color(0XffCCCCCC),
+          //                     width: e.isSelected ? 2 : 1.5,
+          //                   ),
+          //                   borderRadius: BorderRadius.circular(18),
+          //                 ),
+          //                 child: Padding(
+          //                   padding: const EdgeInsets.all(25.0),
+          //                   child: Image.asset(
+          //                     e.image,
+          //                   ),
+          //                 ),
+          //               ),
+          //       ),
+          //       const SizedBox(
+          //         height: 7,
+          //       ),
+          //       Text(
+          //         e.title,
+          //         style: const TextStyle(
+          //             fontFamily: FontFamily.nunito,
+          //             fontSize: 12,
+          //             color: Color(0Xff0F1010),
+          //             fontWeight: FontWeight.bold),
+          //       )
+          //     ],
+          //   );
+          // }).toList(),
         ],
       ),
     );
@@ -697,6 +706,100 @@ class _BuildCardState extends State<BuildCard> {
         ],
       ),
     );
+  }
+
+  ListView listviewHorizontal(List<StepCardModel> scard, int index) {
+    return ListView.builder(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemCount: scard.length,
+        itemBuilder: ((context, i) {
+          return InkWell(
+            splashFactory: NoSplash.splashFactory,
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            onTap: (() {
+              setState(() {
+                //scard[i].isSelected = true;
+                for (int j = 0; j < scard.length; j++) {
+                  //print("$j object");
+                  if (i == j) {
+                    // print("$j == $i");
+                    //Step1Card(qrImage: scard[j].image);
+                    scard[j].isSelected = true;
+                  } else {
+                    scard[j].isSelected = false;
+                  }
+                }
+              });
+            }),
+            child: Padding(
+              padding: i == (scard.length - 1)
+                  ? EdgeInsets.zero
+                  : const EdgeInsets.only(right: 30),
+              child: Column(
+                children: [
+                  index == 1
+                      ? Container(
+                          alignment: Alignment.center,
+                          width: 120,
+                          height: 60,
+                          decoration: BoxDecoration(
+                              color: scard[i].isSelected
+                                  ? Colors1.green
+                                  : const Color(0XffCCCCCC),
+                              border: Border.all(
+                                width: 2,
+                                color: scard[i].isSelected
+                                    ? Colors1.green
+                                    : Colors.transparent,
+                              ),
+                              borderRadius: BorderRadius.circular(13)),
+                          child: Text(
+                            scard[i].image,
+                            style: const TextStyle(
+                              fontFamily: FontFamily.nunito,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
+                              color: Color(0Xff0F1010),
+                            ),
+                          ),
+                        )
+                      : Container(
+                          width: 90,
+                          height: 90,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: scard[i].isSelected
+                                  ? const Color(0Xff0F1010)
+                                  : const Color(0XffCCCCCC),
+                              width: scard[i].isSelected ? 2 : 1.5,
+                            ),
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(25.0),
+                            child: Image.asset(
+                              scard[i].image,
+                            ),
+                          ),
+                        ),
+                  const SizedBox(
+                    height: 7,
+                  ),
+                  Text(
+                    scard[i].title,
+                    style: const TextStyle(
+                        fontFamily: FontFamily.nunito,
+                        fontSize: 12,
+                        color: Color(0Xff0F1010),
+                        fontWeight: FontWeight.bold),
+                  )
+                ],
+              ),
+            ),
+          );
+        }));
   }
 
   String headerText() {

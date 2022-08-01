@@ -27,3 +27,17 @@ class CustomSelectModel {
   bool isSelected;
   CustomSelectModel(this.title, this.price, this.isSelected);
 }
+
+class CartTextModel {
+  final String title;
+  final String rate;
+
+  CartTextModel(this.title, this.rate);
+}
+
+// class CustomSelectModel {
+//   final String title;
+//   final double price;
+//   bool isSelected = false;
+//   CustomSelectModel(this.title, this.price);
+// }

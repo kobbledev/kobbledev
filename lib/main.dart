@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
 import 'design_tools/colors.dart';
 import 'views/individual_user/login_flow/home.dart';
+import 'views/individual_user/select_card_flow/customlogo_dialog.dart';
+import 'views/individual_user/select_card_flow/provider/build_card_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      // ignore: prefer_const_literals_to_create_immutables
+      providers: [
+        // ChangeNotifierProvider(create: (_) => CartProvider()),
+        // ChangeNotifierProvider(create: (_) => AddressProvider()),
+        // ChangeNotifierProvider(create: (_) => OrdersProvider()),
+        ChangeNotifierProvider(create: (context) => BuildCardProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../design_tools/styles.dart';
-import '../../../../models/stepclass.dart';
+import '../../../../models/steps.dart';
 
 class SelectCard extends StatefulWidget {
   //required this.selectedIndex

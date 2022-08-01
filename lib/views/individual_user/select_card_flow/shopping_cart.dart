@@ -4,7 +4,7 @@ import '../../../design_tools/colors.dart';
 import '../../../design_tools/device_details.dart';
 import '../../../design_tools/styles.dart';
 import '../../../global_widgets/header2.dart';
-import '../../../models/stepclass.dart';
+import '../../../models/steps.dart';
 import 'address.dart';
 
 class ShoppingCart extends StatelessWidget {
