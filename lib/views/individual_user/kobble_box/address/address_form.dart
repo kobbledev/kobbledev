@@ -73,39 +73,41 @@ class _AddressFormState extends State<AddressForm> {
         fontFamily: FontFamily.nunito,
         fontSize: 15,
         fontWeight: FontWeight.bold,
-        color: Color(0xff9D9F9E));
+        color: Color(0xff0F1010));
 
     var formFieldStyle = const TextStyle(
         fontFamily: FontFamily.nunito,
         fontWeight: FontWeight.w600,
         fontSize: 17,
-        color: Color(0xff0F1010)); // Color(0xffF0F0F0));
+        color: Color(0xff9D9F9E)); // Color(0xffF0F0F0));
 
     var formFieldBg = const Color(0xffF0F0F0);
 
-    var countryField = SizedBox(
-        width: 400,
-        height: 77,
-        child: ListTile(
-          title: Padding(
-            padding: const EdgeInsets.only(bottom: 17),
-            child: Text(
-              "Country / Region",
-              style: labelStyle,
-            ),
+    var countryField = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 17),
+          child: Text(
+            "Country / Region",
+            style: labelStyle,
           ),
-          subtitle: Padding(
-            padding: const EdgeInsets.only(bottom: 21),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 21),
+          child: SizedBox(
+            width: 350,
             child: TextFormField(
               cursorColor: const Color(0xff0F1010),
               style: formFieldStyle,
               controller: addressCountryController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderSide: const BorderSide(color: Colors.grey, width: 1.3),
+                  borderRadius: BorderRadius.circular(11),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(11),
                   borderSide:
                       const BorderSide(color: Color(0xff0F1010), width: 1.3),
                 ),
@@ -132,31 +134,34 @@ class _AddressFormState extends State<AddressForm> {
               },
             ),
           ),
-        ));
+        ),
+      ],
+    );
 
-    var fullnameField = SizedBox(
-        width: 400,
-        height: 77,
-        child: ListTile(
-          title: Padding(
-            padding: const EdgeInsets.only(bottom: 17),
-            child: Text(
-              "Full name",
-              style: labelStyle,
-            ),
+    var fullnameField = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 17),
+          child: Text(
+            "Full name",
+            style: labelStyle,
           ),
-          subtitle: Padding(
-            padding: const EdgeInsets.only(bottom: 21),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 21),
+          child: SizedBox(
+            width: 350,
             child: TextFormField(
               cursorColor: const Color(0xff0F1010),
               style: formFieldStyle,
               controller: addressNameController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(11),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(11),
                   borderSide:
                       const BorderSide(color: Color(0xff0F1010), width: 1.3),
                 ),
@@ -183,31 +188,34 @@ class _AddressFormState extends State<AddressForm> {
               },
             ),
           ),
-        ));
+        ),
+      ],
+    );
 
-    var mobileField = SizedBox(
-        width: 400,
-        height: 77,
-        child: ListTile(
-          title: Padding(
-            padding: const EdgeInsets.only(bottom: 17),
-            child: Text(
-              "Mobile Number",
-              style: labelStyle,
-            ),
+    var mobileField = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 17),
+          child: Text(
+            "Mobile Number",
+            style: labelStyle,
           ),
-          subtitle: Padding(
-            padding: const EdgeInsets.only(bottom: 21),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 21),
+          child: SizedBox(
+            width: 350,
             child: TextFormField(
               cursorColor: const Color(0xff0F1010),
               style: formFieldStyle,
               controller: addressContactNumberController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(11),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(11),
                   borderSide:
                       const BorderSide(color: Color(0xff0F1010), width: 1.3),
                 ),
@@ -234,31 +242,34 @@ class _AddressFormState extends State<AddressForm> {
               },
             ),
           ),
-        ));
+        ),
+      ],
+    );
 
-    var pincodeField = SizedBox(
-        width: 400,
-        height: 77,
-        child: ListTile(
-          title: Padding(
-            padding: const EdgeInsets.only(bottom: 17),
-            child: Text(
-              "Pincode",
-              style: labelStyle,
-            ),
+    var pincodeField = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 17),
+          child: Text(
+            "Pincode",
+            style: labelStyle,
           ),
-          subtitle: Padding(
-            padding: const EdgeInsets.only(bottom: 21),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 21),
+          child: SizedBox(
+            width: 350,
             child: TextFormField(
               cursorColor: const Color(0xff0F1010),
               style: formFieldStyle,
               controller: addressPincodeController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(11),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(11),
                   borderSide:
                       const BorderSide(color: Color(0xff0F1010), width: 1.3),
                 ),
@@ -285,31 +296,34 @@ class _AddressFormState extends State<AddressForm> {
               },
             ),
           ),
-        ));
+        ),
+      ],
+    );
 
-    var houseAddressfield = SizedBox(
-        width: 400,
-        height: 77,
-        child: ListTile(
-          title: Padding(
-            padding: const EdgeInsets.only(bottom: 17),
-            child: Text(
-              "Flat, House no, Building , Company, Apartment",
-              style: labelStyle,
-            ),
+    var houseAddressfield = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 17),
+          child: Text(
+            "Flat, House no, Building , Company, Apartment",
+            style: labelStyle,
           ),
-          subtitle: Padding(
-            padding: const EdgeInsets.only(bottom: 21),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 21),
+          child: SizedBox(
+            width: 350,
             child: TextFormField(
               cursorColor: const Color(0xff0F1010),
               style: formFieldStyle,
               controller: addressStreetController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(11),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(11),
                   borderSide:
                       const BorderSide(color: Color(0xff0F1010), width: 1.3),
                 ),
@@ -336,31 +350,34 @@ class _AddressFormState extends State<AddressForm> {
               },
             ),
           ),
-        ));
+        ),
+      ],
+    );
 
-    var areaField = SizedBox(
-        width: 400,
-        height: 77,
-        child: ListTile(
-          title: Padding(
-            padding: const EdgeInsets.only(bottom: 17),
-            child: Text(
-              "Area, Sector, village",
-              style: labelStyle,
-            ),
+    var areaField = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 17),
+          child: Text(
+            "Area, Sector, village",
+            style: labelStyle,
           ),
-          subtitle: Padding(
-            padding: const EdgeInsets.only(bottom: 21),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 21),
+          child: SizedBox(
+            width: 350,
             child: TextFormField(
               cursorColor: Colors.black,
               style: formFieldStyle,
               controller: addressStateController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(11),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(11),
                   borderSide:
                       const BorderSide(color: Color(0xff0F1010), width: 1.3),
                 ),
@@ -387,30 +404,33 @@ class _AddressFormState extends State<AddressForm> {
               },
             ),
           ),
-        ));
-    var townField = SizedBox(
-        width: 400,
-        height: 77,
-        child: ListTile(
-          title: Padding(
-            padding: const EdgeInsets.only(bottom: 17),
-            child: Text(
-              "Town, City",
-              style: labelStyle,
-            ),
+        ),
+      ],
+    );
+    var townField = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 17),
+          child: Text(
+            "Town, City",
+            style: labelStyle,
           ),
-          subtitle: Padding(
-            padding: const EdgeInsets.only(bottom: 21),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 21),
+          child: SizedBox(
+            width: 350,
             child: TextFormField(
               cursorColor: Colors.black,
               style: formFieldStyle,
               controller: addressCityController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(11),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(11),
                   borderSide:
                       const BorderSide(color: Color(0xff0F1010), width: 1.3),
                 ),
@@ -437,202 +457,222 @@ class _AddressFormState extends State<AddressForm> {
               },
             ),
           ),
-        ));
+        ),
+      ],
+    );
 
-    return Scaffold(
-      appBar: Header2.stepHeader(screenheight),
-      body: SizedBox(
-        width: screenwidth,
-        height: screenheight,
-        child: Stack(
-          children: [
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: Image.asset(
-                "assets/icons/global_icons/location_bg.png",
-                fit: BoxFit.contain,
-                width: screenwidth * 0.42, //800,
-                height: screenheight * 0.531, //583,
-              ),
-            ),
-            Column(
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 90, vertical: 35),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Add a New Address",
-                        style: TextStyle(
-                            fontFamily: FontFamily.nunito,
-                            fontSize: 27,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xff0F1010)),
-                      ),
-                      SizedBox(
-                        height: 35,
-                        width: 87,
-                        child: OutlinedButton(
-                          onPressed: () {
-                            //_showCustomDialog(context);
-                          },
-                          child: const Text(
-                            "Home",
-                            style: TextStyle(
-                                fontFamily: FontFamily.nunito,
-                                color: Color(0Xff0F1010),
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          style: OutlinedButton.styleFrom(
-                              primary: const Color(0Xff006432),
-                              backgroundColor: const Color(0XffBCFCE5),
-                              side: const BorderSide(
-                                  color: Colors1.green, width: 1),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18))),
-                        ),
-                      ),
-                    ],
-                  ),
+    return Theme(
+      data: ThemeData(
+          hoverColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          highlightColor: Colors.transparent),
+      child: Scaffold(
+        appBar: Header2.stepHeader(screenheight),
+        body: SizedBox(
+          width: screenwidth,
+          height: screenheight,
+          child: Stack(
+            children: [
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: Image.asset(
+                  "assets/icons/global_icons/location_bg.png",
+                  fit: BoxFit.contain,
+                  width: screenwidth * 0.42, //800,
+                  height: screenheight * 0.531, //583,
                 ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Form(
-                        key: addressKey,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 90),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  countryField,
-                                  fullnameField,
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 30,
-                              ),
-                              Row(
-                                children: [
-                                  mobileField,
-                                  pincodeField,
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 30,
-                              ),
-                              Row(
-                                children: [
-                                  houseAddressfield,
-                                  areaField,
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 30,
-                              ),
-                              Row(
-                                children: [
-                                  townField,
-                                ],
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 28),
-                                child: ListTile(
-                                  onTap: () {
-                                    setState(() {
-                                      if (oncheck == true) {
-                                        oncheck = false;
-                                      } else {
-                                        oncheck = true;
-                                      }
-                                    });
-                                  },
-                                  title: Row(
-                                    children: [
-                                      Container(
-                                        child: oncheck == true
-                                            ? const Icon(
-                                                Icons.check_box,
-                                                color: Colors1.green,
-                                                size: 30,
-                                              )
-                                            : const Icon(
-                                                Icons.check_box_outline_blank,
-                                                color: Colors1.green,
-                                                size: 30,
-                                              ),
-                                      ),
-                                      const SizedBox(
-                                        width: 12,
-                                      ),
-                                      const Flexible(
-                                        child: Text(
-                                          "Make this my default address.",
-                                          style: TextStyle(
-                                            fontFamily: FontFamily.nunito,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20,
-                                            color: Color(0xff0F1010),
+              ),
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 90, vertical: 35),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Add a New Address",
+                          style: TextStyle(
+                              fontFamily: FontFamily.nunito,
+                              fontSize: 27,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xff0F1010)),
+                        ),
+                        SizedBox(
+                          height: 35,
+                          width: 87,
+                          child: OutlinedButton(
+                            onPressed: () {
+                              //_showCustomDialog(context);
+                            },
+                            child: const Text(
+                              "Home",
+                              style: TextStyle(
+                                  fontFamily: FontFamily.nunito,
+                                  color: Color(0Xff0F1010),
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                                primary: const Color(0Xff006432),
+                                backgroundColor: const Color(0XffBCFCE5),
+                                side: const BorderSide(
+                                    color: Colors1.green, width: 1),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18))),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Form(
+                          key: addressKey,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 90),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    countryField,
+                                    const SizedBox(
+                                      width: 21,
+                                    ),
+                                    fullnameField,
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  children: [
+                                    mobileField,
+                                    const SizedBox(
+                                      width: 21,
+                                    ),
+                                    pincodeField,
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  children: [
+                                    houseAddressfield,
+                                    const SizedBox(
+                                      width: 21,
+                                    ),
+                                    areaField,
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  children: [
+                                    townField,
+                                  ],
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 28),
+                                  child: ListTile(
+                                    onTap: () {
+                                      setState(() {
+                                        if (oncheck == true) {
+                                          oncheck = false;
+                                        } else {
+                                          oncheck = true;
+                                        }
+                                      });
+                                    },
+                                    title: Row(
+                                      children: [
+                                        Container(
+                                          child: oncheck == true
+                                              ? const Icon(
+                                                  Icons.check_box,
+                                                  color: Colors1.green,
+                                                  size: 30,
+                                                )
+                                              : const Icon(
+                                                  Icons.check_box_outline_blank,
+                                                  color: Colors1.green,
+                                                  size: 30,
+                                                ),
+                                        ),
+                                        const SizedBox(
+                                          width: 12,
+                                        ),
+                                        const Flexible(
+                                          child: Text(
+                                            "Make this my default address.",
+                                            style: TextStyle(
+                                              fontFamily: FontFamily.nunito,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20,
+                                              color: Color(0xff0F1010),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 13, bottom: 30),
-                                    child: Container(
-                                      margin: EdgeInsets.zero,
-                                      height: 65,
-                                      width: 500,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(9),
-                                      ),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          return onSubmit(addressKey);
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) => const ThanksPage()));
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                            primary: const Color(0xff0F1010),
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(9))),
-                                        child: const Text(
-                                          "Save & Continue",
-                                          style: TextStyle(
-                                            fontFamily: FontFamily.nunito,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 28,
-                                            color: Colors.white,
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 11, bottom: 30),
+                                      child: Container(
+                                        margin: EdgeInsets.zero,
+                                        height: 65,
+                                        width: 500,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(9),
+                                        ),
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            return onSubmit(addressKey);
+                                            // Navigator.push(
+                                            //     context,
+                                            //     MaterialPageRoute(
+                                            //         builder: (context) => const ThanksPage()));
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                              primary: const Color(0xff0F1010),
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          9))),
+                                          child: const Text(
+                                            "Save & Continue",
+                                            style: TextStyle(
+                                              fontFamily: FontFamily.nunito,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 28,
+                                              color: Colors.white,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        )),
-                  ),
-                )
-              ],
-            )
-          ],
+                                  ],
+                                ),
+                              ],
+                            ),
+                          )),
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

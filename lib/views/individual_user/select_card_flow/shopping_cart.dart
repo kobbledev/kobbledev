@@ -5,7 +5,7 @@ import '../../../design_tools/device_details.dart';
 import '../../../design_tools/styles.dart';
 import '../../../global_widgets/header2.dart';
 import '../../../models/steps.dart';
-import 'address.dart';
+import 'thanks.dart';
 
 class ShoppingCart extends StatelessWidget {
   const ShoppingCart({Key? key}) : super(key: key);
@@ -386,7 +386,7 @@ class ShoppingCart extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: ((context) {
-                                    return const Address();
+                                    return const ThanksPage();
                                   })));
                                 },
                                 child: const Center(

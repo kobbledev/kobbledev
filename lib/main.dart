@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kobble_dev/views/individual_user/login_flow/home.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
 import 'design_tools/colors.dart';
 import 'views/individual_user/kobble_box/address/address_form.dart';
-import 'views/individual_user/login_flow/home.dart';
-import 'views/individual_user/select_card_flow/customlogo_dialog.dart';
 import 'views/individual_user/select_card_flow/provider/build_card_provider.dart';
 
 void main() {
@@ -46,7 +45,7 @@ class MyApp extends StatelessWidget {
           const ResponsiveBreakpoint.resize(1980, name: "Web3"),
         ],
       ),
-      home: const AddressForm(),
+      home: const HomePage(),
     );
   }
 }

@@ -5,7 +5,8 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:kobble_dev/design_tools/colors.dart';
-
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:html' as html;
 import '../../../../design_tools/colors.dart';
 import '../../../../design_tools/styles.dart';
 import '../../../models/otp_request.dart';
@@ -58,6 +59,18 @@ class _SignUpState extends State<SignUp> {
     //                 PinCodeVerificationScreen(phoneNumber: enteredMobileNo)));
     //   }
     // }
+
+    // Future<void> _launchTermsConsitionsUrl() async {
+    //   print("Entered the url method");
+    //   final Uri _url = Uri.parse('https://bit.ly/3oY86ei');
+    //   if (await canLaunchUrl(_url)) {
+    //     await launchUrl(_url);
+    //   } else {
+    //     print("Not able to launch");
+    //     throw 'Could not launch $_url';
+    //   }
+    // }
+
     void onSubmit(GlobalKey<FormState> signUpkey) {
       if (signUpkey.currentState!.validate()) {
         Map<String, String> headers = {
@@ -259,13 +272,24 @@ class _SignUpState extends State<SignUp> {
                                                         Icons.circle_outlined,
                                                         color: Colors1.green,
                                                       )),
-                                            const Text(
-                                              " I agree to terms - privacy policy and\n allow access to my information.",
-                                              style: TextStyle(
-                                                  fontFamily: FontFamily.nunito,
-                                                  fontWeight: FontWeight.normal,
-                                                  fontSize: 18,
-                                                  color: Colors1.hgrey),
+                                            InkWell(
+                                              onTap: () {
+                                                //print("Clicked on url");
+                                                html.window.open(
+                                                    'https://bit.ly/3oY86ei',
+                                                    "_blank");
+                                                // _launchTermsConsitionsUrl;
+                                              },
+                                              child: const Text(
+                                                " I agree to terms - privacy policy and\n allow access to my information.",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        FontFamily.nunito,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    fontSize: 18,
+                                                    color: Colors1.hgrey),
+                                              ),
                                             )
                                           ],
                                         ),

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:kobble_dev/views/individual_user/kobble_box/address/address_form.dart';
 
 import '../../../design_tools/colors.dart';
 import '../../../design_tools/styles.dart';
 import '../../../global_widgets/header2.dart';
 
-class Address extends StatelessWidget {
-  const Address({Key? key}) : super(key: key);
+class ThanksPage extends StatelessWidget {
+  const ThanksPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +72,11 @@ class Address extends StatelessWidget {
                                 width: 156.1,
                                 child: OutlinedButton(
                                   onPressed: () {
-                                    //_showCustomDialog(context);
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const AddressForm()));
                                   },
                                   child: const Text(
                                     "Add New",
