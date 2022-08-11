@@ -13,4 +13,5 @@ class Apis {
   static const addUserAddress = '${baseUrl}user/addUserAddress';
   static const getUserAddress = '${baseUrl}user/getUserAddress'; // GET
   static const updateUserAddress = '${baseUrl}user/updateUserAddress';
+  static const getCardDetails = '${baseUrl}auth/getCardTypes';
 }

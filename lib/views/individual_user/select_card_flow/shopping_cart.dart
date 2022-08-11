@@ -1,19 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:kobble_dev/utils/api_controller.dart';
 
 import '../../../design_tools/colors.dart';
 import '../../../design_tools/device_details.dart';
 import '../../../design_tools/styles.dart';
 import '../../../global_widgets/header2.dart';
+import '../../../models/card_details_response.dart';
 import '../../../models/steps.dart';
+import '../../../utils/api_list.dart';
+import '../../../utils/constants.dart';
 import 'address.dart';
 
-class ShoppingCart extends StatelessWidget {
-  const ShoppingCart({Key? key}) : super(key: key);
+class ShoppingCart extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => ShoppingCartState();
+}
+
+class ShoppingCartState extends State<ShoppingCart> {
+  late CardDetailsResponse cardDetailsResponse;
+
+  @override
+  initState() {
+    super.initState();
+    Map<String, String> headers = {
+      Constants.contentType: Constants.applicationJson,
+    };
+    ApiController.getAPI(Apis.getCardDetails, headers)
+        .then((value) => cardDetailsResponse = value);
+  }
 
   @override
   Widget build(BuildContext context) {
-    double screenwidth = MediaQuery.of(context).size.width;
-    double screenheight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
 
     List<CartTextModel> _cartText = [
       CartTextModel("Amount", "\u{20B9} 599.00"),
@@ -25,13 +44,13 @@ class ShoppingCart extends StatelessWidget {
       CartTextModel("Delivery(GST)", "0.00"),
     ];
     return Scaffold(
-      appBar: Header2.stepHeader(screenheight),
+      appBar: Header2.stepHeader(screenHeight),
       body: Row(
         children: [
           SizedBox(
-            width: screenwidth * 0.596,
+            width: screenWidth * 0.596,
             child: Padding(
-              padding: EdgeInsets.only(left: screenwidth * 0.068),
+              padding: EdgeInsets.only(left: screenWidth * 0.068),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -63,8 +82,8 @@ class ShoppingCart extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(14),
                         ),
-                        width: screenwidth * 0.16,
-                        height: screenheight * 0.300,
+                        width: screenWidth * 0.16,
+                        height: screenHeight * 0.300,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 14),
                           child: Image.asset(
@@ -74,7 +93,7 @@ class ShoppingCart extends StatelessWidget {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                            left: screenwidth * 0.029), // screenwidth * 0.318),
+                            left: screenWidth * 0.029), // screenwidth * 0.318),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -113,7 +132,7 @@ class ShoppingCart extends StatelessWidget {
                                   color: Color(0Xff9D9F9E)),
                             ),
                             SizedBox(
-                              height: screenheight * 0.029,
+                              height: screenHeight * 0.029,
                             ),
                             const Text(
                               "\u{20B9} 599",
@@ -124,11 +143,11 @@ class ShoppingCart extends StatelessWidget {
                                   color: Color(0Xff9D9F9E)),
                             ),
                             SizedBox(
-                              height: screenheight * 0.017,
+                              height: screenHeight * 0.017,
                             ),
                             Container(
-                              width: screenwidth * 0.073,
-                              height: screenheight * 0.039,
+                              width: screenWidth * 0.073,
+                              height: screenHeight * 0.039,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(6)),
                               child: Row(
@@ -136,7 +155,7 @@ class ShoppingCart extends StatelessWidget {
                                   Container(
                                     alignment: Alignment.center,
                                     color: const Color(0XffD3D3D3),
-                                    width: screenwidth * 0.073 / 3,
+                                    width: screenWidth * 0.073 / 3,
                                     height: 38,
                                     child: const Text(
                                       "-",
@@ -154,7 +173,7 @@ class ShoppingCart extends StatelessWidget {
                                   Container(
                                     alignment: Alignment.center,
                                     color: const Color(0XffD3D3D3),
-                                    width: screenwidth * 0.073 / 3,
+                                    width: screenWidth * 0.073 / 3,
                                     height: 38,
                                     child: const Text(
                                       "+",
@@ -165,7 +184,7 @@ class ShoppingCart extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              height: screenheight * 0.036,
+                              height: screenHeight * 0.036,
                             ),
                             const Text(
                               "Total",
@@ -176,7 +195,7 @@ class ShoppingCart extends StatelessWidget {
                                   color: Colors1.iconl),
                             ),
                             SizedBox(
-                              height: screenheight * 0.010,
+                              height: screenHeight * 0.010,
                             ),
                             const Text(
                               "\u{20B9} 599",
@@ -194,7 +213,7 @@ class ShoppingCart extends StatelessWidget {
                   Divider(
                     color: Colors1.hgrey,
                     thickness: 2,
-                    height: screenheight * 0.03,
+                    height: screenHeight * 0.03,
                   ),
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 25),
@@ -213,7 +232,7 @@ class ShoppingCart extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-                height: screenheight - DeviceDetails.appbarHeight,
+                height: screenHeight - DeviceDetails.appbarHeight,
                 color: const Color(0XffF5F5F5),
                 child: Column(
                   children: [
@@ -224,9 +243,9 @@ class ShoppingCart extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.centerLeft,
                         color: const Color(0XffE9F6F0),
-                        height: screenheight * 0.127,
+                        height: screenHeight * 0.127,
                         child: Padding(
-                          padding: EdgeInsets.only(left: screenwidth * 0.048),
+                          padding: EdgeInsets.only(left: screenWidth * 0.048),
                           child: const Text(
                             "Subtotal",
                             style: TextStyle(
@@ -241,20 +260,20 @@ class ShoppingCart extends StatelessWidget {
                     Expanded(
                         child: Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: screenwidth * 0.048),
+                          EdgeInsets.symmetric(horizontal: screenWidth * 0.048),
                       child: Container(
                         child: Column(children: [
                           Expanded(
                             child: Padding(
                                 padding: EdgeInsets.symmetric(
-                                    vertical: screenheight * 0.027),
+                                    vertical: screenHeight * 0.027),
                                 child: Column(
                                   children: [
                                     Column(
                                         children: _cartText.map((e) {
                                       return Padding(
                                         padding: EdgeInsets.only(
-                                            bottom: screenheight * 0.020),
+                                            bottom: screenHeight * 0.020),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
@@ -282,7 +301,7 @@ class ShoppingCart extends StatelessWidget {
                                     Divider(
                                       color: Colors1.hgrey,
                                       thickness: 2,
-                                      height: screenheight * 0.012,
+                                      height: screenHeight * 0.012,
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
@@ -314,7 +333,7 @@ class ShoppingCart extends StatelessWidget {
                                       children: [
                                         SizedBox(
                                           width: double.infinity,
-                                          height: screenheight * 0.074,
+                                          height: screenHeight * 0.074,
                                           child: Card(
                                             shape: RoundedRectangleBorder(
                                                 borderRadius:
@@ -343,8 +362,8 @@ class ShoppingCart extends StatelessWidget {
                                                   ),
                                                 )),
                                                 Container(
-                                                  width: screenwidth * 0.095,
-                                                  height: screenheight * 0.074,
+                                                  width: screenWidth * 0.095,
+                                                  height: screenHeight * 0.074,
                                                   child: ElevatedButton(
                                                     onPressed: () {},
                                                     child: const Text(
@@ -379,9 +398,9 @@ class ShoppingCart extends StatelessWidget {
                           ),
                           Padding(
                             padding:
-                                EdgeInsets.only(bottom: screenheight * 0.05),
+                                EdgeInsets.only(bottom: screenHeight * 0.05),
                             child: SizedBox(
-                              height: screenheight * 0.074,
+                              height: screenHeight * 0.074,
                               child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.push(context,
@@ -416,5 +435,30 @@ class ShoppingCart extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  double getFinalPrice(
+      List<double> itemsPriceList, double discountPercent, double gstPercent) {
+    double combinedPrice = 0;
+    double priceAfterDiscount = 0;
+    double finalPriceWithGst = 0;
+
+    for (double element in itemsPriceList) {
+      combinedPrice = combinedPrice + element;
+    }
+    print('combinedPrice: $combinedPrice');
+
+    if (discountPercent != 0) {
+      priceAfterDiscount =
+          combinedPrice - (combinedPrice * (discountPercent / 100));
+    } else {
+      priceAfterDiscount = combinedPrice;
+    }
+    print('priceAfterDiscount: $priceAfterDiscount');
+    if (gstPercent != 0) {
+      finalPriceWithGst =
+          priceAfterDiscount + (priceAfterDiscount * (gstPercent / 100));
+    }
+    return finalPriceWithGst;
   }
 }
